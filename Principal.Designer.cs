@@ -30,11 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Principal));
             label1 = new Label();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
-            button5 = new Button();
+            registroNoSociosBTN = new Button();
+            registroSocioBTN = new Button();
+            gestionCuotasBTN = new Button();
+            gestionCobrosBTN = new Button();
+            reportesVtosBTN = new Button();
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -54,56 +54,60 @@
             label1.TextAlign = ContentAlignment.MiddleCenter;
             label1.Click += label1_Click;
             // 
-            // button1
+            // registroNoSociosBTN
             // 
-            button1.Location = new Point(277, 301);
-            button1.Margin = new Padding(3, 4, 3, 4);
-            button1.Name = "button1";
-            button1.Size = new Size(113, 68);
-            button1.TabIndex = 17;
-            button1.Text = "Registro de No Socios";
-            button1.UseVisualStyleBackColor = true;
+            registroNoSociosBTN.Location = new Point(277, 301);
+            registroNoSociosBTN.Margin = new Padding(3, 4, 3, 4);
+            registroNoSociosBTN.Name = "registroNoSociosBTN";
+            registroNoSociosBTN.Size = new Size(113, 68);
+            registroNoSociosBTN.TabIndex = 17;
+            registroNoSociosBTN.Text = "Registro de No Socios";
+            registroNoSociosBTN.UseVisualStyleBackColor = true;
+            registroNoSociosBTN.Click += registroNoSociosBTN_Click;
             // 
-            // button2
+            // registroSocioBTN
             // 
-            button2.Location = new Point(277, 181);
-            button2.Margin = new Padding(3, 4, 3, 4);
-            button2.Name = "button2";
-            button2.Size = new Size(113, 68);
-            button2.TabIndex = 18;
-            button2.Text = "Registro de Socios";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            registroSocioBTN.Location = new Point(277, 181);
+            registroSocioBTN.Margin = new Padding(3, 4, 3, 4);
+            registroSocioBTN.Name = "registroSocioBTN";
+            registroSocioBTN.Size = new Size(113, 68);
+            registroSocioBTN.TabIndex = 18;
+            registroSocioBTN.Text = "Registro de Socios";
+            registroSocioBTN.UseVisualStyleBackColor = true;
+            registroSocioBTN.Click += registroSocioBTN_Click;
             // 
-            // button3
+            // gestionCuotasBTN
             // 
-            button3.Location = new Point(527, 181);
-            button3.Margin = new Padding(3, 4, 3, 4);
-            button3.Name = "button3";
-            button3.Size = new Size(113, 68);
-            button3.TabIndex = 19;
-            button3.Text = "Gestión de cuotas";
-            button3.UseVisualStyleBackColor = true;
+            gestionCuotasBTN.Location = new Point(527, 181);
+            gestionCuotasBTN.Margin = new Padding(3, 4, 3, 4);
+            gestionCuotasBTN.Name = "gestionCuotasBTN";
+            gestionCuotasBTN.Size = new Size(113, 68);
+            gestionCuotasBTN.TabIndex = 19;
+            gestionCuotasBTN.Text = "Gestión de cuotas";
+            gestionCuotasBTN.UseVisualStyleBackColor = true;
+            gestionCuotasBTN.Click += gestionCuotasBTN_Click;
             // 
-            // button4
+            // gestionCobrosBTN
             // 
-            button4.Location = new Point(527, 301);
-            button4.Margin = new Padding(3, 4, 3, 4);
-            button4.Name = "button4";
-            button4.Size = new Size(113, 68);
-            button4.TabIndex = 20;
-            button4.Text = "Gestión de cobros por día";
-            button4.UseVisualStyleBackColor = true;
+            gestionCobrosBTN.Location = new Point(527, 301);
+            gestionCobrosBTN.Margin = new Padding(3, 4, 3, 4);
+            gestionCobrosBTN.Name = "gestionCobrosBTN";
+            gestionCobrosBTN.Size = new Size(113, 68);
+            gestionCobrosBTN.TabIndex = 20;
+            gestionCobrosBTN.Text = "Gestión de cobros por día";
+            gestionCobrosBTN.UseVisualStyleBackColor = true;
+            gestionCobrosBTN.Click += gestionCobrosBTN_Click;
             // 
-            // button5
+            // reportesVtosBTN
             // 
-            button5.Location = new Point(406, 432);
-            button5.Margin = new Padding(3, 4, 3, 4);
-            button5.Name = "button5";
-            button5.Size = new Size(113, 68);
-            button5.TabIndex = 21;
-            button5.Text = "Reportes de vtos del día";
-            button5.UseVisualStyleBackColor = true;
+            reportesVtosBTN.Location = new Point(406, 432);
+            reportesVtosBTN.Margin = new Padding(3, 4, 3, 4);
+            reportesVtosBTN.Name = "reportesVtosBTN";
+            reportesVtosBTN.Size = new Size(113, 68);
+            reportesVtosBTN.TabIndex = 21;
+            reportesVtosBTN.Text = "Reportes de vtos del día";
+            reportesVtosBTN.UseVisualStyleBackColor = true;
+            reportesVtosBTN.Click += reportesVtosBTN_Click;
             // 
             // pictureBox1
             // 
@@ -134,11 +138,11 @@
             ClientSize = new Size(914, 600);
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
-            Controls.Add(button5);
-            Controls.Add(button4);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(reportesVtosBTN);
+            Controls.Add(gestionCobrosBTN);
+            Controls.Add(gestionCuotasBTN);
+            Controls.Add(registroSocioBTN);
+            Controls.Add(registroNoSociosBTN);
             Controls.Add(label1);
             Margin = new Padding(3, 4, 3, 4);
             Name = "Principal";
@@ -152,12 +156,12 @@
         #endregion
 
         private Label label1;
-        private Button button1;
-        private Button button2;
-        private Button button3;
-        private Button button4;
-        private Button button5;
+        private Button registroNoSociosBTN;
+        private Button gestionCuotasBTN;
+        private Button gestionCobrosBTN;
+        private Button reportesVtosBTN;
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
+        private Button registroSocioBTN;
     }
 }

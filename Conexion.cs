@@ -17,6 +17,9 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
         private string clave;
         private static Conexion? con = null;
 
+        /// <summary>
+        /// 
+        /// </summary>
         private Conexion() 
         {
             this.baseDatos = "Proyecto";
@@ -25,6 +28,11 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
             this.usuario = "root";
             this.clave = "";
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public MySqlConnection CrearConexion() 
         {
             MySqlConnection cadena = new MySqlConnection();
@@ -42,6 +50,10 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
             }
             return cadena;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public static Conexion getInstancia()
         {
             if(con == null)

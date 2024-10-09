@@ -11,6 +11,12 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Datos
 {
     internal class Usuarios
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="L_usu"></param>
+        /// <param name="P_Usu"></param>
+        /// <returns></returns>
         public DataTable Log_Usu(string L_usu, string P_Usu)
         {
             MySqlDataReader resultado;

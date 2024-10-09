@@ -21,5 +21,10 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
         {
 
         }
+
+        private void Cobrar_por_actividad_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
