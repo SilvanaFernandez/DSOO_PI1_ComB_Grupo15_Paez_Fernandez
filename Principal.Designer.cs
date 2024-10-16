@@ -37,8 +37,8 @@
             lblPrincipal = new Label();
             picPpal1 = new PictureBox();
             picPpal2 = new PictureBox();
-            lblDatos = new Label();
             btnSalir = new Button();
+            lblDatosDeSesion = new Label();
             ((System.ComponentModel.ISupportInitialize)picPpal1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picPpal2).BeginInit();
             SuspendLayout();
@@ -125,15 +125,6 @@
             picPpal2.TabIndex = 29;
             picPpal2.TabStop = false;
             // 
-            // lblDatos
-            // 
-            lblDatos.AutoSize = true;
-            lblDatos.Location = new Point(28, 20);
-            lblDatos.Name = "lblDatos";
-            lblDatos.Size = new Size(88, 15);
-            lblDatos.TabIndex = 30;
-            lblDatos.Text = "datos de sesión";
-            // 
             // btnSalir
             // 
             btnSalir.Location = new Point(691, 16);
@@ -142,14 +133,24 @@
             btnSalir.TabIndex = 31;
             btnSalir.Text = "SALIR";
             btnSalir.UseVisualStyleBackColor = true;
+            btnSalir.Click += btnSalir_Click;
+            // 
+            // lblDatosDeSesion
+            // 
+            lblDatosDeSesion.AutoSize = true;
+            lblDatosDeSesion.Location = new Point(35, 24);
+            lblDatosDeSesion.Name = "lblDatosDeSesion";
+            lblDatosDeSesion.Size = new Size(89, 15);
+            lblDatosDeSesion.TabIndex = 32;
+            lblDatosDeSesion.Text = "Datos de sesión";
             // 
             // Principal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(lblDatosDeSesion);
             Controls.Add(btnSalir);
-            Controls.Add(lblDatos);
             Controls.Add(picPpal2);
             Controls.Add(picPpal1);
             Controls.Add(btnReportesVtos);
@@ -160,6 +161,7 @@
             Controls.Add(lblPrincipal);
             Name = "Principal";
             Text = "Principal";
+            Load += Principal_Load;
             ((System.ComponentModel.ISupportInitialize)picPpal1).EndInit();
             ((System.ComponentModel.ISupportInitialize)picPpal2).EndInit();
             ResumeLayout(false);
@@ -176,7 +178,7 @@
         private Label lblPrincipal;
         private PictureBox picPpal1;
         private PictureBox picPpal2;
-        private Label lblDatos;
         private Button btnSalir;
+        private Label lblDatosDeSesion;
     }
 }
