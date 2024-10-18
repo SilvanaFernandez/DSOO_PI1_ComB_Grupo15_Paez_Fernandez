@@ -36,5 +36,12 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
         {
 
         }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            Principal principal = new Principal();
+            principal.Show();
+            this.Hide();
+        }
     }
 }

@@ -38,6 +38,7 @@
             textBox2 = new TextBox();
             button1 = new Button();
             button2 = new Button();
+            btnVolver = new Button();
             SuspendLayout();
             // 
             // label1
@@ -141,11 +142,23 @@
             button2.Text = "Generar carnet";
             button2.UseVisualStyleBackColor = true;
             // 
+            // btnVolver
+            // 
+            btnVolver.Location = new Point(789, 35);
+            btnVolver.Margin = new Padding(3, 4, 3, 4);
+            btnVolver.Name = "btnVolver";
+            btnVolver.Size = new Size(86, 31);
+            btnVolver.TabIndex = 28;
+            btnVolver.Text = "VOLVER";
+            btnVolver.UseVisualStyleBackColor = true;
+            btnVolver.Click += btnVolver_Click;
+            // 
             // Cobrar_por_actividad
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(914, 600);
+            Controls.Add(btnVolver);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(textBox2);
@@ -176,5 +189,6 @@
         private TextBox textBox2;
         private Button button1;
         private Button button2;
+        private Button btnVolver;
     }
 }

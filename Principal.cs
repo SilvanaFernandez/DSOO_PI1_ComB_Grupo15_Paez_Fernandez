@@ -34,24 +34,28 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
 
         private void btnRegistroNoSocios_Click(object sender, EventArgs e)
         {
-            Registro_no_socios registro = new Registro_no_socios();
-            registro.Show();
+            Registro_no_socios registroNS = new Registro_no_socios();
+            registroNS.Show();
             this.Hide();
         }
 
         private void btnGestionCuotas_Click(object sender, EventArgs e)
         {
-
+            Cobrar_cuota cobrar_Cuota = new Cobrar_cuota();
+            cobrar_Cuota.Show();
+            this.Hide();
         }
 
         private void btnCobrosAct_Click(object sender, EventArgs e)
         {
-
+            Cobrar_por_actividad cobrar_Por_Actividad = new Cobrar_por_actividad();
+            cobrar_Por_Actividad.Show();
+            this.Hide();
         }
 
         private void btnReportesVtos_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("No se puede ingresar");
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
