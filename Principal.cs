@@ -20,6 +20,10 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
         internal string rol;
         internal string usuario;
 
+        private void Principal_Load(object sender, EventArgs e)
+        {
+            lblDatosDeSesion.Text = "USUARIO: " + usuario + " (" + rol + ")";
+        }
 
         private void btnRegistroSocio_Click(object sender, EventArgs e)
         {
@@ -55,9 +59,6 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
             Application.Exit();
         }
 
-        private void Principal_Load(object sender, EventArgs e)
-        {
-            lblDatosDeSesion.Text = "USUARIO: " + usuario + " (" + rol + ")";
-        }
+        
     }
 }

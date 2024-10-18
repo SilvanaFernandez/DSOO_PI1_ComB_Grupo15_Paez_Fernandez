@@ -39,12 +39,10 @@
             txtDni = new TextBox();
             btnGuardar = new Button();
             btnVolver = new Button();
-            lblNroSocio = new Label();
-            txtNroSocio = new TextBox();
-            lblNombre1 = new Label();
             lblApellido1 = new Label();
-            lblDni1 = new Label();
             btnLimpiar = new Button();
+            lblNombre1 = new Label();
+            lblDni1 = new Label();
             ((System.ComponentModel.ISupportInitialize)picSocio).BeginInit();
             SuspendLayout();
             // 
@@ -73,7 +71,7 @@
             // lblNombre
             // 
             lblNombre.AutoSize = true;
-            lblNombre.Location = new Point(151, 201);
+            lblNombre.Location = new Point(137, 119);
             lblNombre.Name = "lblNombre";
             lblNombre.Size = new Size(51, 15);
             lblNombre.TabIndex = 10;
@@ -82,7 +80,7 @@
             // lblApellido
             // 
             lblApellido.AutoSize = true;
-            lblApellido.Location = new Point(151, 279);
+            lblApellido.Location = new Point(137, 209);
             lblApellido.Name = "lblApellido";
             lblApellido.Size = new Size(51, 15);
             lblApellido.TabIndex = 11;
@@ -91,7 +89,7 @@
             // lblDni
             // 
             lblDni.AutoSize = true;
-            lblDni.Location = new Point(151, 351);
+            lblDni.Location = new Point(137, 300);
             lblDni.Name = "lblDni";
             lblDni.Size = new Size(27, 15);
             lblDni.TabIndex = 12;
@@ -99,27 +97,24 @@
             // 
             // txtApellido
             // 
-            txtApellido.Location = new Point(151, 297);
+            txtApellido.Location = new Point(137, 230);
             txtApellido.Name = "txtApellido";
             txtApellido.Size = new Size(216, 23);
             txtApellido.TabIndex = 13;
-            txtApellido.Text = "Apellido";
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(151, 219);
+            txtNombre.Location = new Point(137, 137);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(216, 23);
             txtNombre.TabIndex = 14;
-            txtNombre.Text = "Nombre";
             // 
             // txtDni
             // 
-            txtDni.Location = new Point(151, 369);
+            txtDni.Location = new Point(137, 318);
             txtDni.Name = "txtDni";
-            txtDni.Size = new Size(139, 23);
+            txtDni.Size = new Size(151, 23);
             txtDni.TabIndex = 15;
-            txtDni.Text = "XXXXXXXX";
             txtDni.TextChanged += txtDni_TextChanged;
             // 
             // btnGuardar
@@ -142,50 +137,14 @@
             btnVolver.UseVisualStyleBackColor = true;
             btnVolver.Click += btnVolver_Click;
             // 
-            // lblNroSocio
-            // 
-            lblNroSocio.AutoSize = true;
-            lblNroSocio.Location = new Point(151, 131);
-            lblNroSocio.Name = "lblNroSocio";
-            lblNroSocio.Size = new Size(98, 15);
-            lblNroSocio.TabIndex = 18;
-            lblNroSocio.Text = "Numero de socio";
-            // 
-            // txtNroSocio
-            // 
-            txtNroSocio.Location = new Point(151, 149);
-            txtNroSocio.Name = "txtNroSocio";
-            txtNroSocio.Size = new Size(100, 23);
-            txtNroSocio.TabIndex = 19;
-            txtNroSocio.Text = "xxxx";
-            // 
-            // lblNombre1
-            // 
-            lblNombre1.AutoSize = true;
-            lblNombre1.Location = new Point(373, 219);
-            lblNombre1.Name = "lblNombre1";
-            lblNombre1.Size = new Size(12, 15);
-            lblNombre1.TabIndex = 20;
-            lblNombre1.Text = "*";
-            lblNombre1.Click += lblNombre1_Click;
-            // 
             // lblApellido1
             // 
             lblApellido1.AutoSize = true;
-            lblApellido1.Location = new Point(373, 297);
+            lblApellido1.Location = new Point(355, 233);
             lblApellido1.Name = "lblApellido1";
             lblApellido1.Size = new Size(12, 15);
             lblApellido1.TabIndex = 21;
             lblApellido1.Text = "*";
-            // 
-            // lblDni1
-            // 
-            lblDni1.AutoSize = true;
-            lblDni1.Location = new Point(296, 369);
-            lblDni1.Name = "lblDni1";
-            lblDni1.Size = new Size(12, 15);
-            lblDni1.TabIndex = 22;
-            lblDni1.Text = "*";
             // 
             // btnLimpiar
             // 
@@ -197,17 +156,33 @@
             btnLimpiar.UseVisualStyleBackColor = true;
             btnLimpiar.Click += btnLimpiar_Click_1;
             // 
+            // lblNombre1
+            // 
+            lblNombre1.AutoSize = true;
+            lblNombre1.Location = new Point(355, 140);
+            lblNombre1.Name = "lblNombre1";
+            lblNombre1.Size = new Size(12, 15);
+            lblNombre1.TabIndex = 24;
+            lblNombre1.Text = "*";
+            // 
+            // lblDni1
+            // 
+            lblDni1.AutoSize = true;
+            lblDni1.Location = new Point(294, 321);
+            lblDni1.Name = "lblDni1";
+            lblDni1.Size = new Size(12, 15);
+            lblDni1.TabIndex = 25;
+            lblDni1.Text = "*";
+            // 
             // Registro_socios
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(btnLimpiar);
             Controls.Add(lblDni1);
-            Controls.Add(lblApellido1);
             Controls.Add(lblNombre1);
-            Controls.Add(txtNroSocio);
-            Controls.Add(lblNroSocio);
+            Controls.Add(btnLimpiar);
+            Controls.Add(lblApellido1);
             Controls.Add(btnVolver);
             Controls.Add(btnGuardar);
             Controls.Add(txtDni);
@@ -237,11 +212,9 @@
         private TextBox txtDni;
         private Button btnGuardar;
         private Button btnVolver;
-        private Label lblNroSocio;
-        private TextBox txtNroSocio;
-        private Label lblNombre1;
         private Label lblApellido1;
-        private Label lblDni1;
         private Button btnLimpiar;
+        private Label lblNombre1;
+        private Label lblDni1;
     }
 }
