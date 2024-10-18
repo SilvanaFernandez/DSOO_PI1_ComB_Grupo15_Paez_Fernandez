@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
+using DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Datos;
 using DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Entidades;
 
 namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
@@ -27,7 +29,14 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
 
         private void txtDni_TextChanged(object sender, EventArgs e)
         {
+            string dniTexto = txtDni.Text;
 
+            string patron = @"^\d{1,8}$";
+            if (!Regex.IsMatch(dniTexto, patron))
+            {
+                MessageBox.Show("Solo se permiten numeros de hasta 8 dígitos");
+                txtDni.Clear();
+            }            
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -37,25 +46,48 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                 MessageBox.Show("Debe completar los datos requeridos (*) ", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
-            {
-                string respuesta;
-                E_Socio soc = new E_Socio();
-                soc.NombreS = txtNombre.Text;
-                soc.ApellidoS = txtApellido.Text;
-                soc.DniS = Convert.ToInt32(txtDni.Text);
-                Datos.Socios socios = new Datos.Socios();//instanciamos para trabajar dentro de la clase Socios
-                respuesta = socios.Nuevo_Soc(soc); //en la var NroSocio se guarda el return del procedure Nuevo_Soc que se encuentra en la clase socios
-                bool esnumero = int.TryParse(respuesta, out int codigo);//el método int.TryParse convierte una cadena en entero, en este caso lo hará con NroSocio, si la conversión es exitosa el valor se guarda en codigo y true en esnumero, de lo contrario se guarda false en esnumero
-                if (esnumero)
+            {                
+                int dni;
+                if (!int.TryParse(txtDni.Text, out dni))
                 {
-                    if (codigo == 1) //el socio ya existe porque hay una línea en la consulta 
+                    MessageBox.Show("El DNI debe ser un número válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                E_Socio soc = new E_Socio
+                {
+                    NombreS = txtNombre.Text,
+                    ApellidoS = txtApellido.Text,
+                    DniS = dni
+                };
+
+                try
+                {
+                    Socios socios = new Socios();
+                    string respuesta = socios.Nuevo_Soc(soc); // Llama al procedimiento almacenado
+                    MessageBox.Show("Respuesta del procedimiento: " + respuesta);
+
+                    // Verifica si la respuesta es un número
+                    bool esnumero = int.TryParse(respuesta, out int codigo);
+                    if (esnumero)
                     {
-                        MessageBox.Show("EL SOCIO YA ESTÁ REGISTRADO", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        if (codigo == -1) // El socio ya existe
+                        {
+                            MessageBox.Show("EL SOCIO YA ESTÁ REGISTRADO", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            MessageBox.Show("EL SOCIO SE REGISTRÓ EXITOSAMENTE CON EL NÚMERO DE SOCIO: " + codigo, "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("EL SOCIO SE REGISTRÓ EXITOSAMENTE CON EL NÚMERO DE  SOCIO:  " + respuesta, "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                        MessageBox.Show("Error: la respuesta no es un número válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ocurrió un error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

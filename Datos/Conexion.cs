@@ -24,6 +24,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Datos
             puerto = "3306";
             usuario = "root";
             clave = "Posadas3213";
+            //Posadas3213
         }
 
         public MySqlConnection CrearConexion()
