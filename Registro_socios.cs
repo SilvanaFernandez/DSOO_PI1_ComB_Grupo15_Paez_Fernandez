@@ -34,7 +34,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
             string patron = @"^\d{1,8}$";
             if (!Regex.IsMatch(dniTexto, patron))
             {
-                MessageBox.Show("Solo se permiten numeros de hasta 8 dígitos");
+                //MessageBox.Show("Solo se permiten numeros de hasta 8 dígitos");
                 txtDni.Clear();
             }            
         }
@@ -82,7 +82,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                     }
                     else
                     {
-                        MessageBox.Show("Error: la respuesta no es un número válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                       // MessageBox.Show("Error: la respuesta no es un número válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 catch (Exception ex)

@@ -12,51 +12,11 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Datos
     internal class Socios
     {
         private string connectionString = "Server=localhost;port=3306;Database=DSOO_PI1_ComB_Grupo15_Paez_Fernandez;Uid=root";
-        /*public string nuevo_Soc(E_Socio socio)
-        {
-
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
-            {
-                try
-                {
-                    conn.Open();
-                    MySqlCommand cmd = new MySqlCommand("nuevoSoc", conn);
-                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
-
-                    cmd.Parameters.AddWithValue("Nom", socio.NombreS);
-                    cmd.Parameters.AddWithValue("Ape", socio.ApellidoS);
-                    cmd.Parameters.AddWithValue("Doc", socio.DniS);
-
-                    MySqlParameter ParCodigo = new MySqlParameter();
-                    ParCodigo.ParameterName = "rta";
-                    ParCodigo.MySqlDbType = MySqlDbType.Int32;
-                    ParCodigo.Direction = ParameterDirection.Output;
-                    cmd.Parameters.Add(ParCodigo);
-
-                    int filasAfectadas = cmd.ExecuteNonQuery();
-                    if (filasAfectadas > 0)
-                    {
-                        return "socio creado exitosamente";
-                    }
-                    else
-                    {
-                        return "error al crear el socio";
-                    }
-                }
-                catch (Exception ex)
-                {
-                    return $"Error: {ex.Message}";
-                }
-            }
-        }*/
-
-            
         public string Nuevo_Soc(E_Socio soc)
         { 
             string salida;
             using (MySqlConnection sqlCon = new MySqlConnection(connectionString))
             {
-            //MySqlConnection sqlCon = new MySqlConnection();
                 try
                 {
                     //sqlCon = Conexion.getInstancia().CrearConexion();//conexión única
