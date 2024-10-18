@@ -17,11 +17,10 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Datos
             MySqlConnection sqlCon = new MySqlConnection();
             try
             {
-                sqlCon = Conexion.getInstancia().CrearConexion();
-                MySqlCommand comando = new MySqlCommand("NuevoSoc",
-                sqlCon);
+                sqlCon = Conexion.getInstancia().CrearConexion();//conexión única
+                MySqlCommand comando = new MySqlCommand("NuevoSoc", sqlCon);
                 comando.CommandType = CommandType.StoredProcedure;
-
+                //se pasan los parametros para el procedimiento
                 comando.Parameters.Add("Nom", MySqlDbType.VarChar).Value = soc.NombreS;
                 comando.Parameters.Add("Ape", MySqlDbType.VarChar).Value = soc.ApellidoS;
                 comando.Parameters.Add("Doc", MySqlDbType.VarChar).Value = soc.DniS;

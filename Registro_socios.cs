@@ -38,23 +38,23 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
             }
             else
             {
-                string NroSocio;
+                string respuesta;
                 E_Socio soc = new E_Socio();
                 soc.NombreS = txtNombre.Text;
                 soc.ApellidoS = txtApellido.Text;
                 soc.DniS = Convert.ToInt32(txtDni.Text);
-                Datos.Socios socios = new Datos.Socios();
-                NroSocio = socios.Nuevo_Soc(soc); //en la var NroSocio se guarda el return del procedure Nuevo_Soc que se encuentra en la clase socios
-                bool esnumero = int.TryParse(NroSocio, out int codigo);//el método int.TryParse convierte una cadena en entero, en este caso lo hará con NroSocio, si la conversión es exitosa el valor se guarda en codigo y true en esnumero, de lo contrario se guarda false en esnumero
+                Datos.Socios socios = new Datos.Socios();//instanciamos para trabajar dentro de la clase Socios
+                respuesta = socios.Nuevo_Soc(soc); //en la var NroSocio se guarda el return del procedure Nuevo_Soc que se encuentra en la clase socios
+                bool esnumero = int.TryParse(respuesta, out int codigo);//el método int.TryParse convierte una cadena en entero, en este caso lo hará con NroSocio, si la conversión es exitosa el valor se guarda en codigo y true en esnumero, de lo contrario se guarda false en esnumero
                 if (esnumero)
                 {
                     if (codigo == 1) //el socio ya existe porque hay una línea en la consulta 
                     {
-                        MessageBox.Show("EL SOCIO YA EXISTE", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("EL SOCIO YA ESTÁ REGISTRADO", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
-                        MessageBox.Show("EL SOCIO SE REGISTRÓ EXITOSAMENTE CON EL NÚMERO DE  SOCIO:  " + NroSocio, "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                        MessageBox.Show("EL SOCIO SE REGISTRÓ EXITOSAMENTE CON EL NÚMERO DE  SOCIO:  " + respuesta, "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
                 }
             }
@@ -67,11 +67,6 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
             txtApellido.Text = "";
             txtDni.Text = "";
             txtNombre.Focus();
-        }
-
-        private void lblNombre1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
