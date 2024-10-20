@@ -11,7 +11,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Datos
 {
     internal class Socios
     {
-        private string connectionString = "Server=localhost;port=3306;Database=DSOO_PI1_ComB_Grupo15_Paez_Fernandez;Uid=root";
+        private string connectionString = "Server=localhost;port=3306;Database=DSOO_PI1_ComB_Grupo15_Paez_Fernandez;Uid=root;password=Posadas3213";
         public string Nuevo_Soc(E_Socio soc)
         { 
             string salida;
