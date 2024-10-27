@@ -52,8 +52,9 @@
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(105, 44);
             btnGuardar.TabIndex = 25;
-            btnGuardar.Text = "Guardar";
+            btnGuardar.Text = "GUARDAR";
             btnGuardar.UseVisualStyleBackColor = true;
+            btnGuardar.Click += btnGuardar_Click;
             // 
             // txtNombre
             // 
@@ -118,6 +119,7 @@
             btnLimpiar.TabIndex = 26;
             btnLimpiar.Text = "LIMPIAR";
             btnLimpiar.UseVisualStyleBackColor = true;
+            btnLimpiar.Click += btnLimpiar_Click;
             // 
             // btnVolver
             // 
@@ -144,6 +146,7 @@
             txtDni.Name = "txtDni";
             txtDni.Size = new Size(139, 23);
             txtDni.TabIndex = 29;
+            txtDni.TextChanged += txtDni_TextChanged;
             // 
             // lblNombre1
             // 

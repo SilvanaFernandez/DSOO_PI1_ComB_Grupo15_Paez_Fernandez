@@ -56,9 +56,9 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
 
                 E_Socio soc = new E_Socio
                 {
-                    NombreS = txtNombre.Text,
-                    ApellidoS = txtApellido.Text,
-                    DniS = dni
+                    NombreP = txtNombre.Text,
+                    ApellidoP = txtApellido.Text,
+                    DniP = dni
                 };
 
                 try
@@ -94,7 +94,6 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
 
         private void btnLimpiar_Click_1(object sender, EventArgs e)
         {
-
             txtNombre.Text = "";
             txtApellido.Text = "";
             txtDni.Text = "";
