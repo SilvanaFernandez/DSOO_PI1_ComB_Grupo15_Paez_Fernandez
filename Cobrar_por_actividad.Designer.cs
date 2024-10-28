@@ -35,12 +35,19 @@
             label2 = new Label();
             cboActividad = new ComboBox();
             txtImporte = new TextBox();
-            btnCarnet = new Button();
             btnVolver = new Button();
             lblNroNoSocio = new Label();
             lblNombreApellido = new Label();
             txtNombreApellido = new TextBox();
             btnRegEmitirRecibo = new Button();
+            btnLimpiar = new Button();
+            lblFecha = new Label();
+            txtFecha = new TextBox();
+            btnCarnetNoSocio = new Button();
+            lblDni = new Label();
+            txtDni = new TextBox();
+            txtCupoDisp = new TextBox();
+            lblCupoDisp = new Label();
             SuspendLayout();
             // 
             // lblTitulo
@@ -69,15 +76,16 @@
             // 
             // txtNroNoSocio
             // 
-            txtNroNoSocio.Location = new Point(100, 224);
+            txtNroNoSocio.Location = new Point(155, 224);
             txtNroNoSocio.Name = "txtNroNoSocio";
-            txtNroNoSocio.Size = new Size(139, 23);
+            txtNroNoSocio.Size = new Size(103, 23);
             txtNroNoSocio.TabIndex = 11;
+            txtNroNoSocio.TextChanged += txtNroNoSocio_TextChanged;
             // 
             // lblImporte
             // 
             lblImporte.AutoSize = true;
-            lblImporte.Location = new Point(292, 298);
+            lblImporte.Location = new Point(219, 341);
             lblImporte.Name = "lblImporte";
             lblImporte.Size = new Size(49, 15);
             lblImporte.TabIndex = 13;
@@ -86,7 +94,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(100, 298);
+            label2.Location = new Point(54, 341);
             label2.Name = "label2";
             label2.Size = new Size(57, 15);
             label2.TabIndex = 12;
@@ -96,27 +104,19 @@
             // 
             cboActividad.FormattingEnabled = true;
             cboActividad.Items.AddRange(new object[] { "Musculación", "CrossFit", "Spinning", "Funcional", "Yoga", "Pilates", "Zumba", "Strong" });
-            cboActividad.Location = new Point(100, 316);
+            cboActividad.Location = new Point(54, 359);
             cboActividad.Name = "cboActividad";
             cboActividad.Size = new Size(133, 23);
             cboActividad.TabIndex = 14;
             cboActividad.Text = "Actividad";
+            cboActividad.SelectedIndexChanged += cboActividad_SelectedIndexChanged;
             // 
             // txtImporte
             // 
-            txtImporte.Location = new Point(292, 316);
+            txtImporte.Location = new Point(219, 359);
             txtImporte.Name = "txtImporte";
             txtImporte.Size = new Size(139, 23);
             txtImporte.TabIndex = 15;
-            // 
-            // btnCarnet
-            // 
-            btnCarnet.Location = new Point(600, 298);
-            btnCarnet.Name = "btnCarnet";
-            btnCarnet.Size = new Size(105, 44);
-            btnCarnet.TabIndex = 27;
-            btnCarnet.Text = "Generar carnet";
-            btnCarnet.UseVisualStyleBackColor = true;
             // 
             // btnVolver
             // 
@@ -131,7 +131,7 @@
             // lblNroNoSocio
             // 
             lblNroNoSocio.AutoSize = true;
-            lblNroNoSocio.Location = new Point(100, 206);
+            lblNroNoSocio.Location = new Point(155, 206);
             lblNroNoSocio.Name = "lblNroNoSocio";
             lblNroNoSocio.Size = new Size(55, 15);
             lblNroNoSocio.TabIndex = 29;
@@ -140,7 +140,7 @@
             // lblNombreApellido
             // 
             lblNombreApellido.AutoSize = true;
-            lblNombreApellido.Location = new Point(292, 206);
+            lblNombreApellido.Location = new Point(54, 273);
             lblNombreApellido.Name = "lblNombreApellido";
             lblNombreApellido.Size = new Size(107, 15);
             lblNombreApellido.TabIndex = 30;
@@ -148,14 +148,14 @@
             // 
             // txtNombreApellido
             // 
-            txtNombreApellido.Location = new Point(292, 224);
+            txtNombreApellido.Location = new Point(54, 290);
             txtNombreApellido.Name = "txtNombreApellido";
-            txtNombreApellido.Size = new Size(243, 23);
+            txtNombreApellido.Size = new Size(277, 23);
             txtNombreApellido.TabIndex = 31;
             // 
             // btnRegEmitirRecibo
             // 
-            btnRegEmitirRecibo.Location = new Point(600, 209);
+            btnRegEmitirRecibo.Location = new Point(558, 224);
             btnRegEmitirRecibo.Name = "btnRegEmitirRecibo";
             btnRegEmitirRecibo.Size = new Size(105, 51);
             btnRegEmitirRecibo.TabIndex = 32;
@@ -163,17 +163,92 @@
             btnRegEmitirRecibo.UseVisualStyleBackColor = true;
             btnRegEmitirRecibo.Click += btnRegEmitirRecibo_Click;
             // 
+            // btnLimpiar
+            // 
+            btnLimpiar.Location = new Point(609, 26);
+            btnLimpiar.Name = "btnLimpiar";
+            btnLimpiar.Size = new Size(75, 23);
+            btnLimpiar.TabIndex = 33;
+            btnLimpiar.Text = "LIMPIAR";
+            btnLimpiar.UseVisualStyleBackColor = true;
+            btnLimpiar.Click += btnLimpiar_Click;
+            // 
+            // lblFecha
+            // 
+            lblFecha.AutoSize = true;
+            lblFecha.Location = new Point(320, 206);
+            lblFecha.Name = "lblFecha";
+            lblFecha.Size = new Size(38, 15);
+            lblFecha.TabIndex = 34;
+            lblFecha.Text = "Fecha";
+            // 
+            // txtFecha
+            // 
+            txtFecha.Location = new Point(320, 224);
+            txtFecha.Name = "txtFecha";
+            txtFecha.Size = new Size(113, 23);
+            txtFecha.TabIndex = 35;
+            // 
+            // btnCarnetNoSocio
+            // 
+            btnCarnetNoSocio.Location = new Point(558, 312);
+            btnCarnetNoSocio.Name = "btnCarnetNoSocio";
+            btnCarnetNoSocio.Size = new Size(105, 44);
+            btnCarnetNoSocio.TabIndex = 36;
+            btnCarnetNoSocio.Text = "Generar carnet";
+            btnCarnetNoSocio.UseVisualStyleBackColor = true;
+            btnCarnetNoSocio.Click += btnCarnetNoSocio_Click;
+            // 
+            // lblDni
+            // 
+            lblDni.AutoSize = true;
+            lblDni.Location = new Point(363, 273);
+            lblDni.Name = "lblDni";
+            lblDni.Size = new Size(27, 15);
+            lblDni.TabIndex = 37;
+            lblDni.Text = "DNI";
+            // 
+            // txtDni
+            // 
+            txtDni.Location = new Point(363, 291);
+            txtDni.Name = "txtDni";
+            txtDni.Size = new Size(135, 23);
+            txtDni.TabIndex = 38;
+            // 
+            // txtCupoDisp
+            // 
+            txtCupoDisp.Location = new Point(398, 359);
+            txtCupoDisp.Name = "txtCupoDisp";
+            txtCupoDisp.Size = new Size(100, 23);
+            txtCupoDisp.TabIndex = 39;
+            // 
+            // lblCupoDisp
+            // 
+            lblCupoDisp.AutoSize = true;
+            lblCupoDisp.Location = new Point(398, 343);
+            lblCupoDisp.Name = "lblCupoDisp";
+            lblCupoDisp.Size = new Size(95, 15);
+            lblCupoDisp.TabIndex = 40;
+            lblCupoDisp.Text = "Cupo Disponible";
+            // 
             // Cobrar_por_actividad
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(lblCupoDisp);
+            Controls.Add(txtCupoDisp);
+            Controls.Add(txtDni);
+            Controls.Add(lblDni);
+            Controls.Add(btnCarnetNoSocio);
+            Controls.Add(txtFecha);
+            Controls.Add(lblFecha);
+            Controls.Add(btnLimpiar);
             Controls.Add(btnRegEmitirRecibo);
             Controls.Add(txtNombreApellido);
             Controls.Add(lblNombreApellido);
             Controls.Add(lblNroNoSocio);
             Controls.Add(btnVolver);
-            Controls.Add(btnCarnet);
             Controls.Add(txtImporte);
             Controls.Add(cboActividad);
             Controls.Add(lblImporte);
@@ -198,11 +273,18 @@
         private ComboBox cboActividad;
         private TextBox txtImporte;
         private Button button1;
-        private Button btnCarnet;
         private Button btnVolver;
         private Label lblNroNoSocio;
         private Label lblNombreApellido;
         private TextBox txtNombreApellido;
         private Button btnRegEmitirRecibo;
+        private Button btnLimpiar;
+        private Label lblFecha;
+        private TextBox txtFecha;
+        private Button btnCarnetNoSocio;
+        private Label lblDni;
+        private TextBox txtDni;
+        private TextBox txtCupoDisp;
+        private Label lblCupoDisp;
     }
 }

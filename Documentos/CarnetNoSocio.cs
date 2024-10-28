@@ -1,6 +1,5 @@
 ﻿using DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Datos;
 using MySql.Data.MySqlClient;
-using Mysqlx.Cursor;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,16 +11,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
+namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Documentos
 {
-    public partial class Carnet : Form
+    public partial class CarnetNoSocio : Form
     {
-        public Carnet()
-        {
-            InitializeComponent();
-        }
+        public CarnetNoSocio() => InitializeComponent();
 
-        public string nroSoc { get; set; }
+        public string nroNoSoc { get; set; }
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
@@ -31,12 +27,12 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
             pd.PrintPage += new PrintPageEventHandler(ImprimirForm1);
             pd.Print();
 
-            btnImprimir.Visible = true;
-
             MessageBox.Show("Operación existosa", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Principal principal = new Principal();
             principal.Show();
             this.Close();
+
+            btnImprimir.Visible = true;
         }
 
         private void ImprimirForm1(object o, PrintPageEventArgs e)
@@ -52,7 +48,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
             e.Graphics.DrawImage(img, p);
         }
 
-        private void Carnet_Load(object sender, EventArgs e)
+        private void CarnetNoSocio_Load(object sender, EventArgs e)
         {
             using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion())
             {
@@ -60,23 +56,23 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                 {
                     sqlCon.Open();
 
-                    // Obtener el NroSoc de txtNroSocio2
-                    string nroSocioTexto = nroSoc;
-                    if (!int.TryParse(nroSocioTexto, out int nroSocio))
+                    // Obtener el NroNoSoc de txtNroSocio2
+                    string nroNoSocioTexto = nroNoSoc;
+                    if (!int.TryParse(nroNoSocioTexto, out int nroNoSocio))
                     {
-                        MessageBox.Show("Número de socio no válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Número de no socio no válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
 
-                    string query = "SELECT NombreP, ApellidoP, DocP FROM socio WHERE NroSoc = @NroSoc";
+                    string query = "SELECT NombreP, ApellidoP, DocP FROM noSocio WHERE NroNoSoc = @NroNoSoc";
                     using (MySqlCommand cmd = new MySqlCommand(query, sqlCon))
                     {
-                        cmd.Parameters.AddWithValue("@NroSoc", nroSocio);
+                        cmd.Parameters.AddWithValue("@NroNoSoc", nroNoSocio);
                         using (MySqlDataReader reader = cmd.ExecuteReader())
                         {
                             if (reader.Read())
                             {
-                                txtNroSocio.Text = nroSocioTexto;
+                                txtNroNoSocio.Text = nroNoSocioTexto;
                                 txtNombre.Text = reader["NombreP"].ToString();
                                 txtApellido.Text = reader["ApellidoP"].ToString();
                                 txtDni.Text = reader["DocP"].ToString();
@@ -105,4 +101,3 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
         }
     }
 }
- 

@@ -230,9 +230,9 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
             }
         }
 
-        private void btnCarnet_Click(object sender, EventArgs e)
+        private void btnCarnetSocio_Click(object sender, EventArgs e)
         {
-            Carnet carnet = new Carnet
+            CarnetSocio carnet = new CarnetSocio
             {
                 nroSoc = txtNroSocio2.Text,
             };

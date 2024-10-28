@@ -1,6 +1,6 @@
 ﻿namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
 {
-    partial class Carnet
+    partial class CarnetSocio
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Carnet));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CarnetSocio));
             pnlTitulo = new Panel();
             lblTitulo = new Label();
             pnlDatos = new Panel();
@@ -209,7 +209,7 @@
             btnImprimir.UseVisualStyleBackColor = true;
             btnImprimir.Click += btnImprimir_Click;
             // 
-            // Carnet
+            // CarnetSocio
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -217,8 +217,8 @@
             Controls.Add(btnImprimir);
             Controls.Add(pnlDatos);
             Controls.Add(pnlTitulo);
-            Name = "Carnet";
-            Text = "Carnet";
+            Name = "CarnetSocio";
+            Text = "Carnet Socio";
             Load += Carnet_Load;
             pnlTitulo.ResumeLayout(false);
             pnlTitulo.PerformLayout();

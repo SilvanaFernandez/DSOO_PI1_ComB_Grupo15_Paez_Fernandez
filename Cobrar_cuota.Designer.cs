@@ -37,7 +37,6 @@
             lblNroSocio2 = new Label();
             txtProxVto = new TextBox();
             txtFecha = new TextBox();
-            btnCarnet = new Button();
             lblImporte = new Label();
             txtImporte = new TextBox();
             btnVolver = new Button();
@@ -55,6 +54,7 @@
             btnRegEmitirRecibo = new Button();
             lblDni = new Label();
             txtDni = new TextBox();
+            btnCarnetSocio = new Button();
             SuspendLayout();
             // 
             // txtNroSocio1
@@ -127,16 +127,6 @@
             txtFecha.Name = "txtFecha";
             txtFecha.Size = new Size(139, 23);
             txtFecha.TabIndex = 18;
-            // 
-            // btnCarnet
-            // 
-            btnCarnet.Location = new Point(660, 346);
-            btnCarnet.Name = "btnCarnet";
-            btnCarnet.Size = new Size(105, 55);
-            btnCarnet.TabIndex = 27;
-            btnCarnet.Text = "Generar carnet";
-            btnCarnet.UseVisualStyleBackColor = true;
-            btnCarnet.Click += btnCarnet_Click;
             // 
             // lblImporte
             // 
@@ -295,11 +285,22 @@
             txtDni.Size = new Size(130, 23);
             txtDni.TabIndex = 45;
             // 
+            // btnCarnetSocio
+            // 
+            btnCarnetSocio.Location = new Point(660, 346);
+            btnCarnetSocio.Name = "btnCarnetSocio";
+            btnCarnetSocio.Size = new Size(105, 55);
+            btnCarnetSocio.TabIndex = 46;
+            btnCarnetSocio.Text = "Generar carnet";
+            btnCarnetSocio.UseVisualStyleBackColor = true;
+            btnCarnetSocio.Click += btnCarnetSocio_Click;
+            // 
             // Cobrar_cuota
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnCarnetSocio);
             Controls.Add(txtDni);
             Controls.Add(lblDni);
             Controls.Add(btnRegEmitirRecibo);
@@ -317,7 +318,6 @@
             Controls.Add(btnVolver);
             Controls.Add(txtImporte);
             Controls.Add(lblImporte);
-            Controls.Add(btnCarnet);
             Controls.Add(txtFecha);
             Controls.Add(txtProxVto);
             Controls.Add(lblNroSocio2);
@@ -344,7 +344,6 @@
         private Label label9;
         private TextBox txtProxVto;
         private TextBox txtFecha;
-        private Button btnCarnet;
         private Label lblImporte;
         private TextBox txtImporte;
         private Button btnVolver;
@@ -362,5 +361,6 @@
         private Button btnRegEmitirRecibo;
         private Label lblDni;
         private TextBox txtDni;
+        private Button btnCarnetSocio;
     }
 }
