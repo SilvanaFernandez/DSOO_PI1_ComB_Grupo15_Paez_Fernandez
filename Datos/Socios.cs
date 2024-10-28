@@ -55,18 +55,19 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Datos
                         salida = "Error: No se pudo obtener el número de socio.";
                     }
                 }
-                    catch (Exception ex)
+                catch (Exception ex)
+                {
+                    salida = "Error: " + ex.Message;
+                }
+                finally
+                {
+                    if (sqlCon.State == ConnectionState.Open)
                     {
-                        salida = "Error: " + ex.Message;
+                        sqlCon.Close();
                     }
-                    finally
-                    {
-                        if (sqlCon.State == ConnectionState.Open)
-                        { sqlCon.Close(); };
-                    }
-                    return salida;
-                 }
+                }
+                return salida;
             }
-            
         }
     }
+}

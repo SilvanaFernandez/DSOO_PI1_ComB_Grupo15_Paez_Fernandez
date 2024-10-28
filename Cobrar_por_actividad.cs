@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Datos;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,11 +19,6 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
             InitializeComponent();
         }
 
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void Cobrar_por_actividad_Load(object sender, EventArgs e)
         {
 
@@ -32,6 +29,11 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
             Principal principal = new Principal();
             principal.Show();
             this.Hide();
+        }
+
+        private void btnRegEmitirRecibo_Click(object sender, EventArgs e)
+        {
+         
         }
     }
 }

@@ -28,253 +28,305 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            label4 = new Label();
-            textBox3 = new TextBox();
-            label5 = new Label();
-            label6 = new Label();
-            textBox4 = new TextBox();
-            label7 = new Label();
-            label8 = new Label();
-            label9 = new Label();
-            textBox6 = new TextBox();
-            textBox7 = new TextBox();
-            button1 = new Button();
-            button2 = new Button();
-            label10 = new Label();
-            textBox5 = new TextBox();
+            txtNroSocio1 = new TextBox();
+            txtEstado = new TextBox();
+            lblEstado = new Label();
+            txtFechaUltPago = new TextBox();
+            lblFechaUltPago = new Label();
+            txtNroSocio2 = new TextBox();
+            lblNroSocio2 = new Label();
+            txtProxVto = new TextBox();
+            txtFecha = new TextBox();
+            btnCarnet = new Button();
+            lblImporte = new Label();
+            txtImporte = new TextBox();
             btnVolver = new Button();
+            lblTituloPpal = new Label();
+            lblSubtitulo1 = new Label();
+            lblNroSocio1 = new Label();
+            lblSubtitulo2 = new Label();
+            lblFecha = new Label();
+            lblProxVto = new Label();
+            lblNombreApellido1 = new Label();
+            txtNombreApellido1 = new TextBox();
+            lblNombreApellido2 = new Label();
+            txtNombreApellido2 = new TextBox();
+            btnLimpiar = new Button();
+            btnRegEmitirRecibo = new Button();
+            lblDni = new Label();
+            txtDni = new TextBox();
             SuspendLayout();
             // 
-            // label1
+            // txtNroSocio1
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("MV Boli", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.ForeColor = SystemColors.ActiveCaptionText;
-            label1.Location = new Point(297, 68);
-            label1.Name = "label1";
-            label1.Size = new Size(350, 40);
-            label1.TabIndex = 0;
-            label1.Text = "GESTIÓN DE CUOTAS";
-            label1.TextAlign = ContentAlignment.MiddleCenter;
-            label1.Click += label1_Click;
+            txtNroSocio1.Location = new Point(93, 130);
+            txtNroSocio1.Name = "txtNroSocio1";
+            txtNroSocio1.Size = new Size(139, 23);
+            txtNroSocio1.TabIndex = 4;
+            txtNroSocio1.TextChanged += txtNroSocio1_TextChanged;
             // 
-            // label2
+            // txtEstado
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("MV Boli", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.ForeColor = SystemColors.ActiveCaptionText;
-            label2.Location = new Point(67, 151);
-            label2.Name = "label2";
-            label2.Size = new Size(339, 40);
-            label2.TabIndex = 2;
-            label2.Text = "Ver estado de cuota:";
-            label2.TextAlign = ContentAlignment.MiddleCenter;
-            label2.Click += label2_Click;
+            txtEstado.Location = new Point(93, 194);
+            txtEstado.Name = "txtEstado";
+            txtEstado.Size = new Size(139, 23);
+            txtEstado.TabIndex = 5;
             // 
-            // label3
+            // lblEstado
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("MV Boli", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.ForeColor = SystemColors.ActiveCaptionText;
-            label3.Location = new Point(67, 331);
-            label3.Name = "label3";
-            label3.Size = new Size(394, 40);
-            label3.TabIndex = 3;
-            label3.Text = "Registrar pago de cuota:";
-            label3.TextAlign = ContentAlignment.MiddleCenter;
-            label3.Click += label3_Click;
+            lblEstado.AutoSize = true;
+            lblEstado.Location = new Point(93, 176);
+            lblEstado.Name = "lblEstado";
+            lblEstado.Size = new Size(42, 15);
+            lblEstado.TabIndex = 6;
+            lblEstado.Text = "Estado";
             // 
-            // textBox1
+            // txtFechaUltPago
             // 
-            textBox1.Location = new Point(176, 255);
-            textBox1.Margin = new Padding(3, 4, 3, 4);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(158, 27);
-            textBox1.TabIndex = 4;
-            textBox1.Text = "Número de socio";
+            txtFechaUltPago.Location = new Point(288, 194);
+            txtFechaUltPago.Name = "txtFechaUltPago";
+            txtFechaUltPago.Size = new Size(139, 23);
+            txtFechaUltPago.TabIndex = 7;
             // 
-            // textBox2
+            // lblFechaUltPago
             // 
-            textBox2.Location = new Point(400, 256);
-            textBox2.Margin = new Padding(3, 4, 3, 4);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(158, 27);
-            textBox2.TabIndex = 5;
-            textBox2.Text = "Activo/No Activo";
+            lblFechaUltPago.AutoSize = true;
+            lblFechaUltPago.Location = new Point(290, 179);
+            lblFechaUltPago.Name = "lblFechaUltPago";
+            lblFechaUltPago.Size = new Size(137, 15);
+            lblFechaUltPago.TabIndex = 8;
+            lblFechaUltPago.Text = "Vto última cuota pagada";
             // 
-            // label4
+            // txtNroSocio2
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(400, 232);
-            label4.Name = "label4";
-            label4.Size = new Size(54, 20);
-            label4.TabIndex = 6;
-            label4.Text = "Estado";
+            txtNroSocio2.Location = new Point(93, 311);
+            txtNroSocio2.Name = "txtNroSocio2";
+            txtNroSocio2.Size = new Size(107, 23);
+            txtNroSocio2.TabIndex = 10;
+            txtNroSocio2.TextChanged += txtNroSocio2_TextChanged;
             // 
-            // textBox3
+            // lblNroSocio2
             // 
-            textBox3.Location = new Point(632, 256);
-            textBox3.Margin = new Padding(3, 4, 3, 4);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(158, 27);
-            textBox3.TabIndex = 7;
-            textBox3.Text = "xx/xx/xxxx";
+            lblNroSocio2.AutoSize = true;
+            lblNroSocio2.Location = new Point(93, 293);
+            lblNroSocio2.Name = "lblNroSocio2";
+            lblNroSocio2.Size = new Size(59, 15);
+            lblNroSocio2.TabIndex = 11;
+            lblNroSocio2.Text = "Nro Socio";
             // 
-            // label5
+            // txtProxVto
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(632, 232);
-            label5.Name = "label5";
-            label5.Size = new Size(174, 20);
-            label5.TabIndex = 8;
-            label5.Text = "Vto última cuota pagada";
+            txtProxVto.Location = new Point(418, 378);
+            txtProxVto.Name = "txtProxVto";
+            txtProxVto.Size = new Size(139, 23);
+            txtProxVto.TabIndex = 17;
             // 
-            // label6
+            // txtFecha
             // 
-            label6.AutoSize = true;
-            label6.Location = new Point(176, 232);
-            label6.Name = "label6";
-            label6.Size = new Size(46, 20);
-            label6.TabIndex = 9;
-            label6.Text = "Socio";
-            label6.Click += label6_Click;
+            txtFecha.Location = new Point(240, 378);
+            txtFecha.Name = "txtFecha";
+            txtFecha.Size = new Size(139, 23);
+            txtFecha.TabIndex = 18;
             // 
-            // textBox4
+            // btnCarnet
             // 
-            textBox4.Location = new Point(106, 428);
-            textBox4.Margin = new Padding(3, 4, 3, 4);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(158, 27);
-            textBox4.TabIndex = 10;
-            textBox4.Text = "Número de socio";
+            btnCarnet.Location = new Point(660, 346);
+            btnCarnet.Name = "btnCarnet";
+            btnCarnet.Size = new Size(105, 55);
+            btnCarnet.TabIndex = 27;
+            btnCarnet.Text = "Generar carnet";
+            btnCarnet.UseVisualStyleBackColor = true;
+            btnCarnet.Click += btnCarnet_Click;
             // 
-            // label7
+            // lblImporte
             // 
-            label7.AutoSize = true;
-            label7.Location = new Point(106, 404);
-            label7.Name = "label7";
-            label7.Size = new Size(46, 20);
-            label7.TabIndex = 11;
-            label7.Text = "Socio";
+            lblImporte.AutoSize = true;
+            lblImporte.Location = new Point(93, 360);
+            lblImporte.Name = "lblImporte";
+            lblImporte.Size = new Size(49, 15);
+            lblImporte.TabIndex = 28;
+            lblImporte.Text = "Importe";
             // 
-            // label8
+            // txtImporte
             // 
-            label8.AutoSize = true;
-            label8.Location = new Point(106, 503);
-            label8.Name = "label8";
-            label8.Size = new Size(47, 20);
-            label8.TabIndex = 12;
-            label8.Text = "Fecha";
-            label8.Click += label8_Click;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Location = new Point(363, 507);
-            label9.Name = "label9";
-            label9.Size = new Size(149, 20);
-            label9.TabIndex = 13;
-            label9.Text = "Próximo vencimiento";
-            label9.Click += label9_Click;
-            // 
-            // textBox6
-            // 
-            textBox6.Location = new Point(363, 531);
-            textBox6.Margin = new Padding(3, 4, 3, 4);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(158, 27);
-            textBox6.TabIndex = 17;
-            textBox6.Text = "xx/xx/xxxx";
-            // 
-            // textBox7
-            // 
-            textBox7.Location = new Point(106, 527);
-            textBox7.Margin = new Padding(3, 4, 3, 4);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(158, 27);
-            textBox7.TabIndex = 18;
-            textBox7.Text = "xx/xx/xxxx";
-            // 
-            // button1
-            // 
-            button1.Location = new Point(603, 453);
-            button1.Margin = new Padding(3, 4, 3, 4);
-            button1.Name = "button1";
-            button1.Size = new Size(120, 73);
-            button1.TabIndex = 19;
-            button1.Text = "Registrar y emitir recibo";
-            button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            button2.Location = new Point(754, 453);
-            button2.Margin = new Padding(3, 4, 3, 4);
-            button2.Name = "button2";
-            button2.Size = new Size(120, 73);
-            button2.TabIndex = 27;
-            button2.Text = "Generar carnet";
-            button2.UseVisualStyleBackColor = true;
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Location = new Point(363, 404);
-            label10.Name = "label10";
-            label10.Size = new Size(62, 20);
-            label10.TabIndex = 28;
-            label10.Text = "Importe";
-            // 
-            // textBox5
-            // 
-            textBox5.Location = new Point(363, 428);
-            textBox5.Margin = new Padding(3, 4, 3, 4);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(158, 27);
-            textBox5.TabIndex = 29;
-            textBox5.Text = "$";
+            txtImporte.Location = new Point(93, 378);
+            txtImporte.Name = "txtImporte";
+            txtImporte.Size = new Size(107, 23);
+            txtImporte.TabIndex = 29;
             // 
             // btnVolver
             // 
-            btnVolver.Location = new Point(788, 41);
-            btnVolver.Margin = new Padding(3, 4, 3, 4);
+            btnVolver.Location = new Point(690, 22);
             btnVolver.Name = "btnVolver";
-            btnVolver.Size = new Size(86, 31);
+            btnVolver.Size = new Size(75, 23);
             btnVolver.TabIndex = 30;
             btnVolver.Text = "VOLVER";
             btnVolver.UseVisualStyleBackColor = true;
             btnVolver.Click += btnVolver_Click;
             // 
+            // lblTituloPpal
+            // 
+            lblTituloPpal.AutoSize = true;
+            lblTituloPpal.Font = new Font("MV Boli", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTituloPpal.ForeColor = SystemColors.ActiveCaptionText;
+            lblTituloPpal.Location = new Point(223, 22);
+            lblTituloPpal.Name = "lblTituloPpal";
+            lblTituloPpal.Size = new Size(284, 31);
+            lblTituloPpal.TabIndex = 31;
+            lblTituloPpal.Text = "GESTIÓN DE CUOTAS";
+            lblTituloPpal.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // lblSubtitulo1
+            // 
+            lblSubtitulo1.AutoSize = true;
+            lblSubtitulo1.Font = new Font("MV Boli", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            lblSubtitulo1.ForeColor = SystemColors.ActiveCaptionText;
+            lblSubtitulo1.Location = new Point(59, 63);
+            lblSubtitulo1.Name = "lblSubtitulo1";
+            lblSubtitulo1.Size = new Size(276, 31);
+            lblSubtitulo1.TabIndex = 32;
+            lblSubtitulo1.Text = "Ver estado de cuota:";
+            lblSubtitulo1.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // lblNroSocio1
+            // 
+            lblNroSocio1.AutoSize = true;
+            lblNroSocio1.Location = new Point(93, 112);
+            lblNroSocio1.Name = "lblNroSocio1";
+            lblNroSocio1.Size = new Size(59, 15);
+            lblNroSocio1.TabIndex = 33;
+            lblNroSocio1.Text = "Nro Socio";
+            // 
+            // lblSubtitulo2
+            // 
+            lblSubtitulo2.AutoSize = true;
+            lblSubtitulo2.Font = new Font("MV Boli", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            lblSubtitulo2.ForeColor = SystemColors.ActiveCaptionText;
+            lblSubtitulo2.Location = new Point(59, 241);
+            lblSubtitulo2.Name = "lblSubtitulo2";
+            lblSubtitulo2.Size = new Size(320, 31);
+            lblSubtitulo2.TabIndex = 34;
+            lblSubtitulo2.Text = "Registrar pago de cuota:";
+            lblSubtitulo2.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // lblFecha
+            // 
+            lblFecha.AutoSize = true;
+            lblFecha.Location = new Point(238, 360);
+            lblFecha.Name = "lblFecha";
+            lblFecha.Size = new Size(38, 15);
+            lblFecha.TabIndex = 35;
+            lblFecha.Text = "Fecha";
+            // 
+            // lblProxVto
+            // 
+            lblProxVto.AutoSize = true;
+            lblProxVto.Location = new Point(418, 360);
+            lblProxVto.Name = "lblProxVto";
+            lblProxVto.Size = new Size(121, 15);
+            lblProxVto.TabIndex = 36;
+            lblProxVto.Text = "Próximo vencimiento";
+            // 
+            // lblNombreApellido1
+            // 
+            lblNombreApellido1.AutoSize = true;
+            lblNombreApellido1.Location = new Point(290, 112);
+            lblNombreApellido1.Name = "lblNombreApellido1";
+            lblNombreApellido1.Size = new Size(107, 15);
+            lblNombreApellido1.TabIndex = 37;
+            lblNombreApellido1.Text = "Nombre y Apellido";
+            // 
+            // txtNombreApellido1
+            // 
+            txtNombreApellido1.Location = new Point(288, 130);
+            txtNombreApellido1.Name = "txtNombreApellido1";
+            txtNombreApellido1.Size = new Size(251, 23);
+            txtNombreApellido1.TabIndex = 38;
+            // 
+            // lblNombreApellido2
+            // 
+            lblNombreApellido2.AutoSize = true;
+            lblNombreApellido2.Location = new Point(238, 293);
+            lblNombreApellido2.Name = "lblNombreApellido2";
+            lblNombreApellido2.Size = new Size(107, 15);
+            lblNombreApellido2.TabIndex = 39;
+            lblNombreApellido2.Text = "Nombre y Apellido";
+            // 
+            // txtNombreApellido2
+            // 
+            txtNombreApellido2.Location = new Point(238, 311);
+            txtNombreApellido2.Name = "txtNombreApellido2";
+            txtNombreApellido2.Size = new Size(205, 23);
+            txtNombreApellido2.TabIndex = 40;
+            // 
+            // btnLimpiar
+            // 
+            btnLimpiar.Location = new Point(609, 22);
+            btnLimpiar.Name = "btnLimpiar";
+            btnLimpiar.Size = new Size(75, 23);
+            btnLimpiar.TabIndex = 41;
+            btnLimpiar.Text = "LIMPIAR";
+            btnLimpiar.UseVisualStyleBackColor = true;
+            btnLimpiar.Click += btnLimpiar_Click;
+            // 
+            // btnRegEmitirRecibo
+            // 
+            btnRegEmitirRecibo.Location = new Point(660, 285);
+            btnRegEmitirRecibo.Name = "btnRegEmitirRecibo";
+            btnRegEmitirRecibo.Size = new Size(105, 55);
+            btnRegEmitirRecibo.TabIndex = 42;
+            btnRegEmitirRecibo.Text = "Registrar y emitir recibo";
+            btnRegEmitirRecibo.UseVisualStyleBackColor = true;
+            btnRegEmitirRecibo.Click += btnRegEmitirRecibo_Click;
+            // 
+            // lblDni
+            // 
+            lblDni.AutoSize = true;
+            lblDni.Location = new Point(477, 291);
+            lblDni.Name = "lblDni";
+            lblDni.Size = new Size(27, 15);
+            lblDni.TabIndex = 43;
+            lblDni.Text = "DNI";
+            // 
+            // txtDni
+            // 
+            txtDni.Location = new Point(477, 309);
+            txtDni.Name = "txtDni";
+            txtDni.Size = new Size(130, 23);
+            txtDni.TabIndex = 45;
+            // 
             // Cobrar_cuota
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(914, 600);
+            ClientSize = new Size(800, 450);
+            Controls.Add(txtDni);
+            Controls.Add(lblDni);
+            Controls.Add(btnRegEmitirRecibo);
+            Controls.Add(btnLimpiar);
+            Controls.Add(txtNombreApellido2);
+            Controls.Add(lblNombreApellido2);
+            Controls.Add(txtNombreApellido1);
+            Controls.Add(lblNombreApellido1);
+            Controls.Add(lblProxVto);
+            Controls.Add(lblFecha);
+            Controls.Add(lblSubtitulo2);
+            Controls.Add(lblNroSocio1);
+            Controls.Add(lblSubtitulo1);
+            Controls.Add(lblTituloPpal);
             Controls.Add(btnVolver);
-            Controls.Add(textBox5);
-            Controls.Add(label10);
-            Controls.Add(button2);
-            Controls.Add(button1);
-            Controls.Add(textBox7);
-            Controls.Add(textBox6);
-            Controls.Add(label9);
-            Controls.Add(label8);
-            Controls.Add(label7);
-            Controls.Add(textBox4);
-            Controls.Add(label6);
-            Controls.Add(label5);
-            Controls.Add(textBox3);
-            Controls.Add(label4);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Margin = new Padding(3, 4, 3, 4);
+            Controls.Add(txtImporte);
+            Controls.Add(lblImporte);
+            Controls.Add(btnCarnet);
+            Controls.Add(txtFecha);
+            Controls.Add(txtProxVto);
+            Controls.Add(lblNroSocio2);
+            Controls.Add(txtNroSocio2);
+            Controls.Add(lblFechaUltPago);
+            Controls.Add(txtFechaUltPago);
+            Controls.Add(lblEstado);
+            Controls.Add(txtEstado);
+            Controls.Add(txtNroSocio1);
             Name = "Cobrar_cuota";
             Text = "Cobrar_cuota";
             ResumeLayout(false);
@@ -282,26 +334,33 @@
         }
 
         #endregion
-
-        private Label label1;
-        private Label label2;
-        private Label label3;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private Label label4;
-        private TextBox textBox3;
-        private Label label5;
-        private Label label6;
-        private TextBox textBox4;
-        private Label label7;
-        private Label label8;
+        private TextBox txtNroSocio1;
+        private TextBox txtEstado;
+        private Label lblEstado;
+        private TextBox txtFechaUltPago;
+        private Label lblFechaUltPago;
+        private TextBox txtNroSocio2;
+        private Label lblNroSocio2;
         private Label label9;
-        private TextBox textBox6;
-        private TextBox textBox7;
-        private Button button1;
-        private Button button2;
-        private Label label10;
-        private TextBox textBox5;
+        private TextBox txtProxVto;
+        private TextBox txtFecha;
+        private Button btnCarnet;
+        private Label lblImporte;
+        private TextBox txtImporte;
         private Button btnVolver;
+        private Label lblTituloPpal;
+        private Label lblSubtitulo1;
+        private Label lblNroSocio1;
+        private Label lblSubtitulo2;
+        private Label lblFecha;
+        private Label lblProxVto;
+        private Label lblNombreApellido1;
+        private TextBox txtNombreApellido1;
+        private Label lblNombreApellido2;
+        private TextBox txtNombreApellido2;
+        private Button btnLimpiar;
+        private Button btnRegEmitirRecibo;
+        private Label lblDni;
+        private TextBox txtDni;
     }
 }

@@ -20,11 +20,6 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
             InitializeComponent();
         }
 
-        private void lblRegistroNoSocio_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnVolver_Click(object sender, EventArgs e)
         {
             Principal principal = new Principal();

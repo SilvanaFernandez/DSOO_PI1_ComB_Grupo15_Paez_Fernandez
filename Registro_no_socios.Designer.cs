@@ -35,7 +35,6 @@
             lblApellido = new Label();
             lblNombre = new Label();
             picNoSocio = new PictureBox();
-            lblRegistroNoSocio = new Label();
             btnLimpiar = new Button();
             btnVolver = new Button();
             lblDni = new Label();
@@ -43,6 +42,7 @@
             lblNombre1 = new Label();
             lblDni1 = new Label();
             lblApellido1 = new Label();
+            lblRegistroNoSocio = new Label();
             ((System.ComponentModel.ISupportInitialize)picNoSocio).BeginInit();
             SuspendLayout();
             // 
@@ -97,19 +97,6 @@
             picNoSocio.SizeMode = PictureBoxSizeMode.Zoom;
             picNoSocio.TabIndex = 18;
             picNoSocio.TabStop = false;
-            // 
-            // lblRegistroNoSocio
-            // 
-            lblRegistroNoSocio.AutoSize = true;
-            lblRegistroNoSocio.Font = new Font("MV Boli", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            lblRegistroNoSocio.ForeColor = SystemColors.ActiveCaptionText;
-            lblRegistroNoSocio.Location = new Point(198, 54);
-            lblRegistroNoSocio.Name = "lblRegistroNoSocio";
-            lblRegistroNoSocio.Size = new Size(341, 31);
-            lblRegistroNoSocio.TabIndex = 17;
-            lblRegistroNoSocio.Text = "REGISTRO DE NO SOCIOS";
-            lblRegistroNoSocio.TextAlign = ContentAlignment.MiddleCenter;
-            lblRegistroNoSocio.Click += lblRegistroNoSocio_Click;
             // 
             // btnLimpiar
             // 
@@ -175,11 +162,24 @@
             lblApellido1.TabIndex = 32;
             lblApellido1.Text = "*";
             // 
+            // lblRegistroNoSocio
+            // 
+            lblRegistroNoSocio.AutoSize = true;
+            lblRegistroNoSocio.Font = new Font("MV Boli", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            lblRegistroNoSocio.ForeColor = SystemColors.ActiveCaptionText;
+            lblRegistroNoSocio.Location = new Point(216, 56);
+            lblRegistroNoSocio.Name = "lblRegistroNoSocio";
+            lblRegistroNoSocio.Size = new Size(341, 31);
+            lblRegistroNoSocio.TabIndex = 33;
+            lblRegistroNoSocio.Text = "REGISTRO DE NO SOCIOS";
+            lblRegistroNoSocio.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // Registro_no_socios
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(lblRegistroNoSocio);
             Controls.Add(lblApellido1);
             Controls.Add(lblDni1);
             Controls.Add(lblNombre1);
@@ -193,7 +193,6 @@
             Controls.Add(lblApellido);
             Controls.Add(lblNombre);
             Controls.Add(picNoSocio);
-            Controls.Add(lblRegistroNoSocio);
             Name = "Registro_no_socios";
             Text = "Registro_no_socios";
             ((System.ComponentModel.ISupportInitialize)picNoSocio).EndInit();
@@ -209,7 +208,6 @@
         private Label lblApellido;
         private Label lblNombre;
         private PictureBox picNoSocio;
-        private Label lblRegistroNoSocio;
         private Button btnLimpiar;
         private Button btnVolver;
         private Label lblDni;
@@ -217,5 +215,6 @@
         private Label lblNombre1;
         private Label lblDni1;
         private Label lblApellido1;
+        private Label lblRegistroNoSocio;
     }
 }
