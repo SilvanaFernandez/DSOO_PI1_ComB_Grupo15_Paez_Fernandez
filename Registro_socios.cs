@@ -80,10 +80,6 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                             MessageBox.Show("EL SOCIO SE REGISTRÓ EXITOSAMENTE CON EL NÚMERO DE SOCIO: " + codigo, "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
-                    else
-                    {
-                       // MessageBox.Show("Error: la respuesta no es un número válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
                 }
                 catch (Exception ex)
                 {

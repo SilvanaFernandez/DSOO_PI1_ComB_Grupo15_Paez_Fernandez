@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Documentos;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -55,7 +56,9 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
 
         private void btnReportesVtos_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("No se puede ingresar");
+            GrillaVtos grillaVtos = new GrillaVtos();
+            grillaVtos.Show();
+            this.Hide();
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
