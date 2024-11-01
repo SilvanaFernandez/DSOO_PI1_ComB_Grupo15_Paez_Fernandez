@@ -15,9 +15,11 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
 {
     public partial class Cobrar_por_actividad : Form
     {
-        public Cobrar_por_actividad()
+        private Principal principal;
+        public Cobrar_por_actividad(Principal principal)
         {
             InitializeComponent();
+            this.principal = principal;
         }
 
         private void Cobrar_por_actividad_Load(object sender, EventArgs e)
@@ -65,9 +67,8 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            Principal principal = new Principal();
             principal.Show();
-            this.Hide();
+            this.Close();
         }
 
         private void txtNroNoSocio_TextChanged(object sender, EventArgs e)

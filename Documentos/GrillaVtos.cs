@@ -6,9 +6,11 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Documentos
 {
     public partial class GrillaVtos : Form
     {
-        public GrillaVtos()
+        private Principal principal;
+        public GrillaVtos(Principal principal)
         {
             InitializeComponent();
+            this.principal = principal;
         }
 
         private void GrillaVtos_Load(object sender, EventArgs e)
@@ -96,9 +98,8 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Documentos
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            Principal principal = new Principal();
             principal.Show();
-            this.Hide();
+            this.Close();
         }
     }
 }

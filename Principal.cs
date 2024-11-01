@@ -16,6 +16,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
         public Principal()
         {
             InitializeComponent();
+            
         }
 
         internal string rol;
@@ -23,40 +24,41 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
 
         private void Principal_Load(object sender, EventArgs e)
         {
+                        
             lblDatosDeSesion.Text = "USUARIO: " + usuario + " (" + rol + ")";
         }
 
         private void btnRegistroSocio_Click(object sender, EventArgs e)
         {
-            Registro_socios registro = new Registro_socios();
+            Registro_socios registro = new Registro_socios(this);
             registro.Show();
             this.Hide();
         }
 
         private void btnRegistroNoSocios_Click(object sender, EventArgs e)
         {
-            Registro_no_socios registroNS = new Registro_no_socios();
+            Registro_no_socios registroNS = new Registro_no_socios(this);
             registroNS.Show();
             this.Hide();
         }
 
         private void btnGestionCuotas_Click(object sender, EventArgs e)
         {
-            Cobrar_cuota cobrar_Cuota = new Cobrar_cuota();
+            Cobrar_cuota cobrar_Cuota = new Cobrar_cuota(this);
             cobrar_Cuota.Show();
             this.Hide();
         }
 
         private void btnCobrosAct_Click(object sender, EventArgs e)
         {
-            Cobrar_por_actividad cobrar_Por_Actividad = new Cobrar_por_actividad();
+            Cobrar_por_actividad cobrar_Por_Actividad = new Cobrar_por_actividad(this);
             cobrar_Por_Actividad.Show();
             this.Hide();
         }
 
         private void btnReportesVtos_Click(object sender, EventArgs e)
         {
-            GrillaVtos grillaVtos = new GrillaVtos();
+            GrillaVtos grillaVtos = new GrillaVtos(this);
             grillaVtos.Show();
             this.Hide();
         }

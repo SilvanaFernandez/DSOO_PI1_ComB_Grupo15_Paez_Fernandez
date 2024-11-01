@@ -59,11 +59,12 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
             if(dtLogin.Rows.Count>0)
             {
                 MessageBox.Show("Ingreso exitoso del usuario: " + txtUsuario.Text, "MENSAJES DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                
-                Principal principal = new Principal();
 
-                principal.rol = Convert.ToString(dtLogin.Rows[0][0]);
-                principal.usuario = Convert.ToString(txtUsuario.Text);
+                Principal principal = new Principal
+                {
+                    rol = Convert.ToString(dtLogin.Rows[0][0]),
+                    usuario = txtUsuario.Text
+                };
 
                 principal.Show();
 

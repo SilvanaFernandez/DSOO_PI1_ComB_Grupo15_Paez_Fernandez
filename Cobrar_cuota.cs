@@ -1,15 +1,18 @@
 using DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Datos;
 using MySql.Data.MySqlClient;
 using System.Data;
+using System.Security.Permissions;
 
 namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
 {
     public partial class Cobrar_cuota : Form
     {
-        public Cobrar_cuota()
+        private Principal principal;
+        public Cobrar_cuota(Principal principal)
         {
             InitializeComponent();
             txtNroSocio2.TextChanged += txtNroSocio2_TextChanged;
+            this.principal = principal;
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
@@ -28,9 +31,8 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            Principal principal = new Principal();
             principal.Show();
-            this.Hide();
+            this.Close();
         }
 
         private void txtNroSocio1_TextChanged(object sender, EventArgs e)
