@@ -17,6 +17,16 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
         {
             InitializeComponent();
             this.principal = principal;
+            
+
+        }
+        private void CargarSocios()
+        {
+
+        }
+        private void CargarActividades()
+        {
+
         }
     }
 }
