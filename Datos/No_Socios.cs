@@ -14,7 +14,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Datos
         public string Nuevo_NoSoc(E_No_Socio noSoc)
         {
             string salida;
-            using (MySqlConnection sqlCon = new MySqlConnection(connectionString))
+            using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion())
             {
                 try
                 {
@@ -66,6 +66,46 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Datos
                 }
                 return salida;
             }
+        }
+        public string RegistrarActividadNoSocio(int nroNoSoc, int codAct)
+        {
+            string resultado;
+            using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion())
+            {
+                try
+                {
+                    MySqlCommand comando = new MySqlCommand("RegistrarActividadNoSocio", sqlCon);
+                    comando.CommandType = CommandType.StoredProcedure;
+
+                    comando.Parameters.AddWithValue("p_NroNoSoc", nroNoSoc);
+                    comando.Parameters.AddWithValue("p_codAct", codAct);
+
+                    // Parámetro de salida para el costo de la actividad
+                    MySqlParameter ParCostoActividad = new MySqlParameter();
+                    ParCostoActividad.ParameterName = "costoActividad";
+                    ParCostoActividad.MySqlDbType = MySqlDbType.Decimal;
+                    ParCostoActividad.Direction = ParameterDirection.Output;
+                    comando.Parameters.Add(ParCostoActividad);
+
+                    sqlCon.Open();
+                    comando.ExecuteNonQuery();
+
+                    decimal costoActividad = Convert.ToDecimal(ParCostoActividad.Value);
+                    resultado = $"Actividad registrada. Costo a pagar: {costoActividad}.";
+                }
+                catch (Exception ex)
+                {
+                    resultado = "Error: " + ex.Message;
+                }
+                finally
+                {
+                    if (sqlCon.State == ConnectionState.Open)
+                    {
+                        sqlCon.Close();
+                    }
+                }
+            }
+            return resultado;
         }
     }
 }

@@ -32,9 +32,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Datos
 
             try
             {
-                cadena.ConnectionString = "datasource=" + servidor +
-                    ";port=" + puerto + ";username=" + usuario + ";password=" +
-                    clave + ";Database=" + baseDatos;
+                cadena.ConnectionString = $"datasource={servidor};Port={puerto};username={usuario};password={clave};Database={baseDatos};";            
             }
             catch (Exception ex)
             {

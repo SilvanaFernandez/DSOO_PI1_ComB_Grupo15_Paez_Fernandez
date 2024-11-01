@@ -8,13 +8,42 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
     public partial class Cobrar_cuota : Form
     {
         private Principal principal;
+        public int NroSocio { get; set; }
+        public string NombreApellido { get; set; }
+        public string Dni { get; set; }
         public Cobrar_cuota(Principal principal)
         {
             InitializeComponent();
-            txtNroSocio2.TextChanged += txtNroSocio2_TextChanged;
+            this.Load += Cobrar_cuota_Load;
+            //txtNroSocio2.TextChanged += txtNroSocio2_TextChanged;
             this.principal = principal;
         }
+        
+        private void Cobrar_cuota_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                if (NroSocio != 0)
+                {
+                    txtNroSocio2.Text = NroSocio.ToString();
+                    txtNombreApellido2.Text = NombreApellido;
+                    txtDni.Text = Dni;
 
+                    // Establecer el importe fijo y las fechas de pago
+                    decimal importe = 35000; // obtener valor dinámicamente de ser necesario
+                    txtImporte.Text = importe.ToString("F2");
+
+                    DateTime fechaActual = DateTime.Now;
+                    DateTime proximoVencimiento = fechaActual.AddMonths(1);
+                    txtFecha.Text = fechaActual.ToString("yyyy-MM-dd");
+                    txtProxVto.Text = proximoVencimiento.ToString("yyyy-MM-dd");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error al cargar los datos: " + ex.Message);
+            }
+        }
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             txtNroSocio1.Text = "";

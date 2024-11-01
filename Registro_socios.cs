@@ -34,14 +34,13 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
 
             string patron = @"^\d{1,8}$";
             if (!Regex.IsMatch(dniTexto, patron))
-            {
-                //MessageBox.Show("Solo se permiten numeros de hasta 8 dígitos");
+            {                
                 txtDni.Clear();
             }            
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
-        {
+        {           
             if (txtNombre.Text == "" || txtApellido.Text == "" || txtDni.Text == "")
             {
                 MessageBox.Show("Debe completar los datos requeridos (*) ", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -59,9 +58,11 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                 {
                     NombreP = txtNombre.Text,
                     ApellidoP = txtApellido.Text,
-                    DniP = dni
+                    DniP = dni,
+                    AptoMedico = chkAptoMedico.Checked
                 };
 
+                
                 try
                 {
                     Socios socios = new Socios();
@@ -72,21 +73,36 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                     bool esnumero = int.TryParse(respuesta, out int codigo);
                     if (esnumero)
                     {
-                        if (codigo == -1) // El socio ya existe
+                        if(codigo == -2)
+                        {
+                            MessageBox.Show("No se puede registrar como socio, el apto médico no está aprobado.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        else if(codigo == -1) // El socio ya existe
                         {
                             MessageBox.Show("EL SOCIO YA ESTÁ REGISTRADO", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         else
-                        {
+                        {                            
                             MessageBox.Show("EL SOCIO SE REGISTRÓ EXITOSAMENTE CON EL NÚMERO DE SOCIO: " + codigo, "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            // Abrir el formulario Cobrar_cuota y pasar los datos
+                            Cobrar_cuota cobrarCuotaForm = new Cobrar_cuota(principal)
+                            {
+                                NroSocio = codigo,
+                                NombreApellido = $"{soc.NombreP} {soc.ApellidoP}",
+                                Dni = dni.ToString()
+                            };
+                            //this.Hide();
+                            cobrarCuotaForm.ShowDialog();
                         }
                     }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Ocurrió un error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                }                
             }
+            
         }
 
         private void btnLimpiar_Click_1(object sender, EventArgs e)

@@ -16,7 +16,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
         public Principal()
         {
             InitializeComponent();
-            
+
         }
 
         internal string rol;
@@ -24,7 +24,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
 
         private void Principal_Load(object sender, EventArgs e)
         {
-                        
+
             lblDatosDeSesion.Text = "USUARIO: " + usuario + " (" + rol + ")";
         }
 
@@ -62,12 +62,17 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
             grillaVtos.Show();
             this.Hide();
         }
+        private void btnRegistroActividadSocio_Click(object sender, EventArgs e)
+        {
+            Registrar_Actividad_Socio registrar_Actividad_Socio = new Registrar_Actividad_Socio(this);
+            registrar_Actividad_Socio.Show();
+            this.Hide();
+        }
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        
     }
 }

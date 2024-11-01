@@ -43,6 +43,7 @@
             btnLimpiar = new Button();
             lblNombre1 = new Label();
             lblDni1 = new Label();
+            chkAptoMedico = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)picSocio).BeginInit();
             SuspendLayout();
             // 
@@ -181,11 +182,22 @@
             lblDni1.TabIndex = 25;
             lblDni1.Text = "*";
             // 
+            // chkAptoMedico
+            // 
+            chkAptoMedico.AutoSize = true;
+            chkAptoMedico.Location = new Point(157, 486);
+            chkAptoMedico.Name = "chkAptoMedico";
+            chkAptoMedico.Size = new Size(118, 24);
+            chkAptoMedico.TabIndex = 26;
+            chkAptoMedico.Text = "Apto Medico";
+            chkAptoMedico.UseVisualStyleBackColor = true;
+            // 
             // Registro_socios
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(914, 600);
+            Controls.Add(chkAptoMedico);
             Controls.Add(lblDni1);
             Controls.Add(lblNombre1);
             Controls.Add(btnLimpiar);
@@ -224,5 +236,6 @@
         private Button btnLimpiar;
         private Label lblNombre1;
         private Label lblDni1;
+        private CheckBox chkAptoMedico;
     }
 }
