@@ -11,14 +11,20 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Datos
 {
     internal class Socios : Persona
     {
-        public string Nuevo_Soc(E_Socio soc)
+        public E_Socio soc;
+
+        public Socios(E_Socio soc)
+        {
+            this.soc = soc;
+        }
+
+        public override string Nuevo()
         { 
             string salida;
-            using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion())
+            using (MySqlConnection sqlCon = ObtenerConexion())
             {
                 try
                 {
-                    //new MySqlConnection(connectionString) //conexión única
                     MySqlCommand comando = new MySqlCommand("NuevoSoc", sqlCon);
                     comando.CommandType = CommandType.StoredProcedure;
                     //se pasan los parametros para el procedimiento
@@ -26,7 +32,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Datos
                     comando.Parameters.Add("Ape", MySqlDbType.VarChar).Value = soc.ApellidoP;
                     comando.Parameters.Add("Doc", MySqlDbType.VarChar).Value = soc.DniP;
                     comando.Parameters.Add("Apto", MySqlDbType.Bit).Value = soc.AptoMedico ? 1 : 0;
-                        
+
                     MySqlParameter ParCodigo = new MySqlParameter();
                     ParCodigo.ParameterName = "rta";
                     ParCodigo.MySqlDbType = MySqlDbType.Int32;
@@ -62,10 +68,11 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Datos
                 return salida;
             }
         }
+
         public string RegistrarActividad(int nroSoc, int codAct)
         {
             string resultado;
-            using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion())
+            using (MySqlConnection sqlCon = ObtenerConexion())
             {
                 try
                 {
@@ -114,7 +121,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Datos
         {
             string resultado;
 
-            using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion())
+            using (MySqlConnection sqlCon = ObtenerConexion())
             {
                 try
                 {
@@ -149,7 +156,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Datos
 
         private void AjustarCupo(int codAct)
         {
-            using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion())
+            using (MySqlConnection sqlCon = ObtenerConexion())
             {
                 MySqlCommand comando = new MySqlCommand("UPDATE actividad SET cupoDisp = cupoDisp - 1 WHERE codAct = @codAct", sqlCon);
                 comando.Parameters.AddWithValue("@codAct", codAct);
@@ -160,3 +167,4 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Datos
         }
     }
 }
+ 

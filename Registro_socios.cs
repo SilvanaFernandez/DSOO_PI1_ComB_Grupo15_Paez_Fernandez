@@ -65,8 +65,8 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                 
                 try
                 {
-                    Socios socios = new Socios();
-                    string respuesta = socios.Nuevo_Soc(soc); // Llama al procedimiento almacenado
+                    Socios socios = new Socios(soc);
+                    string respuesta = socios.Nuevo(); // Llama al procedimiento almacenado
                     MessageBox.Show("Respuesta del procedimiento: " + respuesta);
 
                     // Verifica si la respuesta es un número
@@ -114,3 +114,4 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
         }
     }
 }
+ 

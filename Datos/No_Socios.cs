@@ -11,14 +11,20 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Datos
 {
     internal class No_Socios : Persona
     {
-        public string Nuevo_NoSoc(E_No_Socio noSoc)
+        private E_No_Socio noSoc;
+
+        public No_Socios(E_No_Socio noSoc)
+        {
+            this.noSoc = noSoc;
+        }
+
+        public override string Nuevo()
         {
             string salida;
-            using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion())
+            using (MySqlConnection sqlCon = ObtenerConexion())
             {
                 try
                 {
-                    //sqlCon = Conexion.getInstancia().CrearConexion();//conexión única
                     MySqlCommand comando = new MySqlCommand("NuevoNoSoc", sqlCon);
                     comando.CommandType = CommandType.StoredProcedure;
                     //se pasan los parametros para el procedimiento
@@ -70,7 +76,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Datos
         public string RegistrarActividadNoSocio(int nroNoSoc, int codAct)
         {
             string resultado;
-            using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion())
+            using (MySqlConnection sqlCon = ObtenerConexion())
             {
                 try
                 {
@@ -109,3 +115,4 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Datos
         }
     }
 }
+ 

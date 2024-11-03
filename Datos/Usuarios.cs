@@ -20,9 +20,9 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Datos
             try
             {
                 sqlCon = Conexion.getInstancia().CrearConexion();//conexión única
-                MySqlCommand comando = new MySqlCommand("IngresoLogin", sqlCon);//se instancia con el nombre del procedimiento y y la conexion
+                MySqlCommand comando = new MySqlCommand("IngresoLogin", sqlCon);//se instancia con el nombre del procedimiento y la conexión
 
-                comando.CommandType = CommandType.StoredProcedure;//aqui se especifica que debe usar un procedimineto
+                comando.CommandType = CommandType.StoredProcedure;//aquí se especifica que debe usar un procedimineto
 
                 comando.Parameters.Add("Usu", MySqlDbType.VarChar).Value = L_usu;
                 comando.Parameters.Add("Pass", MySqlDbType.VarChar).Value = P_Usu;
@@ -46,3 +46,4 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Datos
         }
     }
 }
+ 

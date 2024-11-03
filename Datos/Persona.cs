@@ -7,22 +7,16 @@ using System.Threading.Tasks;
 
 namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Datos
 {
-    internal class Persona
+    public abstract class Persona
     {
-        //protected string connectionString = "Server=localhost;port=3306;Database=DSOO_PI1_ComB_Grupo15_Paez_Fernandez;Uid=root;";//password=Posadas3213
-        public void conexion()
+        //Método estático para obtener la conexión
+        protected static MySqlConnection ObtenerConexion()
         {
-            using (MySqlConnection connection = Conexion.getInstancia().CrearConexion())
-            {
-                try
-                {
-                    connection.Open();
-                }
-                catch(Exception ex)
-                {
-                    MessageBox.Show("Error: " + ex.Message);
-                }
-            }
+            return Conexion.getInstancia().CrearConexion();
         }
+            
+        // Método abstracto para ser implementado por las clases derivadas
+        public abstract string Nuevo();
     }
 }
+ 

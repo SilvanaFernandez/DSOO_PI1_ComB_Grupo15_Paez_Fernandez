@@ -35,7 +35,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
             string patron = @"^\d{1,8}$";
             if (!Regex.IsMatch(dniTexto, patron))
             {
-                //MessageBox.Show("Solo se permiten numeros de hasta 8 dígitos");
+                //MessageBox.Show("Solo se permiten numeros de hasta 8 dígitos") podría colocarse este mensaje pero termina siendo molesto;
                 txtDni.Clear();
             }
         }
@@ -64,8 +64,8 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
 
                 try
                 {
-                    No_Socios noSocios = new No_Socios();
-                    string respuesta = noSocios.Nuevo_NoSoc(noSoc); // Llama al procedimiento almacenado
+                    No_Socios noSocios = new No_Socios(noSoc);
+                    string respuesta = noSocios.Nuevo(); // Llama al procedimiento almacenado
                     MessageBox.Show("Respuesta del procedimiento: " + respuesta);
 
                     // Verifica si la respuesta es un número
@@ -98,3 +98,4 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
         }
     }
 }
+ 
