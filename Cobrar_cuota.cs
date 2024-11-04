@@ -44,6 +44,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                 MessageBox.Show("Ocurrió un error al cargar los datos: " + ex.Message);
             }
         }
+
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             txtNroSocio1.Text = "";

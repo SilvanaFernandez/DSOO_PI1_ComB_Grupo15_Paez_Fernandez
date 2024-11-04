@@ -27,32 +27,22 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Datos
                 {
                     MySqlCommand comando = new MySqlCommand("NuevoSoc", sqlCon);
                     comando.CommandType = CommandType.StoredProcedure;
-                    //se pasan los parametros para el procedimiento
+                    //se pasan los parametros para el procedimiento de la BD
                     comando.Parameters.Add("Nom", MySqlDbType.VarChar).Value = soc.NombreP;
                     comando.Parameters.Add("Ape", MySqlDbType.VarChar).Value = soc.ApellidoP;
                     comando.Parameters.Add("Doc", MySqlDbType.VarChar).Value = soc.DniP;
                     comando.Parameters.Add("Apto", MySqlDbType.Bit).Value = soc.AptoMedico ? 1 : 0;
 
-                    MySqlParameter ParCodigo = new MySqlParameter();
-                    ParCodigo.ParameterName = "rta";
-                    ParCodigo.MySqlDbType = MySqlDbType.Int32;
-                    ParCodigo.Direction = ParameterDirection.Output;
-                    comando.Parameters.Add(ParCodigo);
+                    MySqlParameter Parametro = new MySqlParameter();
+                    Parametro.ParameterName = "rta";
+                    Parametro.MySqlDbType = MySqlDbType.Int32;
+                    Parametro.Direction = ParameterDirection.Output;
+                    comando.Parameters.Add(Parametro);
 
                     sqlCon.Open();
                     comando.ExecuteNonQuery();
 
-                    salida = Convert.ToString(ParCodigo.Value);
-
-                    int resultado = Convert.ToInt32(ParCodigo.Value);
-                    if (resultado == -1)
-                    {
-                        salida = "El socio ya existe.";
-                    }
-                    else
-                    {
-                        salida = "Socio creado con éxito. Número de socio: " + resultado;
-                    }
+                    salida = Convert.ToString(Parametro.Value);
                 }
                 catch (Exception ex)
                 {

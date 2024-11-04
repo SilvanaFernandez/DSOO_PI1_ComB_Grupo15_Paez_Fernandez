@@ -65,7 +65,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                 try
                 {
                     No_Socios noSocios = new No_Socios(noSoc);
-                    string respuesta = noSocios.Nuevo(); // Llama al procedimiento almacenado
+                    string respuesta = noSocios.Nuevo(); // Llama al procedimiento almacenado de la clase persona
                     MessageBox.Show("Respuesta del procedimiento: " + respuesta);
 
                     // Verifica si la respuesta es un número

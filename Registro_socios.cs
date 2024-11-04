@@ -67,7 +67,6 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                 {
                     Socios socios = new Socios(soc);
                     string respuesta = socios.Nuevo(); // Llama al procedimiento almacenado
-                    MessageBox.Show("Respuesta del procedimiento: " + respuesta);
 
                     // Verifica si la respuesta es un número
                     bool esnumero = int.TryParse(respuesta, out int codigo);
@@ -86,14 +85,16 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                             MessageBox.Show("EL SOCIO SE REGISTRÓ EXITOSAMENTE CON EL NÚMERO DE SOCIO: " + codigo, "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                             // Abrir el formulario Cobrar_cuota y pasar los datos
-                            Cobrar_cuota cobrarCuotaForm = new Cobrar_cuota(principal)
+                            Cobrar_cuota cobrarCuota = new Cobrar_cuota(principal)
                             {
                                 NroSocio = codigo,
                                 NombreApellido = $"{soc.NombreP} {soc.ApellidoP}",
                                 Dni = dni.ToString()
                             };
-                            //this.Hide();
-                            cobrarCuotaForm.ShowDialog();
+                            // Asignar el número de socio al campo txtNroSocio2 del formulario Cobrar_cuota
+                            //cobrarCuota.Controls["txtNroSocio2"].Text = codigo.ToString();
+                            cobrarCuota.ShowDialog();
+                            this.Hide();
                         }
                     }
                 }
@@ -110,6 +111,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
             txtNombre.Text = "";
             txtApellido.Text = "";
             txtDni.Text = "";
+            chkAptoMedico.Checked = false;
             txtNombre.Focus();
         }
     }
