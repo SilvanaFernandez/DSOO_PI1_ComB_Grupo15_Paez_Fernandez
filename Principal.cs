@@ -62,18 +62,18 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
             grillaVtos.Show();
             this.Hide();
         }
-        private void btnRegistroActividadSocio_Click(object sender, EventArgs e)
-        {
-            Registrar_Actividad_Socio registrar_Actividad_Socio = new Registrar_Actividad_Socio(this);
-            registrar_Actividad_Socio.Show();
-            this.Hide();
-        }
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
+        private void btnGestionActividadSocio_Click(object sender, EventArgs e)
+        {
+            Gestion_Actividades_Socio registrar_Actividad_Socio = new Gestion_Actividades_Socio(this);
+            registrar_Actividad_Socio.Show();
+            this.Hide();
+        }
     }
 }
  
