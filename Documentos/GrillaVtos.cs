@@ -1,6 +1,7 @@
 ﻿using DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Datos;
 using MySql.Data.MySqlClient;
 using System.Data;
+using System.Drawing.Printing;
 
 namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Documentos
 {
@@ -25,7 +26,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Documentos
             {
                 sqlCon = Conexion.getInstancia().CrearConexion();
                 string query = @" SELECT s.NroSoc, s.NombreP, s.ApellidoP, s.DocP, p.ProxVto FROM socio s JOIN pagosCta p ON s.NroSoc = p.NroSoc WHERE DATE(p.ProxVto) = CURDATE() ORDER BY s.NroSoc;";
-            
+
                 MySqlCommand cmd = new MySqlCommand(query, sqlCon);
                 cmd.CommandType = CommandType.Text;
                 sqlCon.Open();
@@ -51,12 +52,12 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Documentos
                 else
                 {
                     MessageBox.Show("No hay datos para mostrar", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
+                      return;
                 }
             }
             catch (Exception ex)
             {
-                    MessageBox.Show("Error al cargar los datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al cargar los datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -101,5 +102,38 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Documentos
             principal.Show();
             this.Close();
         }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            btnImprimir.Visible = false;
+            btnVolver.Visible = false;
+
+            PrintDocument pd = new PrintDocument();
+            pd.PrintPage += new PrintPageEventHandler(ImprimirForm1);
+            pd.Print();
+
+            MessageBox.Show("Operación existosa", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Principal principal = new Principal();
+            principal.Show();
+            this.Close();
+
+            btnImprimir.Visible = true;
+            btnVolver.Visible = false;
+
+        }
+
+        private void ImprimirForm1(object o, PrintPageEventArgs e)
+        {
+            int x = SystemInformation.WorkingArea.X;
+            int y = SystemInformation.WorkingArea.Y;
+            int ancho = this.Width;
+            int alto = this.Height;
+            Rectangle bounds = new Rectangle(x, y, ancho, alto);
+            Bitmap img = new Bitmap(ancho, alto);
+            this.DrawToBitmap(img, bounds);
+            Point p = new Point(100, 100);
+            e.Graphics.DrawImage(img, p);
+        }
     }
 }
+ 

@@ -51,9 +51,9 @@
             lblTitulo.ForeColor = SystemColors.ActiveCaptionText;
             lblTitulo.Location = new Point(76, 48);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(457, 31);
+            lblTitulo.Size = new Size(538, 31);
             lblTitulo.TabIndex = 2;
-            lblTitulo.Text = "INSCRIBIR SOCIO EN ACTIVIDADES";
+            lblTitulo.Text = "GESTIÓN DE ACTIVIDADES PARA SOCIOS";
             lblTitulo.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // btnInscribir
@@ -93,7 +93,7 @@
             // 
             // btnLimpiar
             // 
-            btnLimpiar.Location = new Point(581, 48);
+            btnLimpiar.Location = new Point(680, 87);
             btnLimpiar.Name = "btnLimpiar";
             btnLimpiar.Size = new Size(75, 23);
             btnLimpiar.TabIndex = 14;
@@ -143,7 +143,7 @@
             checkedListBox1.FormattingEnabled = true;
             checkedListBox1.Location = new Point(318, 146);
             checkedListBox1.Name = "checkedListBox1";
-            checkedListBox1.Size = new Size(437, 130);
+            checkedListBox1.Size = new Size(437, 148);
             checkedListBox1.TabIndex = 21;
             checkedListBox1.SelectedIndexChanged += checkedListBox1_SelectedIndexChanged;
             // 

@@ -35,6 +35,7 @@
             Dni = new DataGridViewTextBoxColumn();
             VtoCuota = new DataGridViewTextBoxColumn();
             btnVolver = new Button();
+            btnImprimir = new Button();
             ((System.ComponentModel.ISupportInitialize)dtgvVtos).BeginInit();
             SuspendLayout();
             // 
@@ -83,11 +84,22 @@
             btnVolver.UseVisualStyleBackColor = true;
             btnVolver.Click += btnVolver_Click;
             // 
+            // btnImprimir
+            // 
+            btnImprimir.Location = new Point(682, 77);
+            btnImprimir.Name = "btnImprimir";
+            btnImprimir.Size = new Size(75, 23);
+            btnImprimir.TabIndex = 2;
+            btnImprimir.Text = "IMPRIMIR";
+            btnImprimir.UseVisualStyleBackColor = true;
+            btnImprimir.Click += btnImprimir_Click;
+            // 
             // GrillaVtos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnImprimir);
             Controls.Add(btnVolver);
             Controls.Add(dtgvVtos);
             Name = "GrillaVtos";
@@ -106,5 +118,6 @@
         private DataGridViewTextBoxColumn Dni;
         private DataGridViewTextBoxColumn VtoCuota;
         private Button btnVolver;
+        private Button btnImprimir;
     }
 }

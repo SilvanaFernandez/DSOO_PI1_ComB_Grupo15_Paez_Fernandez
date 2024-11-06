@@ -1,4 +1,5 @@
-﻿using DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Datos;
+﻿ 
+using DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Datos;
 using MySql.Data.MySqlClient;
 using Mysqlx.Cursor;
 using System;
@@ -35,10 +36,10 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
             pd.PrintPage += new PrintPageEventHandler(ImprimirForm1);
             pd.Print();
 
-            btnImprimir.Visible = true;
-
             MessageBox.Show("Operación existosa", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
+
+            btnImprimir.Visible = true;
         }
 
         private void ImprimirForm1(object o, PrintPageEventArgs e)

@@ -163,6 +163,8 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
 
         private void CargarActividades()
         {
+            checkedListBox1.Items.Clear();
+
             using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion())
             {
                 try

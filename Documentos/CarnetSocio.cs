@@ -31,12 +31,12 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
             pd.PrintPage += new PrintPageEventHandler(ImprimirForm1);
             pd.Print();
 
-            btnImprimir.Visible = true;
-
             MessageBox.Show("Operación existosa", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Principal principal = new Principal();
             principal.Show();
             this.Close();
+
+            btnImprimir.Visible = true;
         }
 
         private void ImprimirForm1(object o, PrintPageEventArgs e)
