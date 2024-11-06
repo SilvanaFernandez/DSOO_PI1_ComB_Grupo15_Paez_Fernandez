@@ -17,7 +17,9 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
     {
         private Principal principal;
         private string nombreActividad;
-
+        public int NroSocio { get; set; }
+        public string NombreApellido { get; set; }
+        public string Dni { get; set; }
         public Gestion_Actividades_Socio(Principal principal)
         {
             InitializeComponent();
@@ -355,6 +357,14 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
 
                         string actividades = string.Join(", ", actividadesInscritas);
                         MessageBox.Show($"Inscripción actualizada en las actividades: {actividades}\nMonto Total: {totalCuota}", "Inscripción Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        
+                        Cobrar_cuota cobrarCuota = new Cobrar_cuota(principal)
+                        {
+                            NroSocio = nroSocio,
+                            NombreApellido = $"{txtNombreApellido.Text}", Dni = txtDni.ToString()
+                        };
+                        cobrarCuota.ShowDialog();
+                        this.Hide();
                     }
                     catch (Exception ex)
                     {
@@ -369,6 +379,4 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
         }
 
     }
-}
-
- 
+} 
