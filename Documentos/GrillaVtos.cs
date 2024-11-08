@@ -52,7 +52,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Documentos
                 else
                 {
                     MessageBox.Show("No hay datos para mostrar", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                      return;
+                    return;
                 }
             }
             catch (Exception ex)
@@ -134,6 +134,28 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Documentos
             Point p = new Point(100, 100);
             e.Graphics.DrawImage(img, p);
         }
+
+        public bool HayVencimientos()
+        {
+            bool hayDatos = false;
+            using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion())
+            {
+                try
+                {
+                    string query = @"SELECT COUNT(*) FROM socio s JOIN pagosCta p ON s.NroSoc = p.NroSoc WHERE DATE(p.ProxVto) = CURDATE();";
+                    MySqlCommand cmd = new MySqlCommand(query, sqlCon);
+                    sqlCon.Open();
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    //Si es que tenemos aunque sea un registro, retornaremos true
+                    hayDatos = count > 0;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al verificar los vencimientos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                return hayDatos;
+            }   
+        }
     }
 }
- 

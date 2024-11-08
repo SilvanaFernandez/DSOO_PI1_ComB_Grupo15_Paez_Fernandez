@@ -59,8 +59,17 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
         private void btnReportesVtos_Click(object sender, EventArgs e)
         {
             GrillaVtos grillaVtos = new GrillaVtos(this);
-            grillaVtos.Show();
-            this.Hide();
+
+            //verificamos si hay vencimientos antes de abrir la grilla
+            if (grillaVtos.HayVencimientos())
+            {
+                grillaVtos.Show();
+                this.Hide();             
+            }
+            else
+            {
+                MessageBox.Show("No hay vencimientos para hoy", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
