@@ -103,6 +103,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                             this.Hide();*/
                             // Asignar el número de socio al campo txtNroSocio2 del formulario Cobrar_cuota
                             //cobrarCuota.Controls["txtNroSocio2"].Text = codigo.ToString();
+                            gestionActividadesSocio.Controls["txtNroSocio"].Text = codigo.ToString();
                         }
                     }
                 }

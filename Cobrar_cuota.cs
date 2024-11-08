@@ -11,6 +11,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
         public int NroSocio { get; set; }
         public string NombreApellido { get; set; }
         public string Dni { get; set; }
+        public decimal ImporteCuota { get; set; }
         public Cobrar_cuota(Principal principal)
         {
             InitializeComponent();
@@ -27,7 +28,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                 {
                     txtNroSocio2.Text = NroSocio.ToString();
                     txtNombreApellido2.Text = NombreApellido;
-                    txtDni.Text = Dni;
+                    txtDni.Text = Dni.ToString();
 
                     // Establecer el importe fijo y las fechas de pago
                     decimal importe = 35000; // obtener valor dinámicamente de ser necesario
@@ -151,7 +152,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
             }
 
             // Establecer el importe fijo
-            decimal importe = 35000;
+            decimal importe = ImporteCuota;
             txtImporte.Text = importe.ToString("F2");
 
             // Establecer la fecha actual y el próximo vencimiento
