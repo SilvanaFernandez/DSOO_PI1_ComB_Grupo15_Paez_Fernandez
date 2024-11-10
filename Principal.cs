@@ -27,6 +27,67 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
         {
 
             lblDatosDeSesion.Text = "USUARIO: " + usuario + " (" + rol + ")";
+            VerificarYActualizarEstadosSocios();
+        }
+
+        private void VerificarYActualizarEstadosSocios()
+        {
+            using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion())
+            {
+                try
+                {
+                    sqlCon.Open();
+
+                    // Consulta para obtener los socios con ProxVto del día anterior
+                    string query = @"SELECT s.NroSoc 
+                             FROM socio s 
+                             JOIN pagos p ON s.NroSoc = p.NroSoc 
+                             WHERE DATE(p.ProxVto) = CURDATE() - INTERVAL 1 DAY";
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, sqlCon))
+                    {
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            List<int> socios = new List<int>();
+                            while (reader.Read())
+                            {
+                                socios.Add(reader.GetInt32("NroSoc"));
+                            }
+                            reader.Close();  // Cerramos el DataReader antes de abrir otro
+
+                            foreach (int nroSoc in socios)
+                            {
+                                // Llamar al procedimiento para actualizar el estado del socio a false
+                                using (MySqlCommand cmdUpdate = new MySqlCommand("CALL ActualizarEstadoSocio(@NroSocio, @NuevoEstado, @Resultado)", sqlCon))
+                                {
+                                    cmdUpdate.Parameters.AddWithValue("@NroSocio", nroSoc);
+                                    cmdUpdate.Parameters.AddWithValue("@NuevoEstado", false);
+                                    cmdUpdate.Parameters.Add("@Resultado", MySqlDbType.Int32).Direction = ParameterDirection.Output;
+                                    cmdUpdate.ExecuteNonQuery();
+
+                                    int resultado = (int)cmdUpdate.Parameters["@Resultado"].Value;
+                                    if (resultado != 1)
+                                    {
+                                        // No se pudo actualizar el estado
+                                        MessageBox.Show($"Error al actualizar el estado del socio con NroSoc {nroSoc}.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al verificar y actualizar los estados de los socios: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    if (sqlCon.State == ConnectionState.Open)
+                    {
+                        sqlCon.Close();
+                    }
+                }
+            }
         }
 
         private void btnRegistroSocio_Click(object sender, EventArgs e)
@@ -105,7 +166,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
             Gestion_Actividades_Socio registrar_Actividad_Socio = new Gestion_Actividades_Socio(this);
             registrar_Actividad_Socio.Show();
             this.Hide();
-        }
+        }     
     }
 }
  

@@ -45,6 +45,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Documentos
                         dtgvVtos.Rows[renglon].Cells[3].Value = reader.GetString(3); // Dni
                         dtgvVtos.Rows[renglon].Cells[4].Value = reader.GetDateTime(4).ToString("yyyy-MM-dd"); // ProxVto
                     }
+                    reader.Close();
                 }
                 else
                 {
