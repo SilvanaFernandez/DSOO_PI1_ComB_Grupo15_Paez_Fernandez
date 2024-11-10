@@ -13,42 +13,18 @@ using System.Windows.Forms;
 
 namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Documentos
 {
-    public partial class CarnetNoSocio : Form
+    public partial class CarnetNoSocio : CarnetBase
     {
         public CarnetNoSocio() => InitializeComponent();
 
         public string nroNoSoc { get; set; }
 
-        private void btnImprimir_Click(object sender, EventArgs e)
-        {
-            btnImprimir.Visible = false;
-
-            PrintDocument pd = new PrintDocument();
-            pd.PrintPage += new PrintPageEventHandler(ImprimirForm1);
-            pd.Print();
-
-            MessageBox.Show("Operación existosa", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            Principal principal = new Principal();
-            principal.Show();
-            this.Close();
-
-            btnImprimir.Visible = true;
-        }
-
-        private void ImprimirForm1(object o, PrintPageEventArgs e)
-        {
-            int x = SystemInformation.WorkingArea.X;
-            int y = SystemInformation.WorkingArea.Y;
-            int ancho = this.Width;
-            int alto = this.Height;
-            Rectangle bounds = new Rectangle(x, y, ancho, alto);
-            Bitmap img = new Bitmap(ancho, alto);
-            this.DrawToBitmap(img, bounds);
-            Point p = new Point(100, 100);
-            e.Graphics.DrawImage(img, p);
-        }
-
         private void CarnetNoSocio_Load(object sender, EventArgs e)
+        {
+            CargarDatos();
+        }
+
+        protected override void CargarDatos()
         {
             using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion())
             {
@@ -56,7 +32,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Documentos
                 {
                     sqlCon.Open();
 
-                    // Obtener el NroNoSoc de txtNroSocio2
+                    // Obtener el NroNoSoc de txtNroSocio
                     string nroNoSocioTexto = nroNoSoc;
                     if (!int.TryParse(nroNoSocioTexto, out int nroNoSocio))
                     {
@@ -72,7 +48,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Documentos
                         {
                             if (reader.Read())
                             {
-                                txtNroNoSocio.Text = nroNoSocioTexto;
+                                txtNro.Text = "NO SOCIO: " + nroNoSocioTexto;
                                 txtNombre.Text = reader["NombreP"].ToString();
                                 txtApellido.Text = reader["ApellidoP"].ToString();
                                 txtDni.Text = reader["DocP"].ToString();

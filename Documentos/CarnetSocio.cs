@@ -1,7 +1,9 @@
 ﻿using DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Datos;
+using DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Documentos;
 using MySql.Data.MySqlClient;
 using Mysqlx.Cursor;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,7 +16,7 @@ using System.Windows.Forms;
 
 namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
 {
-    public partial class CarnetSocio : Form
+    public partial class CarnetSocio : CarnetBase
     {
         public CarnetSocio()
         {
@@ -23,36 +25,13 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
 
         public string nroSoc { get; set; }
 
-        private void btnImprimir_Click(object sender, EventArgs e)
-        {
-            btnImprimir.Visible = false;
-
-            PrintDocument pd = new PrintDocument();
-            pd.PrintPage += new PrintPageEventHandler(ImprimirForm1);
-            pd.Print();
-
-            MessageBox.Show("Operación existosa", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            Principal principal = new Principal();
-            principal.Show();
-            this.Close();
-
-            btnImprimir.Visible = true;
-        }
-
-        private void ImprimirForm1(object o, PrintPageEventArgs e)
-        {
-            int x = SystemInformation.WorkingArea.X;
-            int y = SystemInformation.WorkingArea.Y;
-            int ancho = this.Width;
-            int alto = this.Height;
-            Rectangle bounds = new Rectangle(x, y, ancho, alto);
-            Bitmap img = new Bitmap(ancho, alto);
-            this.DrawToBitmap(img, bounds);
-            Point p = new Point(100, 100);
-            e.Graphics.DrawImage(img, p);
-        }
-
+        
         private void Carnet_Load(object sender, EventArgs e)
+        {
+            CargarDatos();
+        }
+
+        protected override void CargarDatos()
         {
             using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion())
             {
@@ -76,7 +55,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                         {
                             if (reader.Read())
                             {
-                                txtNroSocio.Text = nroSocioTexto;
+                                txtNro.Text = "SOCIO: " + nroSocioTexto;
                                 txtNombre.Text = reader["NombreP"].ToString();
                                 txtApellido.Text = reader["ApellidoP"].ToString();
                                 txtDni.Text = reader["DocP"].ToString();
@@ -98,7 +77,6 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                     if (sqlCon.State == ConnectionState.Open)
                     {
                         sqlCon.Close();
-
                     }
                 }
             }
