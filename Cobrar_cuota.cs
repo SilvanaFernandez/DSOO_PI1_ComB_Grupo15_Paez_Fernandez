@@ -150,17 +150,12 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                 return;
             }
 
-            // Establecer el importe fijo
-            decimal importe = 35000;
-            txtImporte.Text = importe.ToString("F2");
-
             // Establecer la fecha actual y el próximo vencimiento
             DateTime fechaActual = DateTime.Now;
             DateTime proximoVencimiento = fechaActual.AddMonths(1);
             txtFecha.Text = fechaActual.ToString("yyyy-MM-dd");
             txtProxVto.Text = proximoVencimiento.ToString("yyyy-MM-dd");
 
-            // Consultar la base de datos para obtener el nombre, apellido y DNI del socio
             using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion())
             {
                 try
@@ -186,6 +181,47 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                             }
                         }
                     }
+
+                    // Consultar las actividades inscritas del socio
+                    string queryActividades = "SELECT a.costoMensual FROM actividad a JOIN ActividadesSocio asoc ON a.codAct = asoc.codAct WHERE asoc.NroSoc = @NroSoc";
+                    using (MySqlCommand cmd = new MySqlCommand(queryActividades, sqlCon))
+                    {
+                        cmd.Parameters.AddWithValue("@NroSoc", nroSocio);
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            List<decimal> costosMensuales = new List<decimal>();
+                            while (reader.Read())
+                            {
+                                costosMensuales.Add(reader.GetDecimal("costoMensual"));
+                            }
+
+                            decimal importe = 0;
+                            int cantidadActividades = costosMensuales.Count;
+
+                            if (cantidadActividades == 0)
+                            {
+                                importe = 0;
+                            }
+                            else if (cantidadActividades == 1)
+                            {
+                                importe = costosMensuales.Sum();
+                            }
+                            else if (cantidadActividades == 2)
+                            {
+                                importe = costosMensuales.Sum() * 0.9M; // 10% descuento
+                            }
+                            else if (cantidadActividades == 3)
+                            {
+                                importe = costosMensuales.Sum() * 0.8M; // 20% descuento
+                            }
+                            else if (cantidadActividades >= 4)
+                            {
+                                importe = costosMensuales.Sum() * 0.7M; // 30% descuento
+                            }
+
+                            txtImporte.Text = importe.ToString("F2");
+                        }
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -197,7 +233,6 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                     {
                         sqlCon.Close();
                     }
-
                 }
             }
         }
@@ -208,6 +243,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
             string importeTexto = txtImporte.Text;
             string fechaTexto = txtFecha.Text;
             string proxVtoTexto = txtProxVto.Text;
+            string mesActual = DateTime.Now.ToString("MMMM", new System.Globalization.CultureInfo("es-ES")); // Nombre del mes actual en español
 
             if (!int.TryParse(nroSocioTexto, out int nroSocio) || !decimal.TryParse(importeTexto, out decimal importe) || !DateTime.TryParse(fechaTexto, out DateTime fechaPago) || !DateTime.TryParse(proxVtoTexto, out DateTime proxVto))
             {
@@ -221,10 +257,9 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                 {
                     sqlCon.Open();
 
-                    string query = "CALL RegistrarPago(@NroSoc, @Monto, @FechaPago, @ProxVto)";
+                    string query = "CALL RegistrarPagoCta(@NroSoc, @Monto, @FechaPago, @ProxVto)";
                     using (MySqlCommand cmd = new MySqlCommand(query, sqlCon))
                     {
-
                         cmd.Parameters.AddWithValue("@NroSoc", nroSocio);
                         cmd.Parameters.AddWithValue("@Monto", importe);
                         cmd.Parameters.AddWithValue("@FechaPago", fechaPago);
@@ -240,13 +275,19 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                         int idPago = Convert.ToInt32(cmd.ExecuteScalar());
 
                         // Abrir el formulario de recibo y completar con los datos
-                        ReciboCta recibo = new ReciboCta();
+                        Recibo recibo = new Recibo
+                        {
+                            nroRecibo = idPago.ToString(),
+                            fecha = fechaTexto,
+                            importe = importeTexto,
+                            nombreApellido = txtNombreApellido2.Text,
+                            motivo = $"Cuota mensual - {mesActual}" // Motivo con el nombre del mes actual
+                        };
                         recibo.CompletarRecibo(idPago);
                         recibo.Show();
                     }
 
                     MessageBox.Show("Pago registrado y recibo emitido con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                 }
                 catch (Exception ex)
                 {
