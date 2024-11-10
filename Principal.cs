@@ -1,4 +1,6 @@
-﻿using DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Documentos;
+﻿using DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Datos;
+using DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Documentos;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,7 +18,6 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
         public Principal()
         {
             InitializeComponent();
-
         }
 
         internal string rol;
@@ -58,9 +59,40 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
 
         private void btnReportesVtos_Click(object sender, EventArgs e)
         {
-            GrillaVtos grillaVtos = new GrillaVtos(this);
-            grillaVtos.Show();
-            this.Hide();
+            MySqlConnection sqlCon = new MySqlConnection();
+            try
+            {
+                sqlCon = Conexion.getInstancia().CrearConexion();
+                string query = @" SELECT COUNT(*) FROM socio s JOIN pagos p ON s.NroSoc = p.NroSoc WHERE DATE(p.ProxVto) = CURDATE();";
+
+                MySqlCommand cmd = new MySqlCommand(query, sqlCon);
+                cmd.CommandType = CommandType.Text;
+                sqlCon.Open();
+
+                int count = Convert.ToInt32(cmd.ExecuteScalar());
+                if (count > 0)
+                {
+                    GrillaVtos grillaVtos = new GrillaVtos(this);
+                    grillaVtos.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("No hay datos para mostrar", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Quedarse en el formulario principal
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al consultar los datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (sqlCon.State == ConnectionState.Open)
+                {
+                    sqlCon.Close();
+                }
+            }
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
