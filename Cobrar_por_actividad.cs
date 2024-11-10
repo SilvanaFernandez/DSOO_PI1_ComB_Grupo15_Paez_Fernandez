@@ -178,37 +178,83 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
 
         private void btnRegEmitirRecibo_Click(object sender, EventArgs e)
         {
-            string nroNoSocioTexto = txtNroNoSocio.Text; string actividadTexto = cboActividad.SelectedItem.ToString();
+            string nroNoSocioTexto = txtNroNoSocio.Text;
+            string actividadTexto = cboActividad.SelectedItem?.ToString().Trim(); // Asegurarse de eliminar espacios adicionales
             string importeTexto = txtImporte.Text;
-            string fechaTexto = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-            // Fecha actual
+            string fechaTexto = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"); // Fecha actual
             string motivo = "Actividad por día: " + actividadTexto;
+            int codAct = -1; // Inicializar codAct
+
+            if (string.IsNullOrEmpty(nroNoSocioTexto) || string.IsNullOrEmpty(actividadTexto) || string.IsNullOrEmpty(importeTexto))
+            {
+                MessageBox.Show("Por favor, asegúrese de que todos los datos sean correctos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             if (!int.TryParse(nroNoSocioTexto, out int nroNoSocio) || !decimal.TryParse(importeTexto, out decimal importe))
             {
                 MessageBox.Show("Por favor, asegúrese de que todos los datos sean correctos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
             using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion())
             {
                 try
                 {
                     sqlCon.Open();
-                    string query = "CALL RegistrarPagoActividad(@NroNoSoc, @NombreA, @Monto, @FechaPago)";
+
+                    // Obtener codAct
+                    string queryCodAct = "SELECT codAct FROM actividad WHERE nombreA = @nombreA";
+                    using (MySqlCommand cmdCodAct = new MySqlCommand(queryCodAct, sqlCon))
+                    {
+                        cmdCodAct.Parameters.AddWithValue("@nombreA", actividadTexto);
+                        object result = cmdCodAct.ExecuteScalar();
+
+                        if (result != null)
+                        {
+                            codAct = Convert.ToInt32(result);
+                        }
+
+                        if (codAct == -1)
+                        {
+                            MessageBox.Show("Actividad no encontrada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                    }
+
+                    // Verificar cupo disponible
+                    string queryCupo = "SELECT cupoDisp FROM actividad WHERE codAct = @codAct";
+                    using (MySqlCommand cmdCupo = new MySqlCommand(queryCupo, sqlCon))
+                    {
+                        cmdCupo.Parameters.AddWithValue("@codAct", codAct);
+                        int cupoDisp = Convert.ToInt32(cmdCupo.ExecuteScalar());
+
+                        if (cupoDisp <= 0)
+                        {
+                            MessageBox.Show("No hay cupos disponibles para esta actividad.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                    }
+
+                    string query = "CALL RegistrarPagoActividad(@NroNoSoc, @codAct, @Monto, @FechaPago)";
                     using (MySqlCommand cmd = new MySqlCommand(query, sqlCon))
                     {
                         cmd.Parameters.AddWithValue("@NroNoSoc", nroNoSocio);
-                        cmd.Parameters.AddWithValue("@NombreA", actividadTexto);
+                        cmd.Parameters.AddWithValue("@codAct", codAct);
                         cmd.Parameters.AddWithValue("@Monto", importe);
                         cmd.Parameters.AddWithValue("@FechaPago", fechaTexto);
+
                         cmd.ExecuteNonQuery();
                     }
+
                     // Obtener el idPago del último pago registrado
                     string queryIdPago = "SELECT LAST_INSERT_ID()";
                     using (MySqlCommand cmd = new MySqlCommand(queryIdPago, sqlCon))
                     {
                         int idPago = Convert.ToInt32(cmd.ExecuteScalar());
+
                         // Abrir el formulario de recibo y completar con los datos
-                        ReciboAct recibo = new ReciboAct
+                        Recibo recibo = new Recibo
                         {
                             nroRecibo = idPago.ToString(),
                             fecha = fechaTexto,
@@ -219,6 +265,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                         recibo.CompletarRecibo(idPago);
                         recibo.Show();
                     }
+
                     MessageBox.Show("Pago registrado y recibo emitido con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
@@ -234,6 +281,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                 }
             }
         }
+
     }
 }
- 
+  

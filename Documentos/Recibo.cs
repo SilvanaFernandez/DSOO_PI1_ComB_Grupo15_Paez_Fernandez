@@ -15,7 +15,7 @@ using System.Windows.Forms;
 
 namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
 {
-    public partial class ReciboAct : Form
+    public partial class Recibo : Form
     {
         public string nroRecibo { get; set; }
         public string fecha { get; set; }
@@ -23,7 +23,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
         public string nombreApellido { get; set; }
         public string motivo { get; set; }
 
-        public ReciboAct()
+        public Recibo()
         {
             InitializeComponent();
         }

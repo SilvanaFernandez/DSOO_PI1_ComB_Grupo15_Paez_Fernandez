@@ -1,6 +1,6 @@
 ﻿namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
 {
-    partial class ReciboAct
+    partial class Recibo
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReciboAct));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Recibo));
             pnlReciboCuota = new Panel();
             txtImporte = new TextBox();
             lblTexto4 = new Label();
