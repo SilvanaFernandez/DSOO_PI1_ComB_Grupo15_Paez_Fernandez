@@ -358,7 +358,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                         string actividades = string.Join(", ", actividadesInscritas);
                         MessageBox.Show($"Inscripción actualizada en las actividades: {actividades}\nMonto Total: {totalCuota}", "Inscripción Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         
-                        Gestion_cuota cobrarCuota = new Gestion_cuota(principal)
+                        Cobrar_cuota cobrarCuota = new Cobrar_cuota(principal)
                         {
                             NroSocio = nroSocio,
                             NombreApellido = $"{txtNombreApellido.Text}", Dni = txtDni.ToString()

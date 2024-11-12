@@ -106,7 +106,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
 
         private void btnGestionCuotas_Click(object sender, EventArgs e)
         {
-            Gestion_cuota cobrar_Cuota = new Gestion_cuota(this);
+            Cobrar_cuota cobrar_Cuota = new Cobrar_cuota(this);
             cobrar_Cuota.Show();
             this.Hide();
         }

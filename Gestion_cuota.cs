@@ -5,13 +5,13 @@ using System.Security.Permissions;
 
 namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
 {
-    public partial class Gestion_cuota : Form
+    public partial class Cobrar_cuota : Form
     {
         private Principal principal;
         public int NroSocio { get; set; }
         public string NombreApellido { get; set; }
         public string Dni { get; set; }
-        public Gestion_cuota(Principal principal)
+        public Cobrar_cuota(Principal principal)
         {
             InitializeComponent();
             this.Load += Cobrar_cuota_Load;

@@ -218,7 +218,7 @@
             Controls.Add(picSocio);
             Controls.Add(lblRegistroSocios);
             Name = "Registro_socios";
-            Text = "Registrar_socio";
+            Text = "Registrar socio";
             ((System.ComponentModel.ISupportInitialize)picSocio).EndInit();
             ResumeLayout(false);
             PerformLayout();

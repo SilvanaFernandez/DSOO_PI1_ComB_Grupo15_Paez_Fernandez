@@ -209,7 +209,7 @@
             pnlTitulo.Size = new Size(327, 64);
             pnlTitulo.TabIndex = 7;
             // 
-            // Carnet
+            // CarnetBase
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -217,8 +217,8 @@
             Controls.Add(pnlDatos);
             Controls.Add(pnlTitulo);
             Controls.Add(btnImprimir);
-            Name = "Carnet";
-            Text = "Carnet";
+            Name = "CarnetBase";
+            Text = "Carnet Base";
             Load += Carnet_Load;
             pnlDatos.ResumeLayout(false);
             pnlDatos.PerformLayout();

@@ -1,6 +1,6 @@
 ﻿namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
 {
-    partial class Gestion_cuota
+    partial class Cobrar_cuota
     {
         /// <summary>
         ///  Required designer variable.
@@ -319,7 +319,7 @@
             rdbtnCredito.Text = "Tarjeta de crédito";
             rdbtnCredito.UseVisualStyleBackColor = true;
             // 
-            // Gestion_cuota
+            // Cobrar_cuota
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -353,8 +353,8 @@
             Controls.Add(lblEstado);
             Controls.Add(txtEstado);
             Controls.Add(txtNroSocio1);
-            Name = "Gestion_cuota";
-            Text = "Cobrar_cuota";
+            Name = "Cobrar_cuota";
+            Text = "Gestión cuotas";
             ResumeLayout(false);
             PerformLayout();
         }
