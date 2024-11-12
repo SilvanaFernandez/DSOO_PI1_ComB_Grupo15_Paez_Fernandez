@@ -187,15 +187,15 @@
             btnImprimir.UseVisualStyleBackColor = true;
             btnImprimir.Click += btnImprimir_Click_1;
             // 
-            // ReciboAct
+            // Recibo
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(pnlReciboCuota);
             Controls.Add(btnImprimir);
-            Name = "ReciboAct";
-            Text = "Recibo Actvidad";
+            Name = "Recibo";
+            Text = "Recibo";
             pnlReciboCuota.ResumeLayout(false);
             pnlReciboCuota.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)picFirma).EndInit();

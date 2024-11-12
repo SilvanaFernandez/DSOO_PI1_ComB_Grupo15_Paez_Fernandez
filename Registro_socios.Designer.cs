@@ -184,7 +184,7 @@
             chkAptoMedico.Name = "chkAptoMedico";
             chkAptoMedico.Size = new Size(95, 19);
             chkAptoMedico.TabIndex = 26;
-            chkAptoMedico.Text = "Apto Medico";
+            chkAptoMedico.Text = "Apto Médico";
             chkAptoMedico.UseVisualStyleBackColor = true;
             // 
             // lblApto
@@ -218,7 +218,7 @@
             Controls.Add(picSocio);
             Controls.Add(lblRegistroSocios);
             Name = "Registro_socios";
-            Text = "Registrar_socio";
+            Text = "Registrar socio";
             ((System.ComponentModel.ISupportInitialize)picSocio).EndInit();
             ResumeLayout(false);
             PerformLayout();

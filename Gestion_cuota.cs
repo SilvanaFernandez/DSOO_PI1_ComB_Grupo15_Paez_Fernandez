@@ -107,7 +107,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                     }
 
                     // Consultar la fecha del último pago
-                    string queryPago = "SELECT MAX(fechaPago) FROM pagosCta WHERE NroSoc = @NroSoc";
+                    string queryPago = "SELECT MAX(fechaPago) FROM pagos WHERE NroSoc = @NroSoc";
                     using (MySqlCommand cmd = new MySqlCommand(queryPago, sqlCon))
                     {
                         cmd.Parameters.AddWithValue("@NroSoc", nroSocio);
