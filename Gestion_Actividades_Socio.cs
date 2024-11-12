@@ -23,10 +23,17 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
         public Gestion_Actividades_Socio(Principal principal)
         {
             InitializeComponent();
-            this.principal = principal;
+
+            //Llena los campos de manera automatica si los datos ya se encuentran asignados
+            txtNroSocio.Text = NroSocio.ToString();
+            txtNombreApellido.Text = NombreApellido;
+            txtDni.Text = Dni;
+
             this.Load += Registrar_Actividad_Socio_Load;
             txtNroSocio.TextChanged += TxtNroSocio_TextChanged;
             this.checkedListBox1.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBox1_ItemCheck);
+
+            this.principal = principal;
         }
 
         private void TxtNroSocio_TextChanged(object sender, EventArgs e)
@@ -160,6 +167,11 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
 
         private void Registrar_Actividad_Socio_Load(object sender, EventArgs e)
         {
+            //cargar el número de socio al campo de texto al iniciar el form
+            txtNroSocio.Text = NroSocio.ToString();
+            txtNombreApellido.Text = NombreApellido;
+            txtDni.Text = Dni;
+
             CargarActividades();
         }
 
@@ -276,6 +288,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                             {
                                 actividadesParaAgregar.Add(codAct);
                                 actividadesParaAgregarNombres.Add(nombreActividad);
+                                actividadesInscritas.Add(nombreActividad);
                             }
                             else
                             {
@@ -357,14 +370,16 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
 
                         string actividades = string.Join(", ", actividadesInscritas);
                         MessageBox.Show($"Inscripción actualizada en las actividades: {actividades}\nMonto Total: {totalCuota}", "Inscripción Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        
+
                         Cobrar_cuota cobrarCuota = new Cobrar_cuota(principal)
                         {
                             NroSocio = nroSocio,
-                            NombreApellido = $"{txtNombreApellido.Text}", Dni = txtDni.ToString()
+                            NombreApellido = $"{txtNombreApellido.Text}",
+                            Dni = txtDni.ToString(),
+                            ImporteCuota = totalCuota
                         };
                         cobrarCuota.ShowDialog();
-                        this.Hide();
+                        this.Hide();                        
                     }
                     catch (Exception ex)
                     {
