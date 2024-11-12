@@ -16,9 +16,20 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
     public partial class Cobrar_por_actividad : Form
     {
         private Principal principal;
+        private string nombreActividad;
+        public int NroNoSocio { get; set; }
+        public string NombreApellido { get; set; }
+        public string Dni { get; set; }
         public Cobrar_por_actividad(Principal principal)
         {
             InitializeComponent();
+            //Llena los campos de manera automatica si los datos ya se encuentran asignados
+            txtNroNoSocio.Text = NroNoSocio.ToString();
+            txtNombreApellido.Text = NombreApellido;
+            txtDni.Text = Dni;
+
+            this.Load += Cobrar_por_actividad_Load;
+
             this.principal = principal;
         }
 

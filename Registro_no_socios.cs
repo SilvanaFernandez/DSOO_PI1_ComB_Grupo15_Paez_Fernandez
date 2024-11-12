@@ -89,17 +89,29 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
 
                 // Verifica si la respuesta es un número
                 bool esnumero = int.TryParse(respuesta, out int codigo);
-                if (esnumero)
+                if (esnumero && codigo == -1)
                 {
-                    
-                    if (codigo == -1) // El no socio ya existe
+                    // El no socio ya existe
+                    MessageBox.Show("EL NO SOCIO YA ESTÁ REGISTRADO", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);                                        
+                }
+                else
+                {
+                    try
                     {
-                        MessageBox.Show("EL NO SOCIO YA ESTÁ REGISTRADO", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Cobrar_por_actividad cobrarPorActividad = new Cobrar_por_actividad(principal)
+                        {
+                            NroNoSocio = codigo,
+                            NombreApellido = $"{noSoc.NombreP} {noSoc.ApellidoP}",
+                            Dni = dni.ToString()
+                        };
+                        cobrarPorActividad.ShowDialog();
+                        this.Hide();
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        MessageBox.Show("EL NO SOCIO SE REGISTRÓ EXITOSAMENTE CON EL NÚMERO DE NO SOCIO: " + codigo, "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }                    
+                        MessageBox.Show("Error al abrir Cobrar_por_actividad: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    //MessageBox.Show("EL NO SOCIO SE REGISTRÓ EXITOSAMENTE CON EL NÚMERO DE NO SOCIO: " + codigo, "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
