@@ -38,13 +38,10 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                 {
                     sqlCon.Open();
 
-                    // Consulta para obtener los socios con ProxVto del día anterior
-                    string query = @"SELECT s.NroSoc 
-                             FROM socio s 
-                             JOIN pagos p ON s.NroSoc = p.NroSoc 
-                             WHERE DATE(p.ProxVto) = CURDATE() - INTERVAL 1 DAY";
+                    // Consulta para obtener los socios con el último ProxVto del día anterior
+                    string queryDiaAnterior = @"SELECT s.NroSoc FROM socio s JOIN pagos p ON s.NroSoc = p.NroSoc WHERE p.ProxVto = (SELECT MAX(ProxVto) FROM pagos WHERE NroSoc = p.NroSoc) AND DATE(p.ProxVto) = CURDATE() - INTERVAL 1 DAY";
 
-                    using (MySqlCommand cmd = new MySqlCommand(query, sqlCon))
+                    using (MySqlCommand cmd = new MySqlCommand(queryDiaAnterior, sqlCon))
                     {
                         using (MySqlDataReader reader = cmd.ExecuteReader())
                         {
@@ -70,6 +67,60 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                                     {
                                         // No se pudo actualizar el estado
                                         MessageBox.Show($"Error al actualizar el estado del socio con NroSoc {nroSoc}.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    // Consulta para obtener los socios con el último ProxVto de hace 5 días y activo = 0
+                    string queryCincoDias = @"SELECT s.NroSoc FROM socio s JOIN pagos p ON s.NroSoc = p.NroSoc WHERE p.ProxVto = (SELECT MAX(ProxVto) FROM pagos WHERE NroSoc = p.NroSoc) AND DATE(p.ProxVto) = CURDATE() - INTERVAL 5 DAY AND s.activo = 0";
+
+                    using (MySqlCommand cmd = new MySqlCommand(queryCincoDias, sqlCon))
+                    {
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            List<int> sociosInactivos = new List<int>();
+                            while (reader.Read())
+                            {
+                                sociosInactivos.Add(reader.GetInt32("NroSoc"));
+                            }
+                            reader.Close();  // Cerramos el DataReader antes de abrir otro
+
+                            foreach (int nroSoc in sociosInactivos)
+                            {
+                                // Obtener actividades del socio
+                                string queryActividades = "SELECT codAct FROM ActividadesSocio WHERE NroSoc = @NroSoc";
+                                using (MySqlCommand cmdActividades = new MySqlCommand(queryActividades, sqlCon))
+                                {
+                                    cmdActividades.Parameters.AddWithValue("@NroSoc", nroSoc);
+                                    using (MySqlDataReader readerActividades = cmdActividades.ExecuteReader())
+                                    {
+                                        List<int> actividades = new List<int>();
+                                        while (readerActividades.Read())
+                                        {
+                                            actividades.Add(readerActividades.GetInt32("codAct"));
+                                        }
+                                        readerActividades.Close();
+
+                                        // Liberar cupoDisp de las actividades
+                                        foreach (int codAct in actividades)
+                                        {
+                                            string queryLiberarCupo = "UPDATE actividad SET cupoDisp = cupoDisp + 1 WHERE codAct = @codAct";
+                                            using (MySqlCommand cmdLiberarCupo = new MySqlCommand(queryLiberarCupo, sqlCon))
+                                            {
+                                                cmdLiberarCupo.Parameters.AddWithValue("@codAct", codAct);
+                                                cmdLiberarCupo.ExecuteNonQuery();
+                                            }
+                                        }
+
+                                        // Borrar las actividades del socio
+                                        string queryBorrarActividades = "DELETE FROM ActividadesSocio WHERE NroSoc = @NroSoc";
+                                        using (MySqlCommand cmdBorrarActividades = new MySqlCommand(queryBorrarActividades, sqlCon))
+                                        {
+                                            cmdBorrarActividades.Parameters.AddWithValue("@NroSoc", nroSoc);
+                                            cmdBorrarActividades.ExecuteNonQuery();
+                                        }
                                     }
                                 }
                             }

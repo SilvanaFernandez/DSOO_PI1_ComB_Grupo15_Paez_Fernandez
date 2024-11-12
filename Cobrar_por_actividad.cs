@@ -36,7 +36,13 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                         {
                             while (reader.Read())
                             {
-                                cboActividad.Items.Add(reader["nombreA"].ToString());
+                                string actividad = reader["nombreA"].ToString();
+
+                                // Comprobar si la actividad ya está en el combo box antes de agregarla
+                                if (!cboActividad.Items.Contains(actividad))
+                                {
+                                    cboActividad.Items.Add(actividad);
+                                }
                             }
                         }
                     }
@@ -129,7 +135,8 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
 
         private void cboActividad_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string actividadSeleccionada = cboActividad.SelectedItem.ToString(); using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion())
+            string actividadSeleccionada = cboActividad.SelectedItem.ToString();
+            using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion())
             {
                 try
                 {
@@ -143,11 +150,13 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                         {
                             if (reader.Read())
                             {
-                                txtImporte.Text = reader["costoDia"].ToString(); txtCupoDisp.Text = reader["cupoDisp"].ToString();
+                                txtImporte.Text = reader["costoDia"].ToString();
+                                txtCupoDisp.Text = reader["cupoDisp"].ToString();
                             }
                             else
                             {
-                                txtImporte.Text = "No encontrado"; txtCupoDisp.Text = "";
+                                txtImporte.Text = "No encontrado";
+                                txtCupoDisp.Text = "";
                             }
                         }
                     }
