@@ -45,6 +45,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
             if (txtNombre.Text == "" || txtApellido.Text == "" || txtDni.Text == "")
             {
                 MessageBox.Show("Debe completar los datos requeridos (*) ", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
             else
             {
@@ -66,7 +67,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                 {
                     No_Socios noSocios = new No_Socios(noSoc);
                     string respuesta = noSocios.Nuevo(); // Llama al procedimiento almacenado de la clase persona
-                    MessageBox.Show("Respuesta del procedimiento: " + respuesta);
+                    //MessageBox.Show("Respuesta del procedimiento: " + respuesta);
 
                     // Verifica si la respuesta es un número
                     bool esnumero = int.TryParse(respuesta, out int codigo);
@@ -79,6 +80,16 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                         else
                         {
                             MessageBox.Show("EL NO SOCIO SE REGISTRÓ EXITOSAMENTE CON EL NÚMERO DE NO SOCIO: " + codigo, "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            //si el registro fue exitoso, se abrirá el formulario de cobrar_por_actividad
+                            Cobrar_por_actividad cobrarPorActividad = new Cobrar_por_actividad(principal)
+                            {
+                                
+                            };
+                            //cobrarPorActividad.SetDatosNoSocio(codigo, txtNombre.Text, txtApellido.Text, dni);
+                            cobrarPorActividad.ShowDialog();
+                            this.Hide();
+                            cobrarPorActividad.Controls["txtDniSocio"].Text = codigo.ToString();
                         }
                     }
                 }
@@ -98,4 +109,3 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
         }
     }
 }
- 

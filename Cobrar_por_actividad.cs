@@ -16,44 +16,59 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
     public partial class Cobrar_por_actividad : Form
     {
         private Principal principal;
+        private string nombreActividad;
+        public int NroNoSocio { get; set; }
+        public string NombreApellido { get; set; }
+        public string Dni { get; set; }
         public Cobrar_por_actividad(Principal principal)
         {
             InitializeComponent();
+            //Llena los campos de manera automatica si los datos ya se encuentran asignados
+            txtNroNoSocio.Text = NroNoSocio.ToString();
+            txtNombreApellido.Text = NombreApellido;
+            txtDni.Text = Dni;
+
+            //this.Load += Registrar_Actividad_NoSocio_Load;
+            //txtNroSocio.TextChanged += TxtNroSocio_TextChanged;
             this.principal = principal;
         }
 
         private void Cobrar_por_actividad_Load(object sender, EventArgs e)
         {
-            using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion())
+            if (string.IsNullOrEmpty(txtNombreApellido.Text))
             {
-                try
+
+                using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion())
                 {
-                    sqlCon.Open();
-                    string query = "SELECT nombreA FROM actividad";
-                    using (MySqlCommand cmd = new MySqlCommand(query, sqlCon))
+                    try
                     {
-                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        sqlCon.Open();
+                        string query = "SELECT nombreA FROM actividad";
+                        using (MySqlCommand cmd = new MySqlCommand(query, sqlCon))
                         {
-                            while (reader.Read())
+                            using (MySqlDataReader reader = cmd.ExecuteReader())
                             {
-                                cboActividad.Items.Add(reader["nombreA"].ToString());
+                                while (reader.Read())
+                                {
+                                    cboActividad.Items.Add(reader["nombreA"].ToString());
+                                }
                             }
                         }
                     }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al cargar las actividades: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                finally
-                {
-                    if (sqlCon.State == ConnectionState.Open)
+                    catch (Exception ex)
                     {
-                        sqlCon.Close();
+                        MessageBox.Show("Error al cargar las actividades: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    finally
+                    {
+                        if (sqlCon.State == ConnectionState.Open)
+                        {
+                            sqlCon.Close();
+                        }
                     }
                 }
+                cboActividad.SelectedIndexChanged += new EventHandler(cboActividad_SelectedIndexChanged);
             }
-            cboActividad.SelectedIndexChanged += new EventHandler(cboActividad_SelectedIndexChanged);
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
@@ -234,6 +249,14 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                 }
             }
         }
+        /*
+        internal void SetDatosNoSocio(int nroNoSocio, string nombre, string apellido, int dni)
+        {
+            txtNroNoSocio.Text = nroNoSocio.ToString();
+            txtNombreApellido.Text = $"{nombre} {apellido}";
+            txtDni.Text = dni.ToString();
+            txtFecha.Text = DateTime.Now.ToString("yyyy-MM-dd");
+        }*/
     }
 }
  

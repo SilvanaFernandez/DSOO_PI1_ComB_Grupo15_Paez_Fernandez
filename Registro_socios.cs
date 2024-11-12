@@ -92,17 +92,6 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                             };
                             gestionActividadesSocio.ShowDialog();
                             this.Hide();
-                            // Abrir el formulario Cobrar_cuota y pasar los datos
-                            /*Cobrar_cuota cobrarCuota = new Cobrar_cuota(principal)
-                            {
-                                NroSocio = codigo,
-                                NombreApellido = $"{soc.NombreP} {soc.ApellidoP}",
-                                Dni = dni.ToString()
-                            };
-                            cobrarCuota.ShowDialog();
-                            this.Hide();*/
-                            // Asignar el número de socio al campo txtNroSocio2 del formulario Cobrar_cuota
-                            //cobrarCuota.Controls["txtNroSocio2"].Text = codigo.ToString();
                             gestionActividadesSocio.Controls["txtNroSocio"].Text = codigo.ToString();
                         }
                     }
