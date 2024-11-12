@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Datos;
 using DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Entidades;
+using System.Net;
 
 namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
 {
@@ -44,86 +45,77 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
             if (txtNombre.Text == "" || txtApellido.Text == "" || txtDni.Text == "")
             {
                 MessageBox.Show("Debe completar los datos requeridos (*) ", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-                        
-            int dni;
-            if (!int.TryParse(txtDni.Text, out dni))
+                
+            }            
+            else
             {
-                MessageBox.Show("El DNI debe ser un número válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+                int dni;
+                if (!int.TryParse(txtDni.Text, out dni))
+                {
+                    MessageBox.Show("El DNI debe ser un número válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
-            E_Socio soc = new E_Socio
-            {
-                NombreP = txtNombre.Text,
-                ApellidoP = txtApellido.Text,
-                DniP = dni,
-                AptoMedico = chkAptoMedico.Checked
-            };
+                if (Utilidades.DniRegistradoEnOtroTipo(dni, esSocio: true))
+                {
+                    MessageBox.Show("El DNI ya está registrado como socio o no socio.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else if (Utilidades.DniRegistradoEnOtroTipo(dni, esSocio: false))
+                {
+                    MessageBox.Show("El DNI ya está registrado como socio.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                E_Socio soc = new E_Socio
+                {
+                    NombreP = txtNombre.Text,
+                    ApellidoP = txtApellido.Text,
+                    DniP = dni,
+                    AptoMedico = chkAptoMedico.Checked
+                };
 
                 
-            try
-            {
-                Socios socios = new Socios(soc);
-                string respuesta = socios.Nuevo(); // Llama al procedimiento almacenado
-
-                // Verifica si la respuesta es un número
-                bool esnumero = int.TryParse(respuesta, out int codigo);
-                if (esnumero)
+                try
                 {
-                    switch (codigo)
-                    {
-                        case -1:
+                    Socios socios = new Socios(soc);
+                    string respuesta = socios.Nuevo(); // Llama al procedimiento almacenado
+
+                    // Verifica si la respuesta es un número
+                    bool esnumero = int.TryParse(respuesta, out int codigo);
+                    if (esnumero)
+                    {                    
+                        if(codigo == -2)
+                        {
+                            MessageBox.Show("No se puede registrar como socio, el apto médico no está aprobado.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        else if(codigo == -1) // El socio ya existe
+                        {
                             MessageBox.Show("EL SOCIO YA ESTÁ REGISTRADO", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            break;
-                        case -2:
-                            MessageBox.Show("No se puede registrar como socio porque el apto médico no está aprobado.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            break;
-                        default:
+                        }
+                        else
+                        {                            
                             MessageBox.Show("EL SOCIO SE REGISTRÓ EXITOSAMENTE CON EL NÚMERO DE SOCIO: " + codigo, "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                             Gestion_Actividades_Socio gestionActividadesSocio = new Gestion_Actividades_Socio(principal)
                             {
                                 NroSocio = codigo,
-                                NombreApellido = $"{soc.NombreP} {soc.ApellidoP}",
-                                Dni = dni.ToString()
+                                NombreApellido = $"{soc.NombreP} {soc.ApellidoP}", 
+                                Dni=dni.ToString()
                             };
                             gestionActividadesSocio.ShowDialog();
                             this.Hide();
                             gestionActividadesSocio.Controls["txtNroSocio"].Text = codigo.ToString();
-                            break;
+                        }
+                    
                     }
-                    /*
-                    if(codigo == -2)
-                    {
-                        MessageBox.Show("No se puede registrar como socio, el apto médico no está aprobado.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                    else if(codigo == -1) // El socio ya existe
-                    {
-                        MessageBox.Show("EL SOCIO YA ESTÁ REGISTRADO", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else
-                    {                            
-                        MessageBox.Show("EL SOCIO SE REGISTRÓ EXITOSAMENTE CON EL NÚMERO DE SOCIO: " + codigo, "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                        Gestion_Actividades_Socio gestionActividadesSocio = new Gestion_Actividades_Socio(principal)
-                        {
-                            NroSocio = codigo,
-                            NombreApellido = $"{soc.NombreP} {soc.ApellidoP}", 
-                            Dni=dni.ToString()
-                        };
-                        gestionActividadesSocio.ShowDialog();
-                        this.Hide();
-                        gestionActividadesSocio.Controls["txtNroSocio"].Text = codigo.ToString();
-                    }
-                    */
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ocurrió un error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }                
-            
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ocurrió un error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }                
+
+            }        
             
         }
 

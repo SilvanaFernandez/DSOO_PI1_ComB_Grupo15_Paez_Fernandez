@@ -63,6 +63,17 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                 return;
             }
 
+            if (Utilidades.DniRegistradoEnOtroTipo(dni, esSocio: true))
+            {
+                MessageBox.Show("El DNI ya está registrado como no socio o socio.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else if (Utilidades.DniRegistradoEnOtroTipo(dni, esSocio: false))
+            {
+                MessageBox.Show("El DNI ya está registrado como no socio.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             E_No_Socio noSoc = new E_No_Socio
             {
                 NombreP = txtNombre.Text,
@@ -80,19 +91,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                 bool esnumero = int.TryParse(respuesta, out int codigo);
                 if (esnumero)
                 {
-                    switch (codigo)
-                    {
-                        case -1:
-                            MessageBox.Show("Ya está registrado como socio y no puede ser registrado como no socio.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            break;
-                        case -2:
-                            MessageBox.Show("EL NO SOCIO YA ESTÁ REGISTRADO", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            break;
-                        default:
-                            MessageBox.Show("EL NO SOCIO SE REGISTRÓ EXITOSAMENTE CON EL NÚMERO DE NO SOCIO: " + codigo, "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            break;
-                    }
-                    /*
+                    
                     if (codigo == -1) // El no socio ya existe
                     {
                         MessageBox.Show("EL NO SOCIO YA ESTÁ REGISTRADO", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -100,8 +99,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                     else
                     {
                         MessageBox.Show("EL NO SOCIO SE REGISTRÓ EXITOSAMENTE CON EL NÚMERO DE NO SOCIO: " + codigo, "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    */
+                    }                    
                 }
             }
             catch (Exception ex)
