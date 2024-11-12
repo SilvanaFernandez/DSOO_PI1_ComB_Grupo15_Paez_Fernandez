@@ -1,6 +1,6 @@
 ﻿namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
 {
-    partial class Cobrar_cuota
+    partial class Gestion_cuota
     {
         /// <summary>
         ///  Required designer variable.
@@ -55,108 +55,102 @@
             lblDni = new Label();
             txtDni = new TextBox();
             btnCarnetSocio = new Button();
+            rdbtnEfectivo = new RadioButton();
+            rdbtnCredito = new RadioButton();
             SuspendLayout();
             // 
             // txtNroSocio1
             // 
-            txtNroSocio1.Location = new Point(106, 173);
-            txtNroSocio1.Margin = new Padding(3, 4, 3, 4);
+            txtNroSocio1.Location = new Point(93, 130);
             txtNroSocio1.Name = "txtNroSocio1";
-            txtNroSocio1.Size = new Size(158, 27);
+            txtNroSocio1.Size = new Size(139, 23);
             txtNroSocio1.TabIndex = 0;
             txtNroSocio1.TextChanged += txtNroSocio1_TextChanged;
             // 
             // txtEstado
             // 
-            txtEstado.Location = new Point(106, 259);
-            txtEstado.Margin = new Padding(3, 4, 3, 4);
+            txtEstado.Location = new Point(93, 194);
             txtEstado.Name = "txtEstado";
-            txtEstado.Size = new Size(158, 27);
+            txtEstado.Size = new Size(139, 23);
             txtEstado.TabIndex = 2;
             // 
             // lblEstado
             // 
             lblEstado.AutoSize = true;
-            lblEstado.Location = new Point(106, 235);
+            lblEstado.Location = new Point(93, 176);
             lblEstado.Name = "lblEstado";
-            lblEstado.Size = new Size(54, 20);
+            lblEstado.Size = new Size(42, 15);
             lblEstado.TabIndex = 6;
             lblEstado.Text = "Estado";
             // 
             // txtFechaUltPago
             // 
-            txtFechaUltPago.Location = new Point(329, 259);
-            txtFechaUltPago.Margin = new Padding(3, 4, 3, 4);
+            txtFechaUltPago.Location = new Point(288, 194);
             txtFechaUltPago.Name = "txtFechaUltPago";
-            txtFechaUltPago.Size = new Size(158, 27);
+            txtFechaUltPago.Size = new Size(139, 23);
             txtFechaUltPago.TabIndex = 3;
             // 
             // lblFechaUltPago
             // 
             lblFechaUltPago.AutoSize = true;
-            lblFechaUltPago.Location = new Point(331, 239);
+            lblFechaUltPago.Location = new Point(290, 179);
             lblFechaUltPago.Name = "lblFechaUltPago";
-            lblFechaUltPago.Size = new Size(174, 20);
+            lblFechaUltPago.Size = new Size(137, 15);
             lblFechaUltPago.TabIndex = 8;
             lblFechaUltPago.Text = "Vto última cuota pagada";
             // 
             // txtNroSocio2
             // 
-            txtNroSocio2.Location = new Point(106, 415);
-            txtNroSocio2.Margin = new Padding(3, 4, 3, 4);
+            txtNroSocio2.Location = new Point(69, 309);
             txtNroSocio2.Name = "txtNroSocio2";
-            txtNroSocio2.Size = new Size(122, 27);
+            txtNroSocio2.Size = new Size(107, 23);
             txtNroSocio2.TabIndex = 4;
             txtNroSocio2.TextChanged += txtNroSocio2_TextChanged;
             // 
             // lblNroSocio2
             // 
             lblNroSocio2.AutoSize = true;
-            lblNroSocio2.Location = new Point(106, 391);
+            lblNroSocio2.Location = new Point(69, 291);
             lblNroSocio2.Name = "lblNroSocio2";
-            lblNroSocio2.Size = new Size(75, 20);
+            lblNroSocio2.Size = new Size(59, 15);
             lblNroSocio2.TabIndex = 11;
             lblNroSocio2.Text = "Nro Socio";
             // 
             // txtProxVto
             // 
-            txtProxVto.Location = new Point(478, 504);
-            txtProxVto.Margin = new Padding(3, 4, 3, 4);
+            txtProxVto.Location = new Point(368, 378);
             txtProxVto.Name = "txtProxVto";
-            txtProxVto.Size = new Size(158, 27);
+            txtProxVto.Size = new Size(139, 23);
             txtProxVto.TabIndex = 9;
             // 
             // txtFecha
             // 
-            txtFecha.Location = new Point(274, 504);
-            txtFecha.Margin = new Padding(3, 4, 3, 4);
+            txtFecha.Location = new Point(206, 378);
             txtFecha.Name = "txtFecha";
-            txtFecha.Size = new Size(158, 27);
+            txtFecha.Size = new Size(139, 23);
             txtFecha.TabIndex = 8;
             // 
             // lblImporte
             // 
             lblImporte.AutoSize = true;
-            lblImporte.Location = new Point(106, 480);
+            lblImporte.Location = new Point(69, 360);
             lblImporte.Name = "lblImporte";
-            lblImporte.Size = new Size(62, 20);
+            lblImporte.Size = new Size(49, 15);
             lblImporte.TabIndex = 28;
             lblImporte.Text = "Importe";
             // 
             // txtImporte
             // 
-            txtImporte.Location = new Point(106, 504);
-            txtImporte.Margin = new Padding(3, 4, 3, 4);
+            txtImporte.Location = new Point(69, 378);
             txtImporte.Name = "txtImporte";
-            txtImporte.Size = new Size(122, 27);
+            txtImporte.Size = new Size(107, 23);
             txtImporte.TabIndex = 7;
             // 
             // btnVolver
             // 
-            btnVolver.Location = new Point(789, 29);
-            btnVolver.Margin = new Padding(3, 4, 3, 4);
+            btnVolver.Location = new Point(690, 22);
             btnVolver.Name = "btnVolver";
-            btnVolver.Size = new Size(86, 31);
+            btnVolver.Size = new Size(75, 23);
             btnVolver.TabIndex = 13;
             btnVolver.Text = "VOLVER";
             btnVolver.UseVisualStyleBackColor = true;
@@ -167,9 +161,9 @@
             lblTituloPpal.AutoSize = true;
             lblTituloPpal.Font = new Font("MV Boli", 18F, FontStyle.Bold, GraphicsUnit.Point);
             lblTituloPpal.ForeColor = SystemColors.ActiveCaptionText;
-            lblTituloPpal.Location = new Point(255, 29);
+            lblTituloPpal.Location = new Point(223, 22);
             lblTituloPpal.Name = "lblTituloPpal";
-            lblTituloPpal.Size = new Size(350, 40);
+            lblTituloPpal.Size = new Size(284, 31);
             lblTituloPpal.TabIndex = 31;
             lblTituloPpal.Text = "GESTIÓN DE CUOTAS";
             lblTituloPpal.TextAlign = ContentAlignment.MiddleCenter;
@@ -179,9 +173,9 @@
             lblSubtitulo1.AutoSize = true;
             lblSubtitulo1.Font = new Font("MV Boli", 18F, FontStyle.Bold, GraphicsUnit.Point);
             lblSubtitulo1.ForeColor = SystemColors.ActiveCaptionText;
-            lblSubtitulo1.Location = new Point(67, 84);
+            lblSubtitulo1.Location = new Point(59, 63);
             lblSubtitulo1.Name = "lblSubtitulo1";
-            lblSubtitulo1.Size = new Size(339, 40);
+            lblSubtitulo1.Size = new Size(276, 31);
             lblSubtitulo1.TabIndex = 32;
             lblSubtitulo1.Text = "Ver estado de cuota:";
             lblSubtitulo1.TextAlign = ContentAlignment.MiddleCenter;
@@ -189,9 +183,9 @@
             // lblNroSocio1
             // 
             lblNroSocio1.AutoSize = true;
-            lblNroSocio1.Location = new Point(106, 149);
+            lblNroSocio1.Location = new Point(93, 112);
             lblNroSocio1.Name = "lblNroSocio1";
-            lblNroSocio1.Size = new Size(75, 20);
+            lblNroSocio1.Size = new Size(59, 15);
             lblNroSocio1.TabIndex = 33;
             lblNroSocio1.Text = "Nro Socio";
             // 
@@ -200,9 +194,9 @@
             lblSubtitulo2.AutoSize = true;
             lblSubtitulo2.Font = new Font("MV Boli", 18F, FontStyle.Bold, GraphicsUnit.Point);
             lblSubtitulo2.ForeColor = SystemColors.ActiveCaptionText;
-            lblSubtitulo2.Location = new Point(67, 321);
+            lblSubtitulo2.Location = new Point(59, 241);
             lblSubtitulo2.Name = "lblSubtitulo2";
-            lblSubtitulo2.Size = new Size(394, 40);
+            lblSubtitulo2.Size = new Size(320, 31);
             lblSubtitulo2.TabIndex = 34;
             lblSubtitulo2.Text = "Registrar pago de cuota:";
             lblSubtitulo2.TextAlign = ContentAlignment.MiddleCenter;
@@ -210,61 +204,58 @@
             // lblFecha
             // 
             lblFecha.AutoSize = true;
-            lblFecha.Location = new Point(272, 480);
+            lblFecha.Location = new Point(206, 360);
             lblFecha.Name = "lblFecha";
-            lblFecha.Size = new Size(47, 20);
+            lblFecha.Size = new Size(38, 15);
             lblFecha.TabIndex = 35;
             lblFecha.Text = "Fecha";
             // 
             // lblProxVto
             // 
             lblProxVto.AutoSize = true;
-            lblProxVto.Location = new Point(478, 480);
+            lblProxVto.Location = new Point(368, 360);
             lblProxVto.Name = "lblProxVto";
-            lblProxVto.Size = new Size(149, 20);
+            lblProxVto.Size = new Size(121, 15);
             lblProxVto.TabIndex = 36;
             lblProxVto.Text = "Próximo vencimiento";
             // 
             // lblNombreApellido1
             // 
             lblNombreApellido1.AutoSize = true;
-            lblNombreApellido1.Location = new Point(331, 149);
+            lblNombreApellido1.Location = new Point(290, 112);
             lblNombreApellido1.Name = "lblNombreApellido1";
-            lblNombreApellido1.Size = new Size(136, 20);
+            lblNombreApellido1.Size = new Size(107, 15);
             lblNombreApellido1.TabIndex = 37;
             lblNombreApellido1.Text = "Nombre y Apellido";
             // 
             // txtNombreApellido1
             // 
-            txtNombreApellido1.Location = new Point(329, 173);
-            txtNombreApellido1.Margin = new Padding(3, 4, 3, 4);
+            txtNombreApellido1.Location = new Point(288, 130);
             txtNombreApellido1.Name = "txtNombreApellido1";
-            txtNombreApellido1.Size = new Size(286, 27);
+            txtNombreApellido1.Size = new Size(251, 23);
             txtNombreApellido1.TabIndex = 1;
             // 
             // lblNombreApellido2
             // 
             lblNombreApellido2.AutoSize = true;
-            lblNombreApellido2.Location = new Point(272, 391);
+            lblNombreApellido2.Location = new Point(206, 291);
             lblNombreApellido2.Name = "lblNombreApellido2";
-            lblNombreApellido2.Size = new Size(136, 20);
+            lblNombreApellido2.Size = new Size(107, 15);
             lblNombreApellido2.TabIndex = 39;
             lblNombreApellido2.Text = "Nombre y Apellido";
             // 
             // txtNombreApellido2
             // 
-            txtNombreApellido2.Location = new Point(272, 415);
-            txtNombreApellido2.Margin = new Padding(3, 4, 3, 4);
+            txtNombreApellido2.Location = new Point(206, 309);
             txtNombreApellido2.Name = "txtNombreApellido2";
-            txtNombreApellido2.Size = new Size(234, 27);
+            txtNombreApellido2.Size = new Size(237, 23);
             txtNombreApellido2.TabIndex = 5;
             // 
             // btnLimpiar
             // 
-            btnLimpiar.Location = new Point(696, 29);
-            btnLimpiar.Margin = new Padding(3, 4, 3, 4);
+            btnLimpiar.Location = new Point(609, 22);
             btnLimpiar.Name = "btnLimpiar";
-            btnLimpiar.Size = new Size(86, 31);
+            btnLimpiar.Size = new Size(75, 23);
             btnLimpiar.TabIndex = 12;
             btnLimpiar.Text = "LIMPIAR";
             btnLimpiar.UseVisualStyleBackColor = true;
@@ -272,10 +263,9 @@
             // 
             // btnRegEmitirRecibo
             // 
-            btnRegEmitirRecibo.Location = new Point(754, 380);
-            btnRegEmitirRecibo.Margin = new Padding(3, 4, 3, 4);
+            btnRegEmitirRecibo.Location = new Point(660, 285);
             btnRegEmitirRecibo.Name = "btnRegEmitirRecibo";
-            btnRegEmitirRecibo.Size = new Size(120, 73);
+            btnRegEmitirRecibo.Size = new Size(105, 55);
             btnRegEmitirRecibo.TabIndex = 10;
             btnRegEmitirRecibo.Text = "Registrar y emitir recibo";
             btnRegEmitirRecibo.UseVisualStyleBackColor = true;
@@ -284,36 +274,58 @@
             // lblDni
             // 
             lblDni.AutoSize = true;
-            lblDni.Location = new Point(545, 388);
+            lblDni.Location = new Point(467, 291);
             lblDni.Name = "lblDni";
-            lblDni.Size = new Size(35, 20);
+            lblDni.Size = new Size(27, 15);
             lblDni.TabIndex = 43;
             lblDni.Text = "DNI";
             // 
             // txtDni
             // 
-            txtDni.Location = new Point(545, 412);
-            txtDni.Margin = new Padding(3, 4, 3, 4);
+            txtDni.Location = new Point(467, 309);
             txtDni.Name = "txtDni";
-            txtDni.Size = new Size(148, 27);
+            txtDni.Size = new Size(130, 23);
             txtDni.TabIndex = 6;
             // 
             // btnCarnetSocio
             // 
-            btnCarnetSocio.Location = new Point(754, 461);
-            btnCarnetSocio.Margin = new Padding(3, 4, 3, 4);
+            btnCarnetSocio.Location = new Point(660, 346);
             btnCarnetSocio.Name = "btnCarnetSocio";
-            btnCarnetSocio.Size = new Size(120, 73);
+            btnCarnetSocio.Size = new Size(105, 55);
             btnCarnetSocio.TabIndex = 11;
             btnCarnetSocio.Text = "Generar carnet";
             btnCarnetSocio.UseVisualStyleBackColor = true;
             btnCarnetSocio.Click += btnCarnetSocio_Click;
             // 
-            // Cobrar_cuota
+            // rdbtnEfectivo
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            rdbtnEfectivo.AutoSize = true;
+            rdbtnEfectivo.Location = new Point(531, 356);
+            rdbtnEfectivo.Name = "rdbtnEfectivo";
+            rdbtnEfectivo.Size = new Size(67, 19);
+            rdbtnEfectivo.TabIndex = 44;
+            rdbtnEfectivo.TabStop = true;
+            rdbtnEfectivo.Text = "Efectivo";
+            rdbtnEfectivo.UseVisualStyleBackColor = true;
+            // 
+            // rdbtnCredito
+            // 
+            rdbtnCredito.AutoSize = true;
+            rdbtnCredito.Location = new Point(531, 382);
+            rdbtnCredito.Name = "rdbtnCredito";
+            rdbtnCredito.Size = new Size(115, 19);
+            rdbtnCredito.TabIndex = 45;
+            rdbtnCredito.TabStop = true;
+            rdbtnCredito.Text = "Tarjeta de crédito";
+            rdbtnCredito.UseVisualStyleBackColor = true;
+            // 
+            // Gestion_cuota
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(914, 600);
+            ClientSize = new Size(800, 450);
+            Controls.Add(rdbtnCredito);
+            Controls.Add(rdbtnEfectivo);
             Controls.Add(btnCarnetSocio);
             Controls.Add(txtDni);
             Controls.Add(lblDni);
@@ -341,8 +353,7 @@
             Controls.Add(lblEstado);
             Controls.Add(txtEstado);
             Controls.Add(txtNroSocio1);
-            Margin = new Padding(3, 4, 3, 4);
-            Name = "Cobrar_cuota";
+            Name = "Gestion_cuota";
             Text = "Cobrar_cuota";
             ResumeLayout(false);
             PerformLayout();
@@ -377,5 +388,7 @@
         private Label lblDni;
         private TextBox txtDni;
         private Button btnCarnetSocio;
+        private RadioButton rdbtnEfectivo;
+        private RadioButton rdbtnCredito;
     }
 }

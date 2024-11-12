@@ -184,7 +184,7 @@
             chkAptoMedico.Name = "chkAptoMedico";
             chkAptoMedico.Size = new Size(95, 19);
             chkAptoMedico.TabIndex = 26;
-            chkAptoMedico.Text = "Apto Medico";
+            chkAptoMedico.Text = "Apto Médico";
             chkAptoMedico.UseVisualStyleBackColor = true;
             // 
             // lblApto
