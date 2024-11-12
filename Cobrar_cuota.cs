@@ -11,6 +11,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
         public int NroSocio { get; set; }
         public string NombreApellido { get; set; }
         public string Dni { get; set; }
+        public decimal ImporteCuota { get; set; }
         public Cobrar_cuota(Principal principal)
         {
             InitializeComponent();
@@ -156,6 +157,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
             txtFecha.Text = fechaActual.ToString("yyyy-MM-dd");
             txtProxVto.Text = proximoVencimiento.ToString("yyyy-MM-dd");
 
+            // Consultar la base de datos para obtener el nombre, apellido y DNI del socio
             using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion())
             {
                 try
