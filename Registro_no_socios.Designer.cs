@@ -43,6 +43,7 @@
             lblDni1 = new Label();
             lblApellido1 = new Label();
             lblRegistroNoSocio = new Label();
+            chkAptoMedico = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)picNoSocio).BeginInit();
             SuspendLayout();
             // 
@@ -59,7 +60,7 @@
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(146, 195);
+            txtNombre.Location = new Point(146, 199);
             txtNombre.Margin = new Padding(3, 4, 3, 4);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(246, 27);
@@ -67,7 +68,7 @@
             // 
             // txtApellido
             // 
-            txtApellido.Location = new Point(146, 303);
+            txtApellido.Location = new Point(146, 289);
             txtApellido.Margin = new Padding(3, 4, 3, 4);
             txtApellido.Name = "txtApellido";
             txtApellido.Size = new Size(246, 27);
@@ -76,7 +77,7 @@
             // lblApellido
             // 
             lblApellido.AutoSize = true;
-            lblApellido.Location = new Point(146, 273);
+            lblApellido.Location = new Point(146, 259);
             lblApellido.Name = "lblApellido";
             lblApellido.Size = new Size(66, 20);
             lblApellido.TabIndex = 20;
@@ -85,7 +86,7 @@
             // lblNombre
             // 
             lblNombre.AutoSize = true;
-            lblNombre.Location = new Point(146, 171);
+            lblNombre.Location = new Point(146, 175);
             lblNombre.Name = "lblNombre";
             lblNombre.Size = new Size(64, 20);
             lblNombre.TabIndex = 19;
@@ -127,7 +128,7 @@
             // lblDni
             // 
             lblDni.AutoSize = true;
-            lblDni.Location = new Point(146, 404);
+            lblDni.Location = new Point(146, 352);
             lblDni.Name = "lblDni";
             lblDni.Size = new Size(35, 20);
             lblDni.TabIndex = 28;
@@ -135,7 +136,7 @@
             // 
             // txtDni
             // 
-            txtDni.Location = new Point(146, 428);
+            txtDni.Location = new Point(146, 376);
             txtDni.Margin = new Padding(3, 4, 3, 4);
             txtDni.Name = "txtDni";
             txtDni.Size = new Size(158, 27);
@@ -145,7 +146,7 @@
             // lblNombre1
             // 
             lblNombre1.AutoSize = true;
-            lblNombre1.Location = new Point(400, 199);
+            lblNombre1.Location = new Point(400, 203);
             lblNombre1.Name = "lblNombre1";
             lblNombre1.Size = new Size(15, 20);
             lblNombre1.TabIndex = 30;
@@ -154,7 +155,7 @@
             // lblDni1
             // 
             lblDni1.AutoSize = true;
-            lblDni1.Location = new Point(312, 432);
+            lblDni1.Location = new Point(312, 380);
             lblDni1.Name = "lblDni1";
             lblDni1.Size = new Size(15, 20);
             lblDni1.TabIndex = 31;
@@ -163,7 +164,7 @@
             // lblApellido1
             // 
             lblApellido1.AutoSize = true;
-            lblApellido1.Location = new Point(400, 307);
+            lblApellido1.Location = new Point(400, 293);
             lblApellido1.Name = "lblApellido1";
             lblApellido1.Size = new Size(15, 20);
             lblApellido1.TabIndex = 32;
@@ -181,11 +182,22 @@
             lblRegistroNoSocio.Text = "REGISTRO DE NO SOCIOS";
             lblRegistroNoSocio.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // chkAptoMedico
+            // 
+            chkAptoMedico.AutoSize = true;
+            chkAptoMedico.Location = new Point(146, 450);
+            chkAptoMedico.Name = "chkAptoMedico";
+            chkAptoMedico.Size = new Size(118, 24);
+            chkAptoMedico.TabIndex = 34;
+            chkAptoMedico.Text = "Apto Medico";
+            chkAptoMedico.UseVisualStyleBackColor = true;
+            // 
             // Registro_no_socios
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(914, 600);
+            Controls.Add(chkAptoMedico);
             Controls.Add(lblRegistroNoSocio);
             Controls.Add(lblApellido1);
             Controls.Add(lblDni1);
@@ -224,5 +236,6 @@
         private Label lblDni1;
         private Label lblApellido1;
         private Label lblRegistroNoSocio;
+        private CheckBox chkAptoMedico;
     }
 }
