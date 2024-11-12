@@ -48,6 +48,13 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
             }
             else
             {
+                // Validación del apto médico
+                if (!chkAptoMedico.Checked)
+                {
+                    MessageBox.Show("No se puede registrar como no socio hasta que presente el apto médico.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 int dni;
                 if (!int.TryParse(txtDni.Text, out dni))
                 {
@@ -59,7 +66,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                 {
                     NombreP = txtNombre.Text,
                     ApellidoP = txtApellido.Text,
-                    DniP = dni
+                    DniP = dni//, AptoMedico = chkAptoMedico.Checked // Registrar el estado del apto médico
                 };
 
                 try
