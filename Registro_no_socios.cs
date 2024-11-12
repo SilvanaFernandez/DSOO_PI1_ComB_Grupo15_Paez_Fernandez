@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -45,55 +46,68 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
             if (txtNombre.Text == "" || txtApellido.Text == "" || txtDni.Text == "")
             {
                 MessageBox.Show("Debe completar los datos requeridos (*) ", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            else
+            
+            // Validación del apto médico
+            if (!chkAptoMedico.Checked)
             {
-                // Validación del apto médico
-                if (!chkAptoMedico.Checked)
-                {
-                    MessageBox.Show("No se puede registrar como no socio hasta que presente el apto médico.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+                MessageBox.Show("No se puede registrar como no socio hasta que presente el apto médico.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-                int dni;
-                if (!int.TryParse(txtDni.Text, out dni))
-                {
-                    MessageBox.Show("El DNI debe ser un número válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+            int dni;
+            if (!int.TryParse(txtDni.Text, out dni))
+            {
+                MessageBox.Show("El DNI debe ser un número válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-                E_No_Socio noSoc = new E_No_Socio
-                {
-                    NombreP = txtNombre.Text,
-                    ApellidoP = txtApellido.Text,
-                    DniP = dni//, AptoMedico = chkAptoMedico.Checked // Registrar el estado del apto médico
-                };
+            E_No_Socio noSoc = new E_No_Socio
+            {
+                NombreP = txtNombre.Text,
+                ApellidoP = txtApellido.Text,
+                DniP = dni//, AptoMedico = chkAptoMedico.Checked // Registrar el estado del apto médico
+            };
 
-                try
-                {
-                    No_Socios noSocios = new No_Socios(noSoc);
-                    string respuesta = noSocios.Nuevo(); // Llama al procedimiento almacenado de la clase persona
-                    MessageBox.Show("Respuesta del procedimiento: " + respuesta);
+            try
+            {
+                No_Socios noSocios = new No_Socios(noSoc);
+                string respuesta = noSocios.Nuevo(); // Llama al procedimiento almacenado de la clase persona
+                MessageBox.Show("Respuesta del procedimiento: " + respuesta);
 
-                    // Verifica si la respuesta es un número
-                    bool esnumero = int.TryParse(respuesta, out int codigo);
-                    if (esnumero)
+                // Verifica si la respuesta es un número
+                bool esnumero = int.TryParse(respuesta, out int codigo);
+                if (esnumero)
+                {
+                    switch (codigo)
                     {
-                        if (codigo == -1) // El no socio ya existe
-                        {
+                        case -1:
+                            MessageBox.Show("Ya está registrado como socio y no puede ser registrado como no socio.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        case -2:
                             MessageBox.Show("EL NO SOCIO YA ESTÁ REGISTRADO", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        else
-                        {
+                            break;
+                        default:
                             MessageBox.Show("EL NO SOCIO SE REGISTRÓ EXITOSAMENTE CON EL NÚMERO DE NO SOCIO: " + codigo, "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
+                            break;
                     }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Ocurrió un error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    /*
+                    if (codigo == -1) // El no socio ya existe
+                    {
+                        MessageBox.Show("EL NO SOCIO YA ESTÁ REGISTRADO", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        MessageBox.Show("EL NO SOCIO SE REGISTRÓ EXITOSAMENTE CON EL NÚMERO DE NO SOCIO: " + codigo, "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    */
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }            
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
