@@ -101,6 +101,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
             txtNombre.Text = "";
             txtApellido.Text = "";
             txtDni.Text = "";
+            chkAptoMedico.Checked = false;
             txtNombre.Focus();
         }
     }
