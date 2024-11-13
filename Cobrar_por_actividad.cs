@@ -193,6 +193,12 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
 
         private void btnCarnetNoSocio_Click(object sender, EventArgs e)
         {
+            //la siguiente condición verificamos que cuando se haya seleccionado un método de pago se pueda proceder
+            if (!rdbtnEfectivo.Checked && !rdbtnCredito.Checked)
+            {
+                MessageBox.Show("Por favor, seleccionar un método de pago.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             CarnetNoSocio carnet = new CarnetNoSocio
             {
                 nroNoSoc = txtNroNoSocio.Text,
@@ -203,6 +209,12 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
 
         private void btnRegEmitirRecibo_Click(object sender, EventArgs e)
         {
+            //la siguiente condición verificamos que cuando se haya seleccionado un método de pago se pueda proceder
+            if (!rdbtnEfectivo.Checked && !rdbtnCredito.Checked)
+            {
+                MessageBox.Show("Por favor, seleccionar un método de pago.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             string nroNoSocioTexto = txtNroNoSocio.Text;
             string actividadTexto = cboActividad.SelectedItem?.ToString().Trim(); // Asegurarse de eliminar espacios adicionales
             string importeTexto = txtImporte.Text;
