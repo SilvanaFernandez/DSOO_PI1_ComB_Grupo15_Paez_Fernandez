@@ -43,6 +43,9 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                 {
                     sqlCon.Open();
                     string query = "SELECT nombreA FROM actividad";
+
+                    //la siguiente linea de código limpia los elementos antes de cargar, con esto evitamos la duplicidad en el combobox
+                    cboActividad.Items.Clear();
                     using (MySqlCommand cmd = new MySqlCommand(query, sqlCon))
                     {
                         using (MySqlDataReader reader = cmd.ExecuteReader())
