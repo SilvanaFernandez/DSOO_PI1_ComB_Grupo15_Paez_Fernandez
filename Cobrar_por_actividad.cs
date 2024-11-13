@@ -24,17 +24,19 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
         {
             InitializeComponent();
             //Llena los campos de manera automatica si los datos ya se encuentran asignados
-            txtNroNoSocio.Text = NroNoSocio.ToString();
-            txtNombreApellido.Text = NombreApellido;
-            txtDni.Text = Dni;
-
             this.Load += Cobrar_por_actividad_Load;
-
+            //txtNroNoSocio.TextChanged += txtNroNoSocio_TextChanged;
             this.principal = principal;
         }
 
         private void Cobrar_por_actividad_Load(object sender, EventArgs e)
         {
+            if (NroNoSocio != 0)
+            {                                
+                txtNroNoSocio.Text = NroNoSocio.ToString();
+                txtNombreApellido.Text = NombreApellido;
+                txtDni.Text = Dni;
+            }
             using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion())
             {
                 try

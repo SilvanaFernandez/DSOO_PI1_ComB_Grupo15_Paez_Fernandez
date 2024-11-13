@@ -85,7 +85,9 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
             {
                 No_Socios noSocios = new No_Socios(noSoc);
                 string respuesta = noSocios.Nuevo(); // Llama al procedimiento almacenado de la clase persona
-                MessageBox.Show("Respuesta del procedimiento: " + respuesta);
+                // ocuparemos la linea de código de a continuación, para verificar la respuesta del procedimiento.
+               // MessageBox.Show("Respuesta del procedimiento: " + respuesta);
+                int nroNoSocioCod = Convert.ToInt32(respuesta);
 
                 // Verifica si la respuesta es un número
                 bool esnumero = int.TryParse(respuesta, out int codigo);
@@ -100,10 +102,11 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                     {
                         Cobrar_por_actividad cobrarPorActividad = new Cobrar_por_actividad(principal)
                         {
-                            NroNoSocio = codigo,
+                            NroNoSocio = nroNoSocioCod,
                             NombreApellido = $"{noSoc.NombreP} {noSoc.ApellidoP}",
                             Dni = dni.ToString()
                         };
+                        MessageBox.Show("Nro de no socio es: " + nroNoSocioCod);
                         cobrarPorActividad.ShowDialog();
                         this.Hide();
                     }

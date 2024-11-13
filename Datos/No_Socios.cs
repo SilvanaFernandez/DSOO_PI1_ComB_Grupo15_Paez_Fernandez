@@ -57,7 +57,8 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Datos
                         }
                         else
                         {
-                            salida = "No socio creado con éxito. Número de no socio: " + resultado;
+                            //salida = "No socio creado con éxito. Número de no socio: " + resultado;
+                            salida = resultado.ToString();
                         }
                     }
                     else
