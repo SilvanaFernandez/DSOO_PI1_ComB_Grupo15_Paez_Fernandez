@@ -29,10 +29,12 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                     txtNroSocio2.Text = NroSocio.ToString();
                     txtNombreApellido2.Text = NombreApellido;
                     txtDni.Text = Dni;
+                    txtImporte.Text = ImporteCuota.ToString();
 
                     // Establecer el importe fijo y las fechas de pago
-                    decimal importe = 35000; // obtener valor dinámicamente de ser necesario
+                    /*decimal importe = 35000; // obtener valor dinámicamente de ser necesario
                     txtImporte.Text = importe.ToString("F2");
+                    */
 
                     DateTime fechaActual = DateTime.Now;
                     DateTime proximoVencimiento = fechaActual.AddMonths(1);
