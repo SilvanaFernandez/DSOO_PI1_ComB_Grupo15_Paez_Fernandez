@@ -29,6 +29,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
             this.Close();
         }
 
+        //Solo se permiten numeros de hasta 8 dígitos
         private void txtDni_TextChanged(object sender, EventArgs e)
         {
             string dniTexto = txtDni.Text;
@@ -65,7 +66,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
 
             if (Utilidades.DniRegistradoEnOtroTipo(dni, esSocio: true))
             {
-                MessageBox.Show("El DNI ya está registrado como no socio o socio.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("El DNI ya está registrado como socio.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             else if (Utilidades.DniRegistradoEnOtroTipo(dni, esSocio: false))
@@ -106,7 +107,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                             NombreApellido = $"{noSoc.NombreP} {noSoc.ApellidoP}",
                             Dni = dni.ToString()
                         };
-                        MessageBox.Show("Nro de no socio es: " + nroNoSocioCod);
+                        MessageBox.Show("EL NO SOCIO SE REGISTRO EXITOSAMENTE CON EL NÚMERO DE NO SOCIO: " + nroNoSocioCod);
                         cobrarPorActividad.ShowDialog();
                         this.Hide();
                     }

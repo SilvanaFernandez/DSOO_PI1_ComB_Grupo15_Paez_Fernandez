@@ -16,7 +16,6 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
         {
             InitializeComponent();
             this.Load += Cobrar_cuota_Load;
-            //txtNroSocio2.TextChanged += txtNroSocio2_TextChanged;
             this.principal = principal;
         }
         
@@ -30,12 +29,6 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                     txtNombreApellido2.Text = NombreApellido;
                     txtDni.Text = Dni;
                     txtImporte.Text = ImporteCuota.ToString();
-
-                    // Establecer el importe fijo y las fechas de pago
-                    /*decimal importe = 35000; // obtener valor dinámicamente de ser necesario
-                    txtImporte.Text = importe.ToString("F2");
-                    */
-
                     DateTime fechaActual = DateTime.Now;
                     DateTime proximoVencimiento = fechaActual.AddMonths(1);
                     txtFecha.Text = fechaActual.ToString("yyyy-MM-dd");
@@ -68,6 +61,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
             this.Close();
         }
 
+        //consultar estado del socio
         private void txtNroSocio1_TextChanged(object sender, EventArgs e)
         {
             string nroSocioTexto = txtNroSocio1.Text;
@@ -139,6 +133,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
             }
         }
 
+        //registrar cuota del socio
         private void txtNroSocio2_TextChanged(object sender, EventArgs e)
         {
             string nroSocioTexto = txtNroSocio2.Text;
@@ -176,7 +171,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                             if (reader.Read())
                             {
                                 txtNombreApellido2.Text = $"{reader["NombreP"]} {reader["ApellidoP"]}";
-                                txtDni.Text = reader["DocP"].ToString();
+                                txtDni.Text = (string)reader["DocP"];
                             }
                             else
                             {
