@@ -31,15 +31,15 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Datos
 
             while (correcto != true)
             {
-                // Armamos los cuadros de dialogo para el ingreso de datos
+                // Armamos los cuadros de diálogo para el ingreso de datos
                 T_servidor = Microsoft.VisualBasic.Interaction.InputBox
-                ("ingrese servidor", "DATOS DE INSTALACIÓN MySQL");
+                ("Ingrese servidor", "DATOS DE INSTALACIÓN MySQL");
                 T_puerto = Microsoft.VisualBasic.Interaction.InputBox
-                ("ingrese puerto", "DATOS DE INSTALACIÓN MySQL");
+                ("Ingrese puerto", "DATOS DE INSTALACIÓN MySQL");
                 T_usuario = Microsoft.VisualBasic.Interaction.InputBox
-                ("ingrese usuario", "DATOS DE INSTALACIÓN MySQL");
+                ("Ingrese usuario", "DATOS DE INSTALACIÓN MySQL");
                 T_clave = Microsoft.VisualBasic.Interaction.InputBox
-                ("ingrese clave", "DATOS DE INSTALACIÓN MySQL");
+                ("Ingrese clave", "DATOS DE INSTALACIÓN MySQL");
 
                 mensaje = (int)MessageBox.Show("Su ingreso: SERVIDOR = " + T_servidor + " PUERTO= " + T_puerto + " USUARIO: " + T_usuario + " CLAVE: " + T_clave, "AVISO DEL SISTEMA", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (mensaje != 6) // el valor 6 corresponde al SI
