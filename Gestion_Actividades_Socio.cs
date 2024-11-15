@@ -77,7 +77,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                         readerActividades.Close();
 
                         // Tildar las actividades y calcular el total de la cuota
-                        decimal totalCuota = 8000;
+                        decimal totalCuota = 0;
                         int actividadesCount = 0;
 
                         // iterar sobre los items del CheckedListBox
@@ -134,7 +134,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
             {
                 txtNombreApellido.Text = "";
                 txtDni.Text = "";
-                txtTotalCuota.Text = "8000";
+                txtTotalCuota.Text = "";
                 foreach (int index in checkedListBox1.CheckedIndices)
                 {
                     checkedListBox1.SetItemChecked(index, false);
@@ -258,7 +258,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                         List<string> actividadesInscritas = new List<string>();
                         List<string> actividadesParaAgregarNombres = new List<string>();
 
-                        // Obtener las actividades en las que el socio ya está inscrito
+                        // Obtener las actividades en las que el socio ya está inscripto
                         string queryActividadesRegistradas = "SELECT codAct FROM ActividadesSocio WHERE NroSoc = @NroSoc";
                         MySqlCommand cmdActividadesRegistradas = new MySqlCommand(queryActividadesRegistradas, sqlCon);
                         cmdActividadesRegistradas.Parameters.AddWithValue("@NroSoc", nroSocio);
@@ -271,7 +271,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                         }
                         readerActividadesRegistradas.Close();
 
-                        // Marcar las actividades que se deben agregar o dar de baja
+                        // Agrupar las actividades que se deben agregar o dar de baja
                         List<int> actividadesParaAgregar = new List<int>();
                         List<int> actividadesParaDarDeBaja = actividadesRegistradas.ToList();
 
@@ -301,25 +301,19 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                         // Registrar actividades y ajustar cupos
                         foreach (int codAct in actividadesParaAgregar)
                         {
+                            // Verificar cupo disponible
                             string queryCupo = "SELECT cupoDisp FROM actividad WHERE codAct = @codAct";
                             MySqlCommand cmdCupo = new MySqlCommand(queryCupo, sqlCon);
                             cmdCupo.Parameters.AddWithValue("@codAct", codAct);
                             int cupoDisp = Convert.ToInt32(cmdCupo.ExecuteScalar());
-                            
+
                             if (cupoDisp > 0)
                             {
-                                // Registrar la actividad del socio
+                                // Registrar la actividad del socio y ajustar cupo
                                 MySqlCommand cmdRegistrar = new MySqlCommand("RegistrarActividadSocio", sqlCon);
                                 cmdRegistrar.CommandType = CommandType.StoredProcedure;
                                 cmdRegistrar.Parameters.AddWithValue("p_NroSoc", nroSocio);
                                 cmdRegistrar.Parameters.AddWithValue("p_codAct", codAct);
-
-                                MySqlParameter parExtraCosto = new MySqlParameter
-                                {
-                                    ParameterName = "extraCosto",
-                                    MySqlDbType = MySqlDbType.Decimal,
-                                    Direction = ParameterDirection.Output
-                                };
 
                                 MySqlParameter parResultado = new MySqlParameter
                                 {
@@ -329,24 +323,26 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                                     Direction = ParameterDirection.Output
                                 };
 
-                                cmdRegistrar.Parameters.Add(parExtraCosto);
                                 cmdRegistrar.Parameters.Add(parResultado);
 
                                 cmdRegistrar.ExecuteNonQuery();
 
-                                actividadesInscritas.Add(nombreActividad);                              
+                                string resultado = parResultado.Value.ToString();
+                                if (resultado == "Inscripción exitosa")
+                                {
+                                    actividadesInscritas.Add(nombreActividad);
+                                }
+                                else
+                                {
+                                    MessageBox.Show($"No se pudo inscribir en la actividad: {nombreActividad}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
                             }
                             else
                             {
                                 MessageBox.Show($"No hay cupo disponible para la actividad: {nombreActividad}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
-
-                            // Descontar una unidad de cupoDisp
-                            string queryDescontarCupo = "UPDATE actividad SET cupoDisp = cupoDisp - 1 WHERE codAct = @codAct";
-                            MySqlCommand cmdDescontarCupo = new MySqlCommand(queryDescontarCupo, sqlCon);
-                            cmdDescontarCupo.Parameters.AddWithValue("@codAct", codAct);
-                            cmdDescontarCupo.ExecuteNonQuery();
                         }
 
                         // Dar de baja actividades y ajustar cupos
