@@ -77,10 +77,12 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                         readerActividades.Close();
 
                         // Tildar las actividades y calcular el total de la cuota
-                        decimal totalCuota = 8000; int actividadesCount = 0;
+                        decimal totalCuota = 8000;
+                        int actividadesCount = 0;
 
+                        // iterar sobre los items del CheckedListBox
                         for (int i = 0; i < checkedListBox1.Items.Count; i++)
-                        {
+                        {                           
                             string item = checkedListBox1.Items[i].ToString();
                             string[] parts = item.Split('-');
                             string nombreActividad = parts[0].Trim();
@@ -190,7 +192,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                     while (reader.Read())
                     {
                         string actividad = $"{reader["nombreA"]} - Costo Mensual: {reader["costoMensual"]} - Cupo Total: {reader["cupoTotal"]} - Cupo Disponible: {reader["cupoDisp"]}";
-                        checkedListBox1.Items.Add(actividad);
+                        checkedListBox1.Items.Add(actividad);                        
                     }
                 }
                 catch (Exception ex)
@@ -303,7 +305,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                             MySqlCommand cmdCupo = new MySqlCommand(queryCupo, sqlCon);
                             cmdCupo.Parameters.AddWithValue("@codAct", codAct);
                             int cupoDisp = Convert.ToInt32(cmdCupo.ExecuteScalar());
-
+                            
                             if (cupoDisp > 0)
                             {
                                 // Registrar la actividad del socio
@@ -332,7 +334,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
 
                                 cmdRegistrar.ExecuteNonQuery();
 
-                                actividadesInscritas.Add(nombreActividad);
+                                actividadesInscritas.Add(nombreActividad);                              
                             }
                             else
                             {
