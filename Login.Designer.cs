@@ -50,7 +50,7 @@
             // picLogin
             // 
             picLogin.Image = (Image)resources.GetObject("picLogin.Image");
-            picLogin.Location = new Point(70, 116);
+            picLogin.Location = new Point(70, 86);
             picLogin.Name = "picLogin";
             picLogin.Size = new Size(219, 222);
             picLogin.SizeMode = PictureBoxSizeMode.Zoom;
@@ -62,11 +62,11 @@
             lblLogin.AutoSize = true;
             lblLogin.Font = new Font("MV Boli", 18F, FontStyle.Bold, GraphicsUnit.Point);
             lblLogin.ForeColor = SystemColors.ActiveCaptionText;
-            lblLogin.Location = new Point(300, 33);
+            lblLogin.Location = new Point(371, 62);
             lblLogin.Name = "lblLogin";
-            lblLogin.Size = new Size(92, 31);
+            lblLogin.Size = new Size(297, 31);
             lblLogin.TabIndex = 2;
-            lblLogin.Text = "LOGIN";
+            lblLogin.Text = "INGRESO AL SISTEMA";
             lblLogin.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // txtUsuario

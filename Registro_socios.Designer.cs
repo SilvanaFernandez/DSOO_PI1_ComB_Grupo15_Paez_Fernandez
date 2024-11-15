@@ -43,6 +43,8 @@
             btnLimpiar = new Button();
             lblNombre1 = new Label();
             lblDni1 = new Label();
+            chkAptoMedico = new CheckBox();
+            lblApto = new Label();
             ((System.ComponentModel.ISupportInitialize)picSocio).BeginInit();
             SuspendLayout();
             // 
@@ -51,9 +53,9 @@
             lblRegistroSocios.AutoSize = true;
             lblRegistroSocios.Font = new Font("MV Boli", 18F, FontStyle.Bold, GraphicsUnit.Point);
             lblRegistroSocios.ForeColor = SystemColors.ActiveCaptionText;
-            lblRegistroSocios.Location = new Point(239, 41);
+            lblRegistroSocios.Location = new Point(273, 55);
             lblRegistroSocios.Name = "lblRegistroSocios";
-            lblRegistroSocios.Size = new Size(290, 31);
+            lblRegistroSocios.Size = new Size(356, 40);
             lblRegistroSocios.TabIndex = 2;
             lblRegistroSocios.Text = "REGISTRO DE SOCIOS";
             lblRegistroSocios.TextAlign = ContentAlignment.MiddleCenter;
@@ -61,9 +63,10 @@
             // picSocio
             // 
             picSocio.Image = (Image)resources.GetObject("picSocio.Image");
-            picSocio.Location = new Point(473, 131);
+            picSocio.Location = new Point(541, 175);
+            picSocio.Margin = new Padding(3, 4, 3, 4);
             picSocio.Name = "picSocio";
-            picSocio.Size = new Size(181, 122);
+            picSocio.Size = new Size(207, 163);
             picSocio.SizeMode = PictureBoxSizeMode.Zoom;
             picSocio.TabIndex = 3;
             picSocio.TabStop = false;
@@ -71,68 +74,73 @@
             // lblNombre
             // 
             lblNombre.AutoSize = true;
-            lblNombre.Location = new Point(137, 119);
+            lblNombre.Location = new Point(157, 159);
             lblNombre.Name = "lblNombre";
-            lblNombre.Size = new Size(51, 15);
+            lblNombre.Size = new Size(64, 20);
             lblNombre.TabIndex = 10;
             lblNombre.Text = "Nombre";
             // 
             // lblApellido
             // 
             lblApellido.AutoSize = true;
-            lblApellido.Location = new Point(137, 209);
+            lblApellido.Location = new Point(157, 252);
             lblApellido.Name = "lblApellido";
-            lblApellido.Size = new Size(51, 15);
+            lblApellido.Size = new Size(66, 20);
             lblApellido.TabIndex = 11;
             lblApellido.Text = "Apellido";
             // 
             // lblDni
             // 
             lblDni.AutoSize = true;
-            lblDni.Location = new Point(137, 300);
+            lblDni.Location = new Point(157, 355);
             lblDni.Name = "lblDni";
-            lblDni.Size = new Size(27, 15);
+            lblDni.Size = new Size(35, 20);
             lblDni.TabIndex = 12;
             lblDni.Text = "DNI";
             // 
             // txtApellido
             // 
-            txtApellido.Location = new Point(137, 230);
+            txtApellido.Location = new Point(157, 276);
+            txtApellido.Margin = new Padding(3, 4, 3, 4);
             txtApellido.Name = "txtApellido";
-            txtApellido.Size = new Size(216, 23);
-            txtApellido.TabIndex = 13;
+            txtApellido.Size = new Size(246, 27);
+            txtApellido.TabIndex = 1;
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(137, 137);
+            txtNombre.Location = new Point(157, 183);
+            txtNombre.Margin = new Padding(3, 4, 3, 4);
             txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(216, 23);
-            txtNombre.TabIndex = 14;
+            txtNombre.Size = new Size(246, 27);
+            txtNombre.TabIndex = 0;
             // 
             // txtDni
             // 
-            txtDni.Location = new Point(137, 318);
+            txtDni.Location = new Point(157, 379);
+            txtDni.Margin = new Padding(3, 4, 3, 4);
             txtDni.Name = "txtDni";
-            txtDni.Size = new Size(151, 23);
-            txtDni.TabIndex = 15;
+            txtDni.Size = new Size(172, 27);
+            txtDni.TabIndex = 2;
             txtDni.TextChanged += txtDni_TextChanged;
             // 
             // btnGuardar
             // 
-            btnGuardar.Location = new Point(521, 285);
+            btnGuardar.Location = new Point(595, 380);
+            btnGuardar.Margin = new Padding(3, 4, 3, 4);
             btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(105, 44);
-            btnGuardar.TabIndex = 16;
+            btnGuardar.Size = new Size(120, 59);
+            btnGuardar.TabIndex = 3;
             btnGuardar.Text = "GUARDAR";
             btnGuardar.UseVisualStyleBackColor = true;
             btnGuardar.Click += btnGuardar_Click;
             // 
             // btnVolver
             // 
-            btnVolver.Location = new Point(691, 25);
+            btnVolver.Location = new Point(790, 33);
+            btnVolver.Margin = new Padding(3, 4, 3, 4);
             btnVolver.Name = "btnVolver";
-            btnVolver.Size = new Size(75, 23);
-            btnVolver.TabIndex = 17;
+            btnVolver.Size = new Size(86, 31);
+            btnVolver.TabIndex = 5;
             btnVolver.Text = "VOLVER";
             btnVolver.UseVisualStyleBackColor = true;
             btnVolver.Click += btnVolver_Click;
@@ -140,18 +148,19 @@
             // lblApellido1
             // 
             lblApellido1.AutoSize = true;
-            lblApellido1.Location = new Point(355, 233);
+            lblApellido1.Location = new Point(406, 280);
             lblApellido1.Name = "lblApellido1";
-            lblApellido1.Size = new Size(12, 15);
+            lblApellido1.Size = new Size(15, 20);
             lblApellido1.TabIndex = 21;
             lblApellido1.Text = "*";
             // 
             // btnLimpiar
             // 
-            btnLimpiar.Location = new Point(521, 351);
+            btnLimpiar.Location = new Point(595, 468);
+            btnLimpiar.Margin = new Padding(3, 4, 3, 4);
             btnLimpiar.Name = "btnLimpiar";
-            btnLimpiar.Size = new Size(105, 44);
-            btnLimpiar.TabIndex = 23;
+            btnLimpiar.Size = new Size(120, 59);
+            btnLimpiar.TabIndex = 4;
             btnLimpiar.Text = "LIMPIAR";
             btnLimpiar.UseVisualStyleBackColor = true;
             btnLimpiar.Click += btnLimpiar_Click_1;
@@ -159,26 +168,47 @@
             // lblNombre1
             // 
             lblNombre1.AutoSize = true;
-            lblNombre1.Location = new Point(355, 140);
+            lblNombre1.Location = new Point(406, 187);
             lblNombre1.Name = "lblNombre1";
-            lblNombre1.Size = new Size(12, 15);
+            lblNombre1.Size = new Size(15, 20);
             lblNombre1.TabIndex = 24;
             lblNombre1.Text = "*";
             // 
             // lblDni1
             // 
             lblDni1.AutoSize = true;
-            lblDni1.Location = new Point(294, 321);
+            lblDni1.Location = new Point(336, 383);
             lblDni1.Name = "lblDni1";
-            lblDni1.Size = new Size(12, 15);
+            lblDni1.Size = new Size(15, 20);
             lblDni1.TabIndex = 25;
             lblDni1.Text = "*";
             // 
+            // chkAptoMedico
+            // 
+            chkAptoMedico.AutoSize = true;
+            chkAptoMedico.Location = new Point(157, 456);
+            chkAptoMedico.Name = "chkAptoMedico";
+            chkAptoMedico.Size = new Size(118, 24);
+            chkAptoMedico.TabIndex = 26;
+            chkAptoMedico.Text = "Apto Médico";
+            chkAptoMedico.UseVisualStyleBackColor = true;
+            // 
+            // lblApto
+            // 
+            lblApto.AutoSize = true;
+            lblApto.Location = new Point(272, 456);
+            lblApto.Name = "lblApto";
+            lblApto.Size = new Size(15, 20);
+            lblApto.TabIndex = 27;
+            lblApto.Text = "*";
+            // 
             // Registro_socios
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(914, 600);
+            Controls.Add(lblApto);
+            Controls.Add(chkAptoMedico);
             Controls.Add(lblDni1);
             Controls.Add(lblNombre1);
             Controls.Add(btnLimpiar);
@@ -193,8 +223,9 @@
             Controls.Add(lblNombre);
             Controls.Add(picSocio);
             Controls.Add(lblRegistroSocios);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "Registro_socios";
-            Text = "Registrar_socio";
+            Text = "Registrar socio";
             ((System.ComponentModel.ISupportInitialize)picSocio).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -216,5 +247,7 @@
         private Button btnLimpiar;
         private Label lblNombre1;
         private Label lblDni1;
+        private CheckBox chkAptoMedico;
+        private Label lblApto;
     }
 }

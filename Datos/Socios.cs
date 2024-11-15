@@ -9,65 +9,58 @@ using System.Threading.Tasks;
 
 namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Datos
 {
-    internal class Socios
+    internal class Socios : Persona
     {
-        private string connectionString = "Server=localhost;port=3306;Database=DSOO_PI1_ComB_Grupo15_Paez_Fernandez;Uid=root;password=";
-        public string Nuevo_Soc(E_Socio soc)
-        { 
+        public E_Socio soc;
+
+        public Socios(E_Socio soc)
+        {
+            this.soc = soc;
+        }
+
+        public override string Nuevo()
+        {
             string salida;
-            using (MySqlConnection sqlCon = new MySqlConnection(connectionString))
+            if (Persona.DniRegistradoEnOtroTipo(soc.DniP, true)) // Verifica si el DNI está en No_Socios
+            {
+                return "Error: El DNI ya está registrado como No Socio.";
+            }
+            using (MySqlConnection sqlCon = ObtenerConexion())
             {
                 try
                 {
-                    //sqlCon = Conexion.getInstancia().CrearConexion();//conexión única
                     MySqlCommand comando = new MySqlCommand("NuevoSoc", sqlCon);
                     comando.CommandType = CommandType.StoredProcedure;
-                    //se pasan los parametros para el procedimiento
-                    comando.Parameters.Add("Nom", MySqlDbType.VarChar).Value = soc.NombreS;
-                    comando.Parameters.Add("Ape", MySqlDbType.VarChar).Value = soc.ApellidoS;
-                    comando.Parameters.Add("Doc", MySqlDbType.VarChar).Value = soc.DniS;
-                        
-                    MySqlParameter ParCodigo = new MySqlParameter();
-                    ParCodigo.ParameterName = "rta";
-                    ParCodigo.MySqlDbType = MySqlDbType.Int32;
-                    ParCodigo.Direction = ParameterDirection.Output;
-                    comando.Parameters.Add(ParCodigo);
+                    // Se pasan los parámetros para el procedimiento de la BD
+                    comando.Parameters.Add("Nom", MySqlDbType.VarChar).Value = soc.NombreP;
+                    comando.Parameters.Add("Ape", MySqlDbType.VarChar).Value = soc.ApellidoP;
+                    comando.Parameters.Add("Doc", MySqlDbType.VarChar).Value = soc.DniP;
+                    comando.Parameters.Add("Apto", MySqlDbType.Bit).Value = soc.AptoMedico ? 1 : 0;
+
+                    MySqlParameter Parametro = new MySqlParameter();
+                    Parametro.ParameterName = "rta";
+                    Parametro.MySqlDbType = MySqlDbType.Int32;
+                    Parametro.Direction = ParameterDirection.Output;
+                    comando.Parameters.Add(Parametro);
 
                     sqlCon.Open();
                     comando.ExecuteNonQuery();
 
-                    salida = Convert.ToString(ParCodigo.Value);
-
-                    // Obtener el valor del parámetro de salida
-                    if (ParCodigo.Value != DBNull.Value)
+                    salida = Convert.ToString(Parametro.Value);
+                }
+                catch (Exception ex)
+                {
+                    salida = "Error: " + ex.Message;
+                }
+                finally
+                {
+                    if (sqlCon.State == ConnectionState.Open)
                     {
-                        int resultado = Convert.ToInt32(ParCodigo.Value);
-                        if (resultado == -1)
-                        {
-                            salida = "El socio ya existe.";
-                        }
-                        else
-                        {
-                            salida = "Socio creado con éxito. Número de socio: " + resultado;
-                        }
-                    }
-                    else
-                    {
-                        salida = "Error: No se pudo obtener el número de socio.";
+                        sqlCon.Close();
                     }
                 }
-                    catch (Exception ex)
-                    {
-                        salida = "Error: " + ex.Message;
-                    }
-                    finally
-                    {
-                        if (sqlCon.State == ConnectionState.Open)
-                        { sqlCon.Close(); };
-                    }
-                    return salida;
-                 }
+                return salida;
             }
-            
         }
     }
+}

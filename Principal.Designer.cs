@@ -39,13 +39,14 @@
             picPpal2 = new PictureBox();
             btnSalir = new Button();
             lblDatosDeSesion = new Label();
+            btnGestionActividadSocio = new Button();
             ((System.ComponentModel.ISupportInitialize)picPpal1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picPpal2).BeginInit();
             SuspendLayout();
             // 
             // btnReportesVtos
             // 
-            btnReportesVtos.Location = new Point(354, 337);
+            btnReportesVtos.Location = new Point(351, 335);
             btnReportesVtos.Name = "btnReportesVtos";
             btnReportesVtos.Size = new Size(99, 51);
             btnReportesVtos.TabIndex = 27;
@@ -55,7 +56,7 @@
             // 
             // btnCobrosAct
             // 
-            btnCobrosAct.Location = new Point(460, 239);
+            btnCobrosAct.Location = new Point(460, 255);
             btnCobrosAct.Name = "btnCobrosAct";
             btnCobrosAct.Size = new Size(99, 51);
             btnCobrosAct.TabIndex = 26;
@@ -65,7 +66,7 @@
             // 
             // btnGestionCuotas
             // 
-            btnGestionCuotas.Location = new Point(460, 149);
+            btnGestionCuotas.Location = new Point(460, 105);
             btnGestionCuotas.Name = "btnGestionCuotas";
             btnGestionCuotas.Size = new Size(99, 51);
             btnGestionCuotas.TabIndex = 25;
@@ -75,7 +76,7 @@
             // 
             // btnRegistroSocio
             // 
-            btnRegistroSocio.Location = new Point(241, 149);
+            btnRegistroSocio.Location = new Point(241, 105);
             btnRegistroSocio.Name = "btnRegistroSocio";
             btnRegistroSocio.Size = new Size(99, 51);
             btnRegistroSocio.TabIndex = 24;
@@ -85,7 +86,7 @@
             // 
             // btnRegistroNoSocios
             // 
-            btnRegistroNoSocios.Location = new Point(241, 239);
+            btnRegistroNoSocios.Location = new Point(241, 255);
             btnRegistroNoSocios.Name = "btnRegistroNoSocios";
             btnRegistroNoSocios.Size = new Size(99, 51);
             btnRegistroNoSocios.TabIndex = 23;
@@ -98,7 +99,7 @@
             lblPrincipal.AutoSize = true;
             lblPrincipal.Font = new Font("MV Boli", 18F, FontStyle.Bold, GraphicsUnit.Point);
             lblPrincipal.ForeColor = SystemColors.ActiveCaptionText;
-            lblPrincipal.Location = new Point(258, 62);
+            lblPrincipal.Location = new Point(266, 24);
             lblPrincipal.Name = "lblPrincipal";
             lblPrincipal.Size = new Size(260, 31);
             lblPrincipal.TabIndex = 22;
@@ -127,7 +128,7 @@
             // 
             // btnSalir
             // 
-            btnSalir.Location = new Point(691, 16);
+            btnSalir.Location = new Point(691, 24);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(75, 23);
             btnSalir.TabIndex = 31;
@@ -144,11 +145,23 @@
             lblDatosDeSesion.TabIndex = 32;
             lblDatosDeSesion.Text = "Datos de sesión";
             // 
+            // btnGestionActividadSocio
+            // 
+            btnGestionActividadSocio.Location = new Point(351, 156);
+            btnGestionActividadSocio.Margin = new Padding(3, 2, 3, 2);
+            btnGestionActividadSocio.Name = "btnGestionActividadSocio";
+            btnGestionActividadSocio.Size = new Size(99, 52);
+            btnGestionActividadSocio.TabIndex = 34;
+            btnGestionActividadSocio.Text = "Gestión Actividad Socio";
+            btnGestionActividadSocio.UseVisualStyleBackColor = true;
+            btnGestionActividadSocio.Click += btnGestionActividadSocio_Click;
+            // 
             // Principal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnGestionActividadSocio);
             Controls.Add(lblDatosDeSesion);
             Controls.Add(btnSalir);
             Controls.Add(picPpal2);
@@ -180,5 +193,6 @@
         private PictureBox picPpal2;
         private Button btnSalir;
         private Label lblDatosDeSesion;
+        private Button btnGestionActividadSocio;
     }
 }
