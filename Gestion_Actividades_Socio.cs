@@ -377,7 +377,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                         {
                             NroSocio = nroSocio,
                             NombreApellido = $"{txtNombreApellido.Text}",
-                            Dni = txtDni.ToString(),
+                            Dni = $"{txtDni.Text}",
                             ImporteCuota = totalCuota
                         };
                         cobrarCuota.Show();

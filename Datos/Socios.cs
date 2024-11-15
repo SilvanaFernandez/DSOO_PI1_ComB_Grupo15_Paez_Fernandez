@@ -19,9 +19,9 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Datos
         }
 
         public override string Nuevo()
-        { 
+        {
             string salida;
-            if (Utilidades.DniRegistradoEnOtroTipo(soc.DniP, true)) // Verifica si el DNI está en No_Socios
+            if (Persona.DniRegistradoEnOtroTipo(soc.DniP, true)) // Verifica si el DNI está en No_Socios
             {
                 return "Error: El DNI ya está registrado como No Socio.";
             }
@@ -31,7 +31,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Datos
                 {
                     MySqlCommand comando = new MySqlCommand("NuevoSoc", sqlCon);
                     comando.CommandType = CommandType.StoredProcedure;
-                    //se pasan los parametros para el procedimiento de la BD
+                    // Se pasan los parámetros para el procedimiento de la BD
                     comando.Parameters.Add("Nom", MySqlDbType.VarChar).Value = soc.NombreP;
                     comando.Parameters.Add("Ape", MySqlDbType.VarChar).Value = soc.ApellidoP;
                     comando.Parameters.Add("Doc", MySqlDbType.VarChar).Value = soc.DniP;
@@ -64,4 +64,3 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Datos
         }
     }
 }
- 

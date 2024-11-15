@@ -21,7 +21,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Datos
         public override string Nuevo()
         {
             string salida;
-            if (Utilidades.DniRegistradoEnOtroTipo(noSoc.DniP, false)) // Verifica si el DNI está en Socios
+            if (Persona.DniRegistradoEnOtroTipo(noSoc.DniP, false)) // Verifica si el DNI está en Socios
             {
                 return "Error: El DNI ya está registrado como Socio.";
             }
@@ -31,7 +31,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Datos
                 {
                     MySqlCommand comando = new MySqlCommand("NuevoNoSoc", sqlCon);
                     comando.CommandType = CommandType.StoredProcedure;
-                    //se pasan los parametros para el procedimiento
+                    // Se pasan los parámetros para el procedimiento
                     comando.Parameters.Add("Nom", MySqlDbType.VarChar).Value = noSoc.NombreP;
                     comando.Parameters.Add("Ape", MySqlDbType.VarChar).Value = noSoc.ApellidoP;
                     comando.Parameters.Add("Doc", MySqlDbType.VarChar).Value = noSoc.DniP;
@@ -57,7 +57,6 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Datos
                         }
                         else
                         {
-                            //salida = "No socio creado con éxito. Número de no socio: " + resultado;
                             salida = resultado.ToString();
                         }
                     }
@@ -73,11 +72,14 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Datos
                 finally
                 {
                     if (sqlCon.State == ConnectionState.Open)
-                    { sqlCon.Close(); };
+                    {
+                        sqlCon.Close();
+                    }
                 }
                 return salida;
             }
         }
+
         public string RegistrarActividadNoSocio(int nroNoSoc, int codAct)
         {
             string resultado;
@@ -120,4 +122,3 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Datos
         }
     }
 }
- 

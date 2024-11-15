@@ -56,12 +56,12 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                     return;
                 }
 
-                if (Utilidades.DniRegistradoEnOtroTipo(dni, esSocio: true))
+                if (Persona.DniRegistradoEnOtroTipo(dni, esSocio: true))
                 {
                     MessageBox.Show("El DNI ya está registrado como no socio.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                else if (Utilidades.DniRegistradoEnOtroTipo(dni, esSocio: false))
+                else if (Persona.DniRegistradoEnOtroTipo(dni, esSocio: false))
                 {
                     MessageBox.Show("El DNI ya está registrado como socio.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;

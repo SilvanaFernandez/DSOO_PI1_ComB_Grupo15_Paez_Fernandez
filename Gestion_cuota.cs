@@ -171,7 +171,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                             if (reader.Read())
                             {
                                 txtNombreApellido2.Text = $"{reader["NombreP"]} {reader["ApellidoP"]}";
-                                txtDni.Text = (string)reader["DocP"];
+                                txtDni.Text = $"{reader["DocP"]}";
                             }
                             else
                             {

@@ -64,12 +64,12 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                 return;
             }
 
-            if (Utilidades.DniRegistradoEnOtroTipo(dni, esSocio: true))
+            if (Persona.DniRegistradoEnOtroTipo(dni, esSocio: true))
             {
                 MessageBox.Show("El DNI ya está registrado como no socio.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (Utilidades.DniRegistradoEnOtroTipo(dni, esSocio: false))
+            if (Persona.DniRegistradoEnOtroTipo(dni, esSocio: false))
             {
                 MessageBox.Show("El DNI ya está registrado como socio.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -115,7 +115,6 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                     {
                         MessageBox.Show("Error al abrir Cobrar_por_actividad: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    //MessageBox.Show("EL NO SOCIO SE REGISTRÓ EXITOSAMENTE CON EL NÚMERO DE NO SOCIO: " + codigo, "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
