@@ -108,7 +108,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                             Dni = dni.ToString()
                         };
                         MessageBox.Show("EL NO SOCIO SE REGISTRO EXITOSAMENTE CON EL NÚMERO DE NO SOCIO: " + nroNoSocioCod);
-                        cobrarPorActividad.ShowDialog();
+                        cobrarPorActividad.Show();
                         this.Hide();
                     }
                     catch (Exception ex)

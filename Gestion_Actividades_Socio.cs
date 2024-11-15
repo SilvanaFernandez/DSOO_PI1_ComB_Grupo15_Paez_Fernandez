@@ -378,7 +378,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                             Dni = txtDni.ToString(),
                             ImporteCuota = totalCuota
                         };
-                        cobrarCuota.ShowDialog();
+                        cobrarCuota.Show();
                         this.Hide();                        
                     }
                     catch (Exception ex)

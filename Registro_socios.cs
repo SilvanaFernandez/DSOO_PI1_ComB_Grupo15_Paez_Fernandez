@@ -103,8 +103,8 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                                 NombreApellido = $"{soc.NombreP} {soc.ApellidoP}", 
                                 Dni=dni.ToString()
                             };
-                            gestionActividadesSocio.ShowDialog();
-                            this.Hide();
+                            gestionActividadesSocio.Show();
+                            this.Hide();                            
                             gestionActividadesSocio.Controls["txtNroSocio"].Text = codigo.ToString();
                         }
                     
