@@ -8,7 +8,6 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Entidades
 {
     internal class E_Socio : E_Persona
     {
-        public bool AptoMedico { get; set; } //propiedad para apto médico
     }
 }
  

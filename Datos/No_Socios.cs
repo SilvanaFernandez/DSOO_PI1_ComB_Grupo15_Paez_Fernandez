@@ -21,10 +21,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Datos
         public override string Nuevo()
         {
             string salida;
-            if (Persona.DniRegistradoEnOtroTipo(noSoc.DniP, false)) // Verifica si el DNI está en Socios
-            {
-                return "Error: El DNI ya está registrado como Socio.";
-            }
+            
             using (MySqlConnection sqlCon = ObtenerConexion())
             {
                 try

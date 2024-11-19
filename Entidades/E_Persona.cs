@@ -11,6 +11,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Entidades
         public string NombreP { get; set; }
         public string ApellidoP { get; set; }
         public int DniP { get; set; }
+        public bool AptoMedico { get; set; } //propiedad para apto médico
     }
 }
  
