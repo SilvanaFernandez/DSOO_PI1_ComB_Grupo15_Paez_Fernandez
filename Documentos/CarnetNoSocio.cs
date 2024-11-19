@@ -15,9 +15,15 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Documentos
 {
     public partial class CarnetNoSocio : CarnetBase
     {
-        public CarnetNoSocio() => InitializeComponent();
+        private Principal principal;
+        public CarnetNoSocio(Principal principal)
+        {
+            InitializeComponent();
+            this.principal = principal;
+        }
 
         public string nroNoSoc { get; set; }
+
 
         private void CarnetNoSocio_Load(object sender, EventArgs e)
         {

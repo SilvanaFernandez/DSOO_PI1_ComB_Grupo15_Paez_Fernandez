@@ -31,15 +31,28 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
         private void btnImprimir_Click_1(object sender, EventArgs e)
         {
             btnImprimir.Visible = false;
-
-            PrintDocument pd = new PrintDocument();
-            pd.PrintPage += new PrintPageEventHandler(ImprimirForm1);
-            pd.Print();
-
-            MessageBox.Show("Operación existosa", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.Close();
-
+            
+            try
+            {
+                PrintDocument pd = new PrintDocument();
+                pd.PrintPage += new PrintPageEventHandler(ImprimirForm1);
+                if (PrinterSettings.InstalledPrinters.Count > 0)
+                {
+                    pd.Print();
+                }
+                else
+                {
+                    MessageBox.Show("No hay impresoras instaladas.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }            
+                MessageBox.Show("Operación exitosa", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error durante la impresión: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            } 
+       
             btnImprimir.Visible = true;
+            this.Close();          
         }
 
         private void ImprimirForm1(object o, PrintPageEventArgs e)

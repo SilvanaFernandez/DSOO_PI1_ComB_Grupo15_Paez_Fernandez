@@ -199,7 +199,7 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
                 MessageBox.Show("Por favor, seleccionar un método de pago.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            CarnetNoSocio carnet = new CarnetNoSocio
+            CarnetNoSocio carnet = new CarnetNoSocio(this.principal)
             {
                 nroNoSoc = txtNroNoSocio.Text,
             };

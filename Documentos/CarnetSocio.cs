@@ -10,6 +10,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,9 +19,12 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez
 {
     public partial class CarnetSocio : CarnetBase
     {
-        public CarnetSocio()
+        private Principal principal;
+        public CarnetSocio(Principal principal)
         {
             InitializeComponent();
+            
+            this.principal = principal;
         }
 
         public string nroSoc { get; set; }

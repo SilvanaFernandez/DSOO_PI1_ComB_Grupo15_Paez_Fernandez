@@ -30,18 +30,33 @@ namespace DSOO_PI1_ComB_Grupo15_Paez_Fernandez.Documentos
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-            btnImprimir.Visible = false;
+            btnImprimir.Visible = false;            
+            try
+            {
+                PrintDocument pd = new PrintDocument();
+                pd.PrintPage += new PrintPageEventHandler(ImprimirForm1);
+                if (PrinterSettings.InstalledPrinters.Count > 0)
+                {
+                    pd.Print();
+                }
+                else
+                {
+                    MessageBox.Show("No hay impresoras instaladas.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                MessageBox.Show("Operación exitosa", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            PrintDocument pd = new PrintDocument();
-            pd.PrintPage += new PrintPageEventHandler(ImprimirForm1);
-            pd.Print();
-
-            MessageBox.Show("Operación existosa", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            Principal principal = new Principal();
-            principal.Show();
-            this.Close();
-
-            btnImprimir.Visible = true;
+                Principal principal = new Principal();
+                principal.Show();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error durante la impresión: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                btnImprimir.Visible = true;
+            }
         }
 
         private void ImprimirForm1(object o, PrintPageEventArgs e)
